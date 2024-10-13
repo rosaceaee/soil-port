@@ -1,0 +1,77 @@
+// fcf6ed
+
+* {
+  border: 1px solid;
+  p {
+    color: orange;
+  }
+}
+
+.App {
+  border: 15px solid #26aca6;
+}
+
+.App-circle {
+  width: 100%;
+
+  img {
+    max-width: 10rem;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+article {
+  &.container {
+    height: 100vh;
+    .wrap {
+      &.info {
+        background: url(../img/bg_big.png) no-repeat;
+        background-size: 70% 100%;
+        width: 100%;
+        height: 80vh;
+        background-position: center;
+        position: relative;
+
+        .desc {
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+        img {
+          &.pic {
+            border-radius: 50%;
+            position: absolute;
+            right: 43rem;
+            bottom: 5rem;
+            max-width: 15rem;
+          }
+        }
+      }
+
+      &.works {
+        padding: 0 1rem;
+
+        .working {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0 1rem;
+          .card {
+            border: 1px solid red;
+          }
+        }
+        .others {
+          padding: 1rem 0;
+        }
+      }
+    }
+  }
+}
+
+nav {
+  background: skyblue;
+  width: 100%;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+}
