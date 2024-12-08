@@ -7,9 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Circle />
-      </header>
+      <nav>Github | contact</nav>
       <Bottom />
     </div>
   );
