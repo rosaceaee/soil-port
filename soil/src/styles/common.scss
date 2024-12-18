@@ -1,5 +1,3 @@
-// fcf6ed
-
 * {
   border: 1px solid;
   p {
@@ -7,15 +5,16 @@
   }
 }
 
+@font-face {
+  font-family: "GangwonEduPowerExtraBoldA";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .App {
   &:before {
-    /*
-    content: "";
-     border: 10px solid #26aca6;
-    position: fixed;
-    width: calc(100vw - 30px);
-    height: calc(100vh - 30px);
-    z-index: 999; */
   }
 }
 
@@ -77,10 +76,6 @@ article {
         background: #f1e8dc;
 
         .box {
-          /* position: absolute;
-          left: 0;
-          top: 0;*/
-
           .row {
             display: grid;
             grid-template-columns: 10% 2fr 10%;
@@ -183,8 +178,7 @@ article {
 nav {
   background: #dba968;
   width: 100%;
-  padding: 1rem; /*
-  position: fixed;*/
+  padding: 1rem;
   bottom: 0;
 }
 
@@ -212,6 +206,166 @@ nav {
     }
     &.react {
       background: rgb(0, 195, 255);
+    }
+  }
+}
+
+.animate-wrap {
+  animation: bounceToUp 1s cubic-bezier(0.79, -0.3, 0.22, 1.47) forwards;
+}
+
+@keyframes bounceToUp {
+  0% {
+    transform: scale(0.7) translate(-30rem, 10rem, 0rem);
+    height: 10vh;
+    margin-bottom: -10rem;
+  }
+  50% {
+    height: 40vh;
+  }
+  90% {
+    height: 90vh;
+  }
+  100% {
+    margin-bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    transform: scale(1) translate(0, 0);
+    margin-bottom: 0;
+  }
+}
+
+.wave {
+  margin-bottom: -4px;
+  width: 100vw;
+}
+
+.error-msg {
+  font-size: 1rem;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 1.4rem auto;
+}
+
+.animate__slideInUp {
+  -webkit-animation: slideInUp;
+  animation: slideInUp;
+}
+@keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.up {
+  font-family: "GangwonEduPowerExtraBoldA";
+  h3 {
+    display: none;
+  }
+
+  .active {
+    display: block;
+
+    border: 1px solid red;
+  }
+}
+
+.desc-wrap {
+  border: 2px solid;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .img {
+    width: 100%;
+    height: 200px;
+  }
+
+  span {
+    width: 100%;
+    height: calc(200px - 40px);
+    border: 1px solid;
+    position: relative;
+    left: -2rem;
+  }
+}
+
+.introduce-wrap {
+  .proj-box {
+    margin: 0 auto;
+    width: calc(90% - 2rem);
+    .contents {
+      display: grid;
+      grid-template-columns: 20% 80%;
+      justify-content: stretch;
+      align-items: start;
+      ul {
+        display: block;
+        list-style-type: disc;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 30px;
+        border: 1px solid;
+        width: 100%;
+        margin: 0 auto;
+        text-align: left;
+        li {
+          & > h2 {
+            text-align: left;
+          }
+
+          h3 {
+            &.txt-proj-name {
+              font-size: calc(17 / 16 * 1rem);
+              list-style: none;
+            }
+          }
+        }
+
+        .desc-wrapp {
+          margin: 1rem 0 0.5rem;
+          list-style: none;
+          p {
+            line-height: 1.7;
+            &:nth-child(2) {
+              margin-top: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .fulltest {
+    margin: 0 auto;
+    width: 100%;
+    .introduce-wrap {
+      .proj-box {
+        width: 100%;
+        .contents {
+          display: flex;
+          flex-direction: column;
+          ul {
+            padding-inline-start: 0;
+            li {
+              margin: 0 1rem;
+            }
+          }
+        }
+      }
     }
   }
 }
