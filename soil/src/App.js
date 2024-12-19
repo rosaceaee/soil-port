@@ -1,14 +1,14 @@
-import logo from "./logo.svg";
+import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
-
 import { Bottom } from "./assets/Bottom";
-function App() {
-  const Circle = () => {};
+import { Cursor } from "./assets/Cursor";
 
+function App({ handleMouseOver, handleMouseLeave }) {
   return (
     <div className="App">
-      <nav>Github | contact</nav>
-      <Bottom />
+      <Cursor>
+        <Bottom />
+      </Cursor>
     </div>
   );
 }
