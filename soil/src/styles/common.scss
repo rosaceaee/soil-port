@@ -36,12 +36,11 @@ html {
 
 .fulltest {
   position: absolute;
-  right: 0;
-  margin: 0 7rem;
-
-  width: calc(90% - 2rem);
+  margin: 0;
+  width: 100%;
   height: 700px;
   transition: bottom 0.1s linear;
+  left: auto;
   .working {
     gap: 0 1rem;
     margin: 0px 5rem;
@@ -162,9 +161,10 @@ article {
         width: 100%;
         margin: 0 auto;
         .curr {
-          width: calc(90% - 4rem);
+          width: calc(90% - 7rem);
           margin: 0 auto;
         }
+
         ul {
           margin-inline-start: 0;
           padding-inline-start: 0;
@@ -354,6 +354,9 @@ nav {
 }
 
 .introduce-wrap {
+  margin: 0 auto;
+  position: relative;
+  width: calc(100% - 7rem);
   .proj-box {
     margin: 0 auto;
     width: calc(90% - 2rem);
@@ -387,7 +390,7 @@ nav {
         margin-block-end: 0;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
-        padding-inline-start: 30px;
+        padding-inline-start: 0;
         border: 1px solid;
         width: 100%;
         margin: 0 auto;
