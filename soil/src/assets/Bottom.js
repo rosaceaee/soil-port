@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import test from "./data";
 
 export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState({});
   const [up, setUp] = useState(0);
   // const [long, setLong] = useState(0);
 
@@ -22,7 +22,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
   //   };
   // }, [long]);
 
-  const [workPosition, setWorkPosition] = useState(-100 * 16);
+  const [workPosition, setWorkPosition] = useState(-180 * 16);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +30,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
       const viewportH = window.innerHeight;
       const documentH = document.body.scrollHeight;
 
-      const chkBtm = Math.min(0, -100 * 16 + scrollTop);
+      const chkBtm = Math.min(0, -130 * 16 + scrollTop);
       setWorkPosition(chkBtm);
     };
 
@@ -50,15 +50,23 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    onMouseEnter();
+  // const handleMouseEnter = (e) => {
+  //   setIsHovered(true);
+  //   onMouseEnter && onMouseEnter(e);
+  // };
+  const handleMouseEnter = (id, e) => {
+    setIsHovered((prev) => ({ ...prev, [id]: true }));
+    onMouseEnter && onMouseEnter(e);
+  };
+  const handleMouseLeave = (id, e) => {
+    setIsHovered((prev) => ({ ...prev, [id]: false }));
+    onMouseLeave && onMouseLeave(e);
   };
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    onMouseLeave();
-  };
+  // const handleMouseLeave = (e) => {
+  //   setIsHovered(false);
+  //   onMouseLeave && onMouseLeave(e);
+  // };
 
   // nav
   const scrollToSection = (sectionId) => {
@@ -76,14 +84,16 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
             {/* <img src={require("../img/sprout-sm.png")} alt="" />{" "} */}
             <div class="box">
               <div className="row">
-                <div className="col"></div>
+                <div className="col bg"></div>
                 <div className="col desc">
                   <h1
-                    className={`align-r  ${isHovered ? "cursor-hover" : ""}`}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
+                    className={`align-r ${
+                      isHovered["stack1"] ? "cursor-hover" : ""
+                    }`}
+                    onMouseEnter={(e) => handleMouseEnter("stack1", e)}
+                    onMouseLeave={(e) => handleMouseLeave("stack1", e)}
                   >
-                    hola
+                    안녕하세요.
                   </h1>
                 </div>
                 <div className="col"></div>
@@ -93,27 +103,56 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                 <div className="col desc">
                   <div className="cont-left">
                     <span className="up">
-                      {up > 1 ? "11" : "0!"}
-                      {up > 2 ? "11" : null}
+                      {up === 1 ? "책임감" : null}
+                      {up === 2 ? "호기심" : null}
+                      {up === 3 ? "자기주도적인" : null}
                     </span>
                     <span>MONO</span>
                   </div>
                   <div className="cont-right">
                     <div className="col desc">
                       <span>
-                        他には
+                        {/* 他には
                         「自分のスキルで他人に役に立つプロダクトを作る」を目指しています。
                         ですので、ユーザー目線で重視しつつ仕上げしたいと思います。
                         <br />
                         なお、学習者のため勉強しやすくするためにウェブサイトの翻訳にも興味があって、
-                        こんちゅりびゅーとしてます。
+                        こんちゅりびゅーとしてます。 */}
+                        <h3>
+                          나누는 것을 좋아합니다. 새로운 정보와 즐거운 것들을요.
+                        </h3>
+                        React와 vanilla Js로 웹 퍼블리싱과 프론트작업을 하며
+                        중간 역할과 더불어 UIUX개선을 하며 프로젝트를 성공적으로
+                        완수하였습니다.
+                        <br />
+                        혼자만 아는 것보다 스스로의 능력이 사람들에게 도움이
+                        되길 바라며 웹 문서의 영한번역에도 기여하고 있습니다.
+                        <br />
+                        <br />
+                        기획자와 디자이너 사이에서 비개발 직군에게도 이해하기
+                        쉽게 설명하여 원활한 작업진행에 도움이 되는 것에 보람을
+                        느낍니다.
+                        <br />
+                        인터랙션, 심미성이 높은 UI 구현과 더불어 사용자 경험의
+                        향상, 그리고 변화하는 개발 생태계에서 끊임없이 배우며
+                        같이 일하고 싶은 개발자가 되고 싶습니다.
                       </span>
                     </div>
                   </div>{" "}
-                  <div className="col"></div>
                 </div>
-                <div className="row">
-                  <div className="col"></div>
+                <div className="col"></div>
+              </div>
+              <div className="row">
+                <div className="col"></div>
+                <div className="col desc">
+                  {" "}
+                  <h1
+                    className={isHovered["stack111"] ? "cursor-hover" : ""}
+                    onMouseEnter={(e) => handleMouseEnter("stack111", e)}
+                    onMouseLeave={(e) => handleMouseLeave("stack111", e)}
+                  >
+                    Stack
+                  </h1>
                 </div>
                 <div className="col"></div>
               </div>
@@ -124,7 +163,6 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
 
           <section className="skill" id="skill">
             <div className="curr">
-              <h4>oo</h4>
               <ul>
                 <li>
                   <p className="tit">frentend dev? tools</p>
@@ -147,6 +185,10 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                 <li>
                   <p className="tit">Interested in...</p>
                   <p>Python, </p>
+                </li>
+                <li>
+                  <p className="tit">Also available...</p>
+                  <p>English, 日本語 </p>
                 </li>
               </ul>
             </div>
@@ -188,78 +230,100 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
 
           <div className="introduce-wrap">
             <div className="box">
-              {/* <p>
-            2024
-          </p> */}
-              <div className="date">2024.5~now</div>
               <div className="proj-box">
                 <div className="contents">
                   <div className="company-info">
-                    <h2>5</h2>
-                    <p>hataraitakoto (total date)</p>
+                    <h2>더피프티원, 풀타임</h2>
+                    <p>2024.5 ~ now</p>
                   </div>
                   <ul>
                     <li className="desc-wrapp">
+                      {" "}
+                      <img
+                        src={require("../img/lge1.png")}
+                        className="pic"
+                        alt=""
+                      />
                       <div className="proj-info">
                         <h3 className="txt-proj-name">미래에셋생명 (date)</h3>
                         <div className="label-wrap">
                           <span className="label vanilla">link</span>
                         </div>
                       </div>
-
-                      <p>
-                        작업 생산성을 높이기 위하여 기존 컴포넌트 레거시 코드
-                        수정
-                      </p>
-                      <p>단위, 통합테스트 대응하여 ui 화면 개선</p>
-                      <p>
-                        イベントページの簡単ゲームのコード仕組み作成などの簡単なイベント関数の運用
-                      </p>
-
-                      <div className="label-wrap">
-                        <span className="label vanilla">dd</span>
-                        <span className="label vanilla">dd</span>
+                      <div className="proj-info__desc">
+                        {" "}
+                        <p>
+                          작업 생산성을 높이기 위하여 컴포넌트 CSS, JS 레거시
+                          코드 수정 후 컴포넌트 활용 ㅆㄱㄴ
+                        </p>
+                        <p>단위, 통합테스트 대응하여 ui 화면 개선</p>
+                        <p>
+                          イベントページの簡単ゲームのコード仕組み作成などの簡単なイベント関数の運用
+                        </p>
+                        <div className="label-wrap">
+                          <span className="label js">JS</span>
+                          <span className="label css">CSS</span>
+                        </div>
                       </div>
                     </li>
                     <li className="desc-wrapp">
+                      <img
+                        src={require("../img/lge1.png")}
+                        className="pic"
+                        alt=""
+                      />
                       <div className="proj-info">
-                        <h3 className="txt-proj-name">eruji (date)</h3>
+                        <h3 className="txt-proj-name">
+                          LG global platform (date)
+                        </h3>
                         <div className="label-wrap">
                           <span className="label vanilla">dd</span>
                         </div>
                       </div>
 
-                      <p>헝가리, 오스트리아 사이트 UIUX 구축 및 운영</p>
-                      <p>결제 모듈 ui영역 개선 담당</p>
-                      <p>기존 ui관련 레거시 코드 개선</p>
-                      <p>
-                        다른 다국어 사이트와 균일한 ui 구현을 위하여 컴포넌트
-                        디자인 개선
-                      </p>
+                      <div className="proj-info__desc">
+                        <p>헝가리, 오스트리아 사이트 UIUX 구축 및 운영</p>
+                        <p>결제 모듈 ui영역 개선 담당</p>
+                        <p>기존 ui관련 레거시 코드 개선</p>
+                        <p>
+                          다른 다국어 사이트와 균일한 ui 구현을 위하여 컴포넌트
+                          디자인 개선
+                        </p>
 
-                      <div className="label-wrap">
-                        <span className="label vanilla">dd</span>
-                        <span className="label vanilla">dd</span>
+                        <div className="label-wrap">
+                          <span className="label js">JS</span>
+                          <span className="label css">CSS(SCSS)</span>
+                          <span className="label pug">Pug</span>
+                        </div>
                       </div>
                     </li>
                     <li className="desc-wrapp">
+                      {" "}
+                      <img
+                        src={require("../img/lge1.png")}
+                        className="pic"
+                        alt=""
+                      />
                       <div className="proj-info">
-                        <h3 className="txt-proj-name">enu b (date)</h3>
+                        <h3 className="txt-proj-name">
+                          현대 N브랜드 사이트 리뉴얼 (date)
+                        </h3>
                         <div className="label-wrap">
                           <span className="label vanilla">dd</span>
                         </div>
                       </div>
+                      <div className="proj-info__desc">
+                        <p>
+                          ui디자인 일관성과 생산성을 높이기 위한 컴포넌트 시스템
+                          개선 및 참여
+                        </p>
+                        <p>단위, 통합테스트 대응하여 ui 화면 개선</p>
+                        <p>다국어 사이트 반영 담당</p>
 
-                      <p>
-                        ui디자인 일관성과 생산성을 높이기 위한 컴포넌트 시스템
-                        개선 및 참여
-                      </p>
-                      <p>단위, 통합테스트 대응하여 ui 화면 개선</p>
-                      <p>다국어 사이트 반영 담당</p>
-
-                      <div className="label-wrap">
-                        <span className="label vanilla">dd</span>
-                        <span className="label vanilla">dd</span>
+                        <div className="label-wrap">
+                          <span className="label js">JS</span>
+                          <span className="label css">CSS</span>
+                        </div>
                       </div>
                     </li>
                   </ul>
@@ -267,8 +331,10 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
 
                 <div className="contents">
                   <div div className="company-info">
-                    <h2>5</h2>
-                    <p>hataraitakoto (total date)</p>
+                    <h2>주식회사 클라우봇</h2>
+                    <p>
+                      2021.12. ~ 2023.07. <br /> (total date)
+                    </p>
                   </div>
                   <ul>
                     <li className="desc-wrapp">
@@ -277,22 +343,24 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                           최선어학원 creo 유지보수
                         </h3>
                         <div className="label-wrap">
-                          <span className="label react">dd</span>
+                          <span className="label react">ㅇㅁㅅㄷ</span>
                         </div>
                       </div>
-
-                      <p>유지보수, 테스트</p>
-                      <p>
-                        기존 ui 스타일 소스 레거시 정리 및 코드 경제?사용?성
-                        개선
-                      </p>
-                      <p>
-                        ui 테스트 작업 대응하여 디바이스 최적화로 사용자
-                        학습도움에 기여
-                      </p>
-                      <div className="label-wrap">
-                        <span className="label vanilla">dd</span>
-                        <span className="label vanilla">dd</span>
+                      <div className="proj-info__desc">
+                        <p>유지보수, 테스트</p>
+                        <p>
+                          기존 ui 스타일 소스 레거시 정리 및 코드 경제?사용?성
+                          개선
+                        </p>
+                        <p>
+                          ui 테스트 작업 대응하여 디바이스 최적화로 사용자
+                          학습도움에 기여
+                        </p>
+                        <div className="label-wrap">
+                          <span className="label react">React</span>
+                          <span className="label react">ReactNative</span>
+                          <span className="label react">CSS(SCSS)</span>
+                        </div>
                       </div>
                     </li>
                     <li className="desc-wrapp">
@@ -301,15 +369,21 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                           metaexam 영어시험 구축
                         </h3>
                         <div className="label-wrap">
-                          <span className="label react">dd</span>
+                          <span className="label react">ㅇㅁㅅㄷ</span>
+                        </div>
+                      </div>{" "}
+                      <div className="proj-info__desc">
+                        <p>퍼블리싱, 테스트</p>
+                        <p>
+                          수험자의 이해를 돕기 위한 uiux 디자인 참여. 직관적인
+                          스타일로 작업함
+                        </p>{" "}
+                        <div className="label-wrap">
+                          <span className="label react">React</span>
+
+                          <span className="label react">CSS(SCSS)</span>
                         </div>
                       </div>
-
-                      <p>퍼블리싱, 테스트</p>
-                      <p>
-                        수험자의 이해를 돕기 위한 uiux 디자인 참여. 직관적인
-                        스타일로 작업함
-                      </p>
                     </li>
                     <li className="desc-wrapp">
                       <div className="proj-info">
@@ -318,13 +392,19 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                         </h3>
 
                         <div className="label-wrap">
-                          <span className="label css">css</span>
-                          <span className="label vanilla">js</span>
+                          <span className="label css">ㅇㅁㅅㄷ</span>
+                        </div>
+                      </div>{" "}
+                      <div className="proj-info__desc">
+                        <p>퍼블리싱, 테스트</p>
+                        <p>레거시 코드 정리 및 전체 소스 리팩토링</p>
+                        <p>ui 테스트 작업 대응하여 디바이스 최적화 작업</p>{" "}
+                        <div className="label-wrap">
+                          <span className="label react">React</span>
+                          <span className="label react">ReactNative</span>
+                          <span className="label react">CSS</span>
                         </div>
                       </div>
-                      <p>퍼블리싱, 테스트</p>
-                      <p>레거시 코드 정리 및 전체 소스 리팩토링</p>
-                      <p>ui 테스트 작업 대응하여 디바이스 최적화 작업</p>
                     </li>
                     <li className="desc-wrapp">
                       <div className="proj-info">
@@ -334,53 +414,68 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                           <span className="label vanilla">dd</span>
                         </div>
                       </div>
-
-                      <p>학원 교육 부교재용 앱 구축 및 운영</p>
-                      <p>asdf</p>
+                      <div className="proj-info__desc">
+                        <p>학원 교육 부교재용 앱 구축 </p>
+                        <p>컴포넌트 UI 구현, 디바이스 별 반응형 ㄱ ㅜ현</p>
+                        <div className="label-wrap">
+                          <span className="label react">React</span>
+                          <span className="label react">ReactNative</span>
+                          <span className="label react">CSS(SCSS)</span>
+                        </div>
+                      </div>
                     </li>
                   </ul>
                 </div>
 
                 <div className="contents">
                   <div div className="company-info">
-                    <h2>jk</h2>
-                    <p>hataraitakoto</p>
+                    <h2>잡코리아</h2>
+                    <p>
+                      2019.7. ~ 2021.3. <br />
+                      (1년 4개월)
+                    </p>
                   </div>
                   <ul>
                     <li className="desc-wrapp">
-                      <h3 className="txt-proj-name">,.</h3>
+                      <h3 className="txt-proj-name">ㅇㅇ</h3>
+                      <p>dd</p>{" "}
                       <div className="label-wrap">
                         <span className="label react">html</span>
                         <span className="label reactnative">css</span>
                       </div>
-
-                      <p>dd</p>
                     </li>
                   </ul>
                 </div>
 
                 <div className="contents">
                   <div div className="company-info">
-                    <h2>rinukusu</h2>
+                    <h2>리눅스웨어</h2>
                     <p>hataraitakoto</p>
                   </div>
                   <ul>
                     <li className="desc-wrapp">
-                      <h3 className="txt-proj-name">
-                        seoul woman uni child dept.
-                      </h3>
-                      <p></p>
-                      <p>asdf</p>
-                      <p>asdf</p>
-                      <p>asdf</p>
+                      <h3 className="txt-proj-name">서울여자대학교 아동학과</h3>{" "}
+                      <div className="proj-info__desc">
+                        <p></p>
+                        <p>asdf</p>
+                        <div className="label-wrap">
+                          <span className="label react">html</span>
+                          <span className="label reactnative">css</span>
+                          <span className="label reactnative">js(jQuery)</span>
+                        </div>
+                      </div>
                     </li>
                     <li className="desc-wrapp">
-                      <h3 className="txt-proj-name">ssmedipia </h3>
-                      <p>asdf</p>
-                      <p>asdf</p>
+                      <h3 className="txt-proj-name">ssmedipia </h3>{" "}
+                      <div className="proj-info__desc">
+                        <p>asdf</p>
+                        <div className="label-wrap">
+                          <span className="label react">html</span>
+                          <span className="label reactnative">css</span>
+                          <span className="label reactnative">js(jQuery)</span>
+                        </div>
+                      </div>
                     </li>
-                    <li>dd</li>
-                    <li>dd</li>
                   </ul>
                 </div>
               </div>
@@ -395,7 +490,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
               <div className="proj-box">
                 <div className="contents">
                   <div>
-                    <h2>personal</h2>
+                    <h2>개인 프로젝트</h2>
                   </div>
                   <ul>
                     <li className="desc-wrapp">
@@ -420,17 +515,22 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                     <h2>Others </h2>
                   </div>
                   <ul>
-                    <li className="desc-wrapp">
-                      <h3 className="txt-proj-name">MDN 웹 번역 기여</h3>
-                      <span className="box-with-link">
-                        <p>outerHeight</p>
-                        <a
-                          href="https://developer.mozilla.org/ko/docs/Web/API/Window/outerHeight"
-                          target="_blank"
-                        >
-                          d
-                        </a>
-                      </span>
+                    <li className="desc-wrapp others">
+                      <h3 className="txt-proj-name">
+                        MDN 웹 문서 영한번역 기여
+                      </h3>
+                      <div class="proj-info__desc">
+                        {" "}
+                        <span className="box-with-link">
+                          <p>outerHeight</p>
+                          <a
+                            href="https://developer.mozilla.org/ko/docs/Web/API/Window/outerHeight"
+                            target="_blank"
+                          >
+                            d
+                          </a>
+                        </span>
+                      </div>
 
                       <span className="box-with-link">
                         <p>device memory api</p>
@@ -462,7 +562,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                         </a>
                       </span>
                     </li>
-                    <li className="desc-wrapp">
+                    <li className="desc-wrapp others">
                       <h3 className="txt-proj-name">
                         regexlearn 한국어 번역 기여
                       </h3>
@@ -572,13 +672,13 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
       </article>
       <nav onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <span className="infoo" onClick={() => scrollToSection("skill")}>
-          info
-        </span>{" "}
-        |{" "}
+          소개
+        </span>
+
         <span className="infoo" onClick={() => scrollToSection("fulltest")}>
-          info2
-        </span>{" "}
-        | <span className="infoo">in33fo</span>{" "}
+          스킬
+        </span>
+        <span className="infoo">작업물</span>
         <span>
           <a href="" target="_blank">
             gh
