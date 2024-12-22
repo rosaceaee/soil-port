@@ -605,6 +605,11 @@ nav {
         .skill {
           ul {
             width: calc(100% - 4.5rem);
+            padding: 1rem 0;
+            li{
+              padding: 0.5rem 1rem 0;
+              margin-bottom: 0.8rem;
+            }
           }
         }
       }
@@ -615,6 +620,8 @@ nav {
     width: 100%;
 
     .introduce-wrap {
+      width: 100%;
+      padding:  0;
       .box {
         &:last-child {
           padding-bottom: 4rem;
@@ -626,7 +633,14 @@ nav {
             display: flex;
             flex-direction: column;
             .company-info {
+              padding: 0;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: center;
+              margin: 0 0 1rem 0;
             }
+
 
             .desc-wrapp {
               margin: 1.5rem 0;
@@ -644,8 +658,12 @@ nav {
                 margin-bottom: 1.3rem;
               }
 
+              ul{
+              }
+
               p {
-                line-height: 1.6;
+                line-height: 1.6;                padding-left: 1rem;
+
               }
             }
             ul {
@@ -658,6 +676,10 @@ nav {
         }
       }
     }
+  }
+
+  nav{
+    width: calc(90% - 1rem);
   }
 }
 
