@@ -4,7 +4,7 @@ export const data = {
       id: 1,
       companyName: "Test 1",
       date: "2024.5. ~ 현재",
-      totalDate: "1 years",
+      totalDate: "(풀타임)",
       projList: [
         {
           listIdx: 1,
@@ -67,7 +67,7 @@ export const data = {
           projName: "metaexam 영어시험 구축",
           url: "url",
           desc: [
-            "퍼블리싱, 테스트",
+            "전체 페이지 UI 퍼블리싱, 화면 검수 및 테스트 참여",
             "수험자의 이해를 돕기 위한 uiux 디자인 참여. 직관적인 스타일로 작업함",
           ],
           skill: ["react", "scss", "antd"],
@@ -178,6 +178,18 @@ export const data = {
           listIdx: 4,
           projName: "clipboard",
           url: "https://developer.mozilla.org/ko/docs/Web/API/Navigator/clipboard",
+        },
+      ],
+    },
+    {
+      id: 3,
+      projName: " regexlearn 한국어 번역 기여",
+      projList: [
+        {
+          listIdx: 1,
+          projName:
+            "부자연스러운 한국어 문장을 교정하여 한국어 학습자의 가독성을 높임.",
+          url: "https://regexlearn.com/ko",
         },
       ],
     },
