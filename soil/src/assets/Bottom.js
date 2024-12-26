@@ -1,27 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-
-import test from "./data";
+import { Link } from "react-router-dom";
+import { data, career, others } from "./data";
 
 export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
   const [isHovered, setIsHovered] = useState({});
   const [up, setUp] = useState(0);
-  // const [long, setLong] = useState(0);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scroll_num = window.scrollY;
-
-  //     setLong((prevLong) => prevLong + 1);
-  //     console.log(long);
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, [long]);
-
   const [workPosition, setWorkPosition] = useState(-180 * 16);
 
   useEffect(() => {
@@ -76,24 +59,40 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
     }
   };
 
+  // cursor toggle class
+  const cursorClassName = (id) => {
+    const base = "allign-r";
+    const hoverIt = isHovered[id] ? "cursor-toUp" : "";
+
+    return `${base} ${hoverIt}`.trim();
+  };
+
+  const sList = {
+    react: "react",
+    reactNative: "reactNative",
+    js: "js",
+    scss: "scss",
+    css: "css",
+    pug: "pug",
+    html: "html",
+  };
+
   return (
     <>
       <article className="container">
         <div className="wrap">
           <section className="info">
-            {/* <img src={require("../img/sprout-sm.png")} alt="" />{" "} */}
+            {/* <img src={require("../img/sprout-sm.png")} alt="" /> */}
             <div class="box">
               <div className="row">
                 <div className="col bg"></div>
                 <div className="col desc">
                   <h1
-                    className={`align-r ${
-                      isHovered["stack1"] ? "cursor-hover" : ""
-                    }`}
+                    className={cursorClassName("stack1")}
                     onMouseEnter={(e) => handleMouseEnter("stack1", e)}
                     onMouseLeave={(e) => handleMouseLeave("stack1", e)}
                   >
-                    안녕하세요.
+                    ..
                   </h1>
                 </div>
                 <div className="col"></div>
@@ -103,9 +102,9 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                 <div className="col desc">
                   <div className="cont-left">
                     <span className="up">
-                      {up === 1 ? "책임감" : null}
-                      {up === 2 ? "호기심" : null}
-                      {up === 3 ? "자기주도적인" : null}
+                      {up === 1 ? "111" : null}
+                      {up === 2 ? "222" : null}
+                      {up === 3 ? "333" : null}
                     </span>
                     <span>MONO</span>
                   </div>
@@ -138,14 +137,13 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                         같이 일하고 싶은 개발자가 되고 싶습니다.
                       </span>
                     </div>
-                  </div>{" "}
+                  </div>
                 </div>
                 <div className="col"></div>
               </div>
               <div className="row">
                 <div className="col"></div>
                 <div className="col desc">
-                  {" "}
                   <h1
                     className={isHovered["stack111"] ? "cursor-hover" : ""}
                     onMouseEnter={(e) => handleMouseEnter("stack111", e)}
@@ -195,7 +193,9 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
             <div className="interest">python, node.js</div>
           </section>
         </div>
+        {/****************** information end *******************/}
 
+        {/****************** works start *******************/}
         <div
           className="fulltest"
           style={{
@@ -229,259 +229,73 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
           <h1 style={{ textAlign: "center" }}>작업물</h1>
 
           <div className="introduce-wrap">
-            <div className="box">
-              <div className="proj-box">
-                <div className="contents">
-                  <div className="company-info">
-                    <h2>더피프티원, 풀타임</h2>
-                    <p>2024.5 ~ now</p>
+            {/* box1 - works */}
+            {/* temp test */}
+            {data.career.map((list, index) => {
+              return (
+                <>
+                  <div className="box">
+                    <div className="proj-box">
+                      <div className="contents">
+                        <div className="company-info">
+                          <h2>{list.companyName}</h2>
+                          <p>
+                            {list.date} <br /> {list.totalDate}
+                          </p>
+                        </div>
+
+                        <ul>
+                          <li className="desc-wrapp">
+                            <div className="proj-info">
+                              {list.projList.map((project) => {
+                                return (
+                                  <>
+                                    <img
+                                      src={project.imgUrl}
+                                      className="pic"
+                                      alt=""
+                                    />
+                                    <h3 className="txt-proj-name">
+                                      {project.projName}
+                                    </h3>
+                                    <a href={`${project.url}`} target="_blank">
+                                      {project.url}
+                                    </a>
+
+                                    <div className="proj-info__desc">
+                                      {project.desc.map((descItm) => {
+                                        return <p>{descItm}</p>;
+                                      })}
+                                      <div className="label-wrap">
+                                        {project.skill.map((skillItm) => {
+                                          const chipSkill =
+                                            sList[skillItm] || "";
+                                          return (
+                                            <span
+                                              className={`label ${skillItm}`}
+                                            >
+                                              {chipSkill}
+                                            </span>
+                                          );
+                                        })}
+                                      </div>
+                                    </div>
+                                  </>
+                                );
+                              })}
+                              {/*  */}
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                  <ul>
-                    <li className="desc-wrapp">
-                      {" "}
-                      <img
-                        src={require("../img/lge1.png")}
-                        className="pic"
-                        alt=""
-                      />
-                      <div className="proj-info">
-                        <h3 className="txt-proj-name">미래에셋생명 (date)</h3>
-                        <div className="label-wrap">
-                          <span className="label vanilla">link</span>
-                        </div>
-                      </div>
-                      <div className="proj-info__desc">
-                        {" "}
-                        <p>
-                          작업 생산성을 높이기 위하여 컴포넌트 CSS, JS 레거시
-                          코드 수정 후 컴포넌트 활용 ㅆㄱㄴ
-                        </p>
-                        <p>단위, 통합테스트 대응하여 ui 화면 개선</p>
-                        <p>
-                          イベントページの簡単ゲームのコード仕組み作成などの簡単なイベント関数の運用
-                        </p>
-                        <div className="label-wrap">
-                          <span className="label js">JS</span>
-                          <span className="label css">CSS</span>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="desc-wrapp">
-                      <img
-                        src={require("../img/lge1.png")}
-                        className="pic"
-                        alt=""
-                      />
-                      <div className="proj-info">
-                        <h3 className="txt-proj-name">
-                          LG global platform (date)
-                        </h3>
-                        <div className="label-wrap">
-                          <span className="label vanilla">dd</span>
-                        </div>
-                      </div>
+                </>
+              );
+            })}
+            {/* // */}
 
-                      <div className="proj-info__desc">
-                        <p>헝가리, 오스트리아 사이트 UIUX 구축 및 운영</p>
-                        <p>결제 모듈 ui영역 개선 담당</p>
-                        <p>기존 ui관련 레거시 코드 개선</p>
-                        <p>
-                          다른 다국어 사이트와 균일한 ui 구현을 위하여 컴포넌트
-                          디자인 개선
-                        </p>
-
-                        <div className="label-wrap">
-                          <span className="label js">JS</span>
-                          <span className="label css">CSS(SCSS)</span>
-                          <span className="label pug">Pug</span>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="desc-wrapp">
-                      {" "}
-                      <img
-                        src={require("../img/lge1.png")}
-                        className="pic"
-                        alt=""
-                      />
-                      <div className="proj-info">
-                        <h3 className="txt-proj-name">
-                          현대 N브랜드 사이트 리뉴얼 (date)
-                        </h3>
-                        <div className="label-wrap">
-                          <span className="label vanilla">dd</span>
-                        </div>
-                      </div>
-                      <div className="proj-info__desc">
-                        <p>
-                          ui디자인 일관성과 생산성을 높이기 위한 컴포넌트 시스템
-                          개선 및 참여
-                        </p>
-                        <p>단위, 통합테스트 대응하여 ui 화면 개선</p>
-                        <p>다국어 사이트 반영 담당</p>
-
-                        <div className="label-wrap">
-                          <span className="label js">JS</span>
-                          <span className="label css">CSS</span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="contents">
-                  <div div className="company-info">
-                    <h2>주식회사 클라우봇</h2>
-                    <p>
-                      2021.12. ~ 2023.07. <br /> (total date)
-                    </p>
-                  </div>
-                  <ul>
-                    <li className="desc-wrapp">
-                      <div className="proj-info">
-                        <h3 className="txt-proj-name">
-                          최선어학원 creo 유지보수
-                        </h3>
-                        <div className="label-wrap">
-                          <span className="label react">ㅇㅁㅅㄷ</span>
-                        </div>
-                      </div>
-                      <div className="proj-info__desc">
-                        <p>유지보수, 테스트</p>
-                        <p>
-                          기존 ui 스타일 소스 레거시 정리 및 코드 경제?사용?성
-                          개선
-                        </p>
-                        <p>
-                          ui 테스트 작업 대응하여 디바이스 최적화로 사용자
-                          학습도움에 기여
-                        </p>
-                        <div className="label-wrap">
-                          <span className="label react">React</span>
-                          <span className="label react">ReactNative</span>
-                          <span className="label react">CSS(SCSS)</span>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="desc-wrapp">
-                      <div className="proj-info">
-                        <h3 className="txt-proj-name">
-                          metaexam 영어시험 구축
-                        </h3>
-                        <div className="label-wrap">
-                          <span className="label react">ㅇㅁㅅㄷ</span>
-                        </div>
-                      </div>{" "}
-                      <div className="proj-info__desc">
-                        <p>퍼블리싱, 테스트</p>
-                        <p>
-                          수험자의 이해를 돕기 위한 uiux 디자인 참여. 직관적인
-                          스타일로 작업함
-                        </p>{" "}
-                        <div className="label-wrap">
-                          <span className="label react">React</span>
-
-                          <span className="label react">CSS(SCSS)</span>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="desc-wrapp">
-                      <div className="proj-info">
-                        <h3 className="txt-proj-name">
-                          phonics monster 교육 툴 유지보수
-                        </h3>
-
-                        <div className="label-wrap">
-                          <span className="label css">ㅇㅁㅅㄷ</span>
-                        </div>
-                      </div>{" "}
-                      <div className="proj-info__desc">
-                        <p>퍼블리싱, 테스트</p>
-                        <p>레거시 코드 정리 및 전체 소스 리팩토링</p>
-                        <p>ui 테스트 작업 대응하여 디바이스 최적화 작업</p>{" "}
-                        <div className="label-wrap">
-                          <span className="label react">React</span>
-                          <span className="label react">ReactNative</span>
-                          <span className="label react">CSS</span>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="desc-wrapp">
-                      <div className="proj-info">
-                        <h3 className="txt-proj-name">루시드 영어</h3>
-                        <div className="label-wrap">
-                          <span className="label vanilla">dd</span>
-                          <span className="label vanilla">dd</span>
-                        </div>
-                      </div>
-                      <div className="proj-info__desc">
-                        <p>학원 교육 부교재용 앱 구축 </p>
-                        <p>컴포넌트 UI 구현, 디바이스 별 반응형 ㄱ ㅜ현</p>
-                        <div className="label-wrap">
-                          <span className="label react">React</span>
-                          <span className="label react">ReactNative</span>
-                          <span className="label react">CSS(SCSS)</span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="contents">
-                  <div div className="company-info">
-                    <h2>잡코리아</h2>
-                    <p>
-                      2019.7. ~ 2021.3. <br />
-                      (1년 4개월)
-                    </p>
-                  </div>
-                  <ul>
-                    <li className="desc-wrapp">
-                      <h3 className="txt-proj-name">ㅇㅇ</h3>
-                      <p>dd</p>{" "}
-                      <div className="label-wrap">
-                        <span className="label react">html</span>
-                        <span className="label reactnative">css</span>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="contents">
-                  <div div className="company-info">
-                    <h2>리눅스웨어</h2>
-                    <p>hataraitakoto</p>
-                  </div>
-                  <ul>
-                    <li className="desc-wrapp">
-                      <h3 className="txt-proj-name">서울여자대학교 아동학과</h3>{" "}
-                      <div className="proj-info__desc">
-                        <p></p>
-                        <p>asdf</p>
-                        <div className="label-wrap">
-                          <span className="label react">html</span>
-                          <span className="label reactnative">css</span>
-                          <span className="label reactnative">js(jQuery)</span>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="desc-wrapp">
-                      <h3 className="txt-proj-name">ssmedipia </h3>{" "}
-                      <div className="proj-info__desc">
-                        <p>asdf</p>
-                        <div className="label-wrap">
-                          <span className="label react">html</span>
-                          <span className="label reactnative">css</span>
-                          <span className="label reactnative">js(jQuery)</span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* box2 */}
+            {/* box2 - others: private1 */}
             <div className="box">
               {/* <p>
             2024
@@ -506,7 +320,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
               </div>
             </div>
 
-            {/* box3 */}
+            {/* box3 - others: private2 ; contribution */}
             <div className="box">
               {/* <div className="date">Others</div> */}
               <div className="proj-box">
@@ -515,160 +329,56 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                     <h2>Others </h2>
                   </div>
                   <ul>
-                    <li className="desc-wrapp others">
+                    <li>
                       <h3 className="txt-proj-name">
                         MDN 웹 문서 영한번역 기여
                       </h3>
-                      <div class="proj-info__desc">
-                        {" "}
-                        <span className="box-with-link">
-                          <p>outerHeight</p>
-                          <a
-                            href="https://developer.mozilla.org/ko/docs/Web/API/Window/outerHeight"
-                            target="_blank"
-                          >
-                            d
-                          </a>
-                        </span>
-                      </div>
-
-                      <span className="box-with-link">
-                        <p>device memory api</p>
-                        <a
-                          href="https://developer.mozilla.org/ko/docs/Web/API/Device_Memory_API"
-                          target="_blank"
-                        >
-                          d
-                        </a>
-                      </span>
-
-                      <span className="box-with-link">
-                        <p>tabindex</p>
-                        <a
-                          href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement/tabIndex"
-                          target="_blank"
-                        >
-                          d
-                        </a>
-                      </span>
-
-                      <span className="box-with-link">
-                        <p>clipboard</p>
-                        <a
-                          href="https://developer.mozilla.org/ko/docs/Web/API/Navigator/clipboard"
-                          target="_blank"
-                        >
-                          d
-                        </a>
-                      </span>
                     </li>
+                    {data.others[1].projList.map((list, index) => {
+                      return (
+                        <li className="desc-wrapp others">
+                          <h3>{list.projName}</h3>
+                          <span className="box-with-link">
+                            <p>{list.projName}</p>
+                            <a href="" target="_blank">
+                              {list.url}
+                            </a>
+                          </span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+
+                  <ul>
                     <li className="desc-wrapp others">
                       <h3 className="txt-proj-name">
                         regexlearn 한국어 번역 기여
                       </h3>
-                      <p>
-                        부자연스러운 문장 교정하여 한국어 사용자의 학습에
-                        기여함.
-                      </p>
-                      <span className="box-with-link">
-                        <a href="https://regexlearn.com/ko" target="_blank">
-                          https://regexlearn.com/ko
-                        </a>
-                      </span>{" "}
+                    </li>
+                    <li>
+                      {data.others[2].projList.map((list, index) => {
+                        return (
+                          <li className="desc-wrapp others">
+                            <span className="box-with-link">
+                              <p>{list.projName}</p>
+                              <span className="box-with-link">
+                                <a href="" target="_blank">
+                                  {list.url}
+                                </a>
+                              </span>
+                            </span>
+                          </li>
+                        );
+                      })}
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
+            {/* // .projbox */}
           </div>
-
-          {/* <div className="working">
-            <div className="card">
-              <img src={require("../img/lge1.png")} className="pic" alt="" />
-              <h2 class="tit">LG global platform</h2>
-              <div className="label-wrap">
-                <span className="label vailla">js</span>
-                <span className="label pug">pug</span>
-              </div>
-              <p>2024.06. ~ 2024.09.</p>
-              <p>헝가리, 오스트리아 사이트의 구축 운영 담당</p>
-            </div>
-
-            <div className="card">
-              <img src={require("../img/lge1.png")} className="pic" alt="" />
-              <h2 class="tit">미래에셋생명 헬스 앱 구축</h2>
-              <div className="label-wrap">
-                <span className="label vailla">js</span>
-                <span className="label react">css</span>
-                <span className="label pug">html</span>
-              </div>
-              <p>2024.09. ~ 2024.11.</p>
-              <p>미래에셋생명 헬스 앱 구축의 페이지 구축과 테스트 담당</p>
-            </div>
-
-            <div className="card">
-              <img src={require("../img/lge1.png")} className="pic" alt="" />
-              <h2 class="tit">현대기아자동차 N 브랜드 사이트 리뉴얼 구축</h2>
-              <div className="label-wrap">
-                <span className="label vailla">js</span>
-                <span className="label react">css</span>
-                <span className="label pug">html</span>
-              </div>
-              <p>2024.05. ~ 2024.08</p>
-              <p>
-                현대기아자동차의 N브랜드 사이트 리뉴얼 구축 담당, 테스트도 담당
-              </p>
-            </div>
-
-            <div className="card">
-              <img src={require("../img/lge1.png")} className="pic" alt="" />
-              <div className="label-wrap">
-                <span className="label vailla">react</span>
-                <span className="label vailla">react native</span>
-                <span className="label react">scss</span>
-              </div>
-              <h2 class="tit">creo 영어학원</h2>
-              <p>최선어학원 영어 교육용 웹, 앱</p>
-              <p>something desc..</p>
-            </div>
-
-            <div className="card">
-              <img src={require("../img/lge1.png")} className="pic" alt="" />
-              <div className="label-wrap">
-                <span className="label vailla">react</span>
-                <span className="label vailla">react native</span>
-                <span className="label react">scss</span>
-              </div>
-              <h2 class="tit"></h2>
-              <p>Meta exam</p>
-              <p>something desc..</p>
-            </div>
-
-            <div className="card">
-              <img src={require("../img/lge1.png")} className="pic" alt="" />
-              <div className="label-wrap">
-                <span className="label vailla">js(jQuery)</span>
-                <span className="label vailla">css</span>
-                <span className="label react">html</span>
-              </div>
-              <h2 class="tit">서울여대 아동학과</h2>
-              <p>date here</p>
-              <p>something desc..</p>
-            </div>
-
-            <div className="card">
-              <img src={require("../img/lge1.png")} className="pic" alt="" />
-              <div className="label-wrap">
-                <span className="label vailla">js(jQuery)</span>
-                <span className="label vailla">css</span>
-                <span className="label react">html</span>
-              </div>
-              <h2 class="tit">SSmedipia</h2>
-              <p>date here</p>
-              <p>something desc..</p>
-            </div>
-          </div> */}
         </div>
+        {/****************** works end *******************/}
       </article>
       <nav onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <span className="infoo" onClick={() => scrollToSection("skill")}>
