@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./App.css";
+import "./App.scss";
 import { Bottom } from "./assets/Bottom";
 import { Cursor } from "./assets/Cursor";
 
