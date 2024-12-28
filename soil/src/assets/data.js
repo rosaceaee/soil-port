@@ -2,7 +2,7 @@ export const data = {
   career: [
     {
       id: 1,
-      companyName: "Test 1",
+      companyName: "더피프티원",
       date: "2024.5. ~ 현재",
       totalDate: "(풀타임)",
       projList: [
@@ -10,7 +10,7 @@ export const data = {
           listIdx: 1,
           projName: "미래에셋생명",
           imgUrl: "/img/lge1.png",
-          url: "url",
+          url: "https://play.google.com/store/apps/details?id=com.mMiraeAssetLife&hl=ko",
           desc: [
             "작업 생산성을 높이기 위하여 컴포넌트 CSS, JS 레거시 코드 수정 후 컴포넌트 활용",
             "단위, 통합테스트 대응하여 ui 화면 개선",
@@ -22,7 +22,7 @@ export const data = {
           listIdx: 2,
           projName: "LG global platform",
           imgUrl: "/img/lge1.png",
-          url: "url",
+          url: "https://www.lg.com/hu/",
           desc: [
             "헝가리, 오스트리아 사이트 UIUX 구축 및 운영",
             "결제 모듈 ui영역 개선 담당",
@@ -35,7 +35,7 @@ export const data = {
           listIdx: 3,
           projName: "현대자동차 N브랜드 사이트 리뉴얼",
           imgUrl: "/img/lge1.png",
-          url: "url",
+          url: "https://www.hyundai-n.com/",
           desc: [
             "ui디자인 일관성과 생산성을 높이기 위한 컴포넌트 시스템 개선 및 참여",
             "단위, 통합테스트 대응하여 ui 화면 개선",
@@ -53,8 +53,9 @@ export const data = {
       projList: [
         {
           listIdx: 1,
+          imgUrl: "/img/lge1.png",
+
           projName: "최선어학원 creo 유지보수",
-          url: "url",
           desc: [
             "유지보수, 테스트",
             " 기존 ui 스타일 소스 레거시 정리 및 코드 경제?사용?성 개선",
@@ -64,6 +65,8 @@ export const data = {
         },
         {
           listIdx: 2,
+          imgUrl: "/img/lge1.png",
+
           projName: "metaexam 영어시험 구축",
           url: "url",
           desc: [
@@ -74,6 +77,8 @@ export const data = {
         },
         {
           listIdx: 3,
+          imgUrl: "/img/lge1.png",
+
           projName: " phonics monster 교육 툴 유지보수",
           url: "url",
           desc: [
@@ -85,8 +90,9 @@ export const data = {
         },
         {
           listIdx: 4,
+          imgUrl: "/img/lge1.png",
+
           projName: "루시드 영어",
-          url: "url",
           desc: [
             "학원 교육 부교재용 앱 구축",
             "컴포넌트 UI 구현, 디바이스 별 반응형 구현",

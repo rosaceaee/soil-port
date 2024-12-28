@@ -7,22 +7,22 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
   const [up, setUp] = useState(0);
   const [workPosition, setWorkPosition] = useState(-180 * 16);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const viewportH = window.innerHeight;
-      const documentH = document.body.scrollHeight;
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollTop = window.scrollY;
+  //     const viewportH = window.innerHeight;
+  //     const documentH = document.body.scrollHeight;
 
-      const chkBtm = Math.min(0, -130 * 16 + scrollTop);
-      setWorkPosition(chkBtm);
-    };
+  //     const chkBtm = Math.min(0, -100 * 16 + scrollTop);
+  //     setWorkPosition(chkBtm);
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -92,21 +92,20 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                     onMouseEnter={(e) => handleMouseEnter("stack1", e)}
                     onMouseLeave={(e) => handleMouseLeave("stack1", e)}
                   >
-                    ..
+                    안녕하세요
                   </h1>
                 </div>
                 <div className="col"></div>
               </div>
               <div className="row">
                 <div className="col"></div>
-                <div className="col desc">
+                <div className="col desc center">
                   <div className="cont-left">
                     <span className="up">
-                      {up === 1 ? "111" : null}
-                      {up === 2 ? "222" : null}
-                      {up === 3 ? "333" : null}
+                      {up === 1 ? "자주적인" : null}
+                      {up === 2 ? "호기심 많은" : null}
+                      {up === 3 ? "" : null} <span>MONO</span>
                     </span>
-                    <span>MONO</span>
                   </div>
                   <div className="cont-right">
                     <div className="col desc">
@@ -190,7 +189,6 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                 </li>
               </ul>
             </div>
-            <div className="interest">python, node.js</div>
           </section>
         </div>
         {/****************** information end *******************/}
@@ -198,9 +196,9 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
         {/****************** works start *******************/}
         <div
           className="fulltest"
-          style={{
-            bottom: `${workPosition}px`,
-          }}
+          // style={{
+          //   bottom: `${workPosition}px`,
+          // }}
           id="fulltest"
         >
           {/* <svg
@@ -226,7 +224,15 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
               class="transition-all duration-300 ease-in-out delay-150 path-0"
             ></path>
           </svg> */}
-          <h1 style={{ textAlign: "center" }}>작업물</h1>
+          {/* <h1 style={{ textAlign: "center" }}>작업물</h1> */}
+
+          <div class="row tit-box">
+            <div class="col"></div>
+            <div class="col desc">
+              <h1 class="">Works</h1>
+            </div>
+            <div class="col"></div>
+          </div>
 
           <div className="introduce-wrap">
             {/* box1 - works */}
@@ -246,10 +252,10 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
 
                         <ul>
                           <li className="desc-wrapp">
-                            <div className="proj-info">
-                              {list.projList.map((project) => {
-                                return (
-                                  <>
+                            {list.projList.map((project) => {
+                              return (
+                                <>
+                                  <div className="proj-info">
                                     <img
                                       src={project.imgUrl}
                                       className="pic"
@@ -259,7 +265,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                                       {project.projName}
                                     </h3>
                                     <a href={`${project.url}`} target="_blank">
-                                      {project.url}
+                                      링크
                                     </a>
 
                                     <div className="proj-info__desc">
@@ -280,11 +286,10 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                                         })}
                                       </div>
                                     </div>
-                                  </>
-                                );
-                              })}
-                              {/*  */}
-                            </div>
+                                  </div>
+                                </>
+                              );
+                            })}
                           </li>
                         </ul>
                       </div>

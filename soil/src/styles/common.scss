@@ -11,6 +11,7 @@ html {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  background-color: #f9f3eb;
 }
 
 .App {
@@ -48,23 +49,38 @@ html {
   height: 700px;
   transition: bottom 0.1s linear;
   left: auto;
-  .working {
-    gap: 0 1rem;
-    margin: 0px 5rem;
-
-    width: 100%;
-    max-width: 1333px;
-    .card {
-      width: 100%;
-      max-width: 1362px;
-      width: 100%;
-      margin: 0 auto;
-      display: block;
-      img {
-        max-width: 1000px;
+  .box.tit {
+    .row {
+      .col {
+        border: 2px solid;
       }
     }
   }
+
+  .row.tit-box {
+    display: grid;
+    grid-template-columns: 10% 2fr 10%;
+    .col {
+      &.desc {
+        position: relative;
+        height: 250px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+      }
+      h1 {
+        position: absolute;
+        right: auto;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        bottom: -1rem;
+        font-size: 4rem;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+  }
+
   .desc-wrapp.others {
     align-items: start !important;
     padding: 1rem 0;
@@ -81,7 +97,6 @@ article {
 
       .info {
         left: 0;
-
         width: 100%;
         background-color: $linen;
 
@@ -101,22 +116,36 @@ article {
                   height: 250px;
                   max-width: 1600px;
                 }
+                h1 {
+                  font-size: 3rem;
+                  padding: 0;
+                  text-align: right;
+                  position: absolute;
+                  bottom: 0;
+                  right: 0;
+                  margin-block-end: 0;
+                }
               }
             }
             &:nth-child(2) {
               .col {
                 &.desc {
                   max-width: 1600px;
-                  padding: 2rem 2rem;
+                  padding: 1rem;
                   display: flex;
                   justify-content: space-between;
                   align-items: flex-end;
 
                   border: 1px solid $indigoBlue;
+
+                  &.center {
+                    background-color: #1b699d;
+                  }
                   .cont-left {
                     width: 60%;
                     height: 100%;
                     background-color: aliceblue;
+                    position: relative;
                   }
                   .cont-right {
                     display: flex;
@@ -143,10 +172,15 @@ article {
                   h1 {
                     font-size: 5rem;
                     padding: 0 0 0 0;
-                    bottom: 0;
-                    position: absolute;
-                    margin: 0 0rem 0rem 1rem;
+                    margin: 0 0rem 0 1rem;
                     letter-spacing: 0.3rem;
+                    margin-block-end: 0;
+                    margin-block-start: 0;
+                    line-height: 1;
+                    position: absolute;
+                    bottom: -11px;
+                    left: -32px;
+                    color: #1b699d;
                   }
                 }
               }
@@ -187,7 +221,6 @@ article {
 
       .skill {
         padding: 0;
-        background-color: #f1e8dc;
         border-left: 2px solid #cbc9bc;
         border-right: 2px solid #cbc9bc;
 
@@ -195,14 +228,16 @@ article {
           margin-inline-start: 0;
           padding-inline-start: 0;
           padding: 2rem 0rem 0;
-          display: flex;
-          justify-content: flex-start;
-          align-items: flex-start;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
           text-align: left;
           flex-direction: column;
-          border: 1px solid;
+          border-top: 3px solid #1b699d;
+          border-left: 1px solid #1b699d;
+          border-right: 1px solid #1b699d;
+          background: #fff;
           margin: 0 auto;
-          width: calc(100% - 338px);
+          width: calc(100% - 330px);
           li {
             list-style: none;
             margin-bottom: 2rem;
@@ -421,9 +456,9 @@ nav {
 }
 
 .introduce-wrap {
-  margin: 0 auto;
+  margin: -1rem auto 0;
   position: relative;
-  width: calc(100% - 7rem);
+  width: calc(100% - 9rem);
   .box {
     &:last-child {
       .desc-wrapp {
@@ -448,8 +483,9 @@ nav {
       justify-content: stretch;
       align-items: start;
       margin: 1.3rem 0;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.9);
+      padding: 3rem 1rem;
+
+      background: rgba(27, 69, 107, 0.8);
       color: #fff;
       &:last-child {
         margin: 1rem 0 0;
@@ -458,12 +494,11 @@ nav {
       .company-info {
         margin: 0 1rem;
         display: flex;
-        align-items: flex-end;
+        align-items: flex-start;
         justify-content: center;
         flex-direction: column;
-        text-align: right;
         gap: 10px;
-        width: 100%;
+
         h2,
         p {
           margin: 0;
@@ -488,30 +523,34 @@ nav {
         }
 
         .desc-wrapp {
-          margin: 1rem 0 0.5rem;
+          margin: 0 0 0.5rem;
           list-style: none;
           border-top: 1px solid gray;
           border-bottom: 1px solid gray;
-          display: flex;
-          flex-direction: column;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
           justify-content: center;
-          align-items: center;
-
+          align-items: stretch;
+          gap: 20px;
+          border-radius: 20px;
           .proj-info {
             display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid;
-            max-width: 400px;
+            flex-direction: column;
             padding: 0 2rem;
-            width: 100%;
+            background: #fff;
+            color: black;
+            border-radius: 20px;
             h3 {
               margin: 0;
               &.txt-proj-name {
-                font-size: calc(17 / 16 * 1rem);
+                font-size: calc(24 / 16 * 1rem);
                 list-style: none;
                 padding-left: 30px;
                 position: relative;
+                margin-top: 1.5rem;
                 &::before {
                   content: " * ";
                   position: absolute;
@@ -523,10 +562,12 @@ nav {
             }
             p {
               margin: 0;
+              margin: 1rem 0;
             }
 
             &__desc {
               border: 3px solid red I !important;
+              margin: 1rem 0;
             }
           }
 
@@ -619,7 +660,9 @@ nav {
                   &.desc {
                     height: 130px;
                     h1 {
-                      font-size: 2.2rem;
+                      font-size: 3.2rem;
+                      bottom: -6px;
+                      left: -17px;
                     }
                   }
 
@@ -633,11 +676,12 @@ nav {
         }
 
         .skill {
-          padding: 0 2rem;
+          padding: 0;
           border: none;
           width: 100%;
           ul {
-            width: calc(100% - 0.5rem);
+            display: block;
+            width: calc(100% - 4.5rem);
             padding: 1rem 0;
             li {
               padding: 0.5rem 1rem 0;
@@ -689,9 +733,8 @@ nav {
 
             .desc-wrapp {
               margin: 1.5rem 0;
-              border-top: 1px solid red;
-              border-bottom: 1px solid red;
               padding: 1rem 0;
+              display: block;
               &:nth-child(1) {
                 margin: 0 0 1.5rem;
               }
@@ -754,4 +797,13 @@ nav {
 
 .cursor-toUp {
   margin-top: 1rem;
+}
+
+.up {
+  order: 1px solid red;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 3rem;
+  text-align: right;
 }
