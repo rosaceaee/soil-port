@@ -1,28 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
 import { data, career, others } from "./data";
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
   const [isHovered, setIsHovered] = useState({});
   const [up, setUp] = useState(0);
   const [workPosition, setWorkPosition] = useState(-180 * 16);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollTop = window.scrollY;
-  //     const viewportH = window.innerHeight;
-  //     const documentH = document.body.scrollHeight;
-
-  //     const chkBtm = Math.min(0, -100 * 16 + scrollTop);
-  //     setWorkPosition(chkBtm);
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -77,9 +65,34 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
     html: "html",
   };
 
+  const boxRef1 = useRef(null);
+  useEffect(() => {
+    const boxItems = gsap.context((self) => {
+      const boxes = self.selector(".ani");
+      boxes.forEach((box) => {
+        gsap.from(box, {
+          y: 300,
+          opacity: 0,
+          stagger: 1,
+          scrollTrigger: {
+            trigger: box,
+            start: "top bottom", // 셀렉터로 등록한 요소의 상단이 뷰포트의 바닥에 있을 때 시작
+            end: "top 5%", // 상단 20프로에서 완료
+            scrub: true, // 하위요소를 하나씩 순차적으로 하고 싶어서 등록
+          },
+        });
+        gsap.to(box, {
+          y: 0,
+          opacity: 0,
+        });
+      });
+    }, boxRef1); // ref 값은 scope로만 등록한다
+    return () => boxItems.revert(); // clean up
+  }, []); // <- Scope!
+
   return (
     <>
-      <article className="container">
+      <article className="container" ref={boxRef1}>
         <div className="wrap">
           <section className="info">
             {/* <img src={require("../img/sprout-sm.png")} alt="" /> */}
@@ -153,42 +166,47 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                 </div>
                 <div className="col"></div>
               </div>
+              <div className="row">
+                <div className="col"></div>
+                <div className="col">
+                  <section className="skill" id="skill">
+                    <div className="curr">
+                      <ul>
+                        <li>
+                          <p className="tit">frentend dev? tools</p>
+                          <p>
+                            Javascript(ES6), React, ReactNative, Html5, Pug,
+                            Postman, GitHub/GitLab
+                          </p>
+                        </li>
+                        <li>
+                          <p className="tit">UI libraries</p>
+                          <p>
+                            CSS3/SCSS/SASS, Tailwind CSS, Styled Components, Ant
+                            design, Bootstrap.
+                          </p>
+                        </li>
+                        <li>
+                          <p className="tit">design tools</p>
+                          <p>Figma, Adobe products </p>
+                        </li>
+                        <li>
+                          <p className="tit">Interested in...</p>
+                          <p>Python, </p>
+                        </li>
+                        <li>
+                          <p className="tit">Also available...</p>
+                          <p>English, 日本語 </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+                <div className="col"></div>
+              </div>
             </div>
 
             {/* <img src={require("../img/info.jpeg")} className="pic" alt="" /> */}
-          </section>
-
-          <section className="skill" id="skill">
-            <div className="curr">
-              <ul>
-                <li>
-                  <p className="tit">frentend dev? tools</p>
-                  <p>
-                    Javascript(ES6), React, ReactNative, Html5, Pug, Postman,
-                    GitHub/GitLab
-                  </p>
-                </li>
-                <li>
-                  <p className="tit">UI libraries</p>
-                  <p>
-                    CSS3/SCSS/SASS, Tailwind CSS, Styled Components, Ant design,
-                    Bootstrap.
-                  </p>
-                </li>
-                <li>
-                  <p className="tit">design tools</p>
-                  <p>Figma, Adobe products </p>
-                </li>
-                <li>
-                  <p className="tit">Interested in...</p>
-                  <p>Python, </p>
-                </li>
-                <li>
-                  <p className="tit">Also available...</p>
-                  <p>English, 日本語 </p>
-                </li>
-              </ul>
-            </div>
           </section>
         </div>
         {/****************** information end *******************/}
@@ -201,209 +219,209 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
           // }}
           id="fulltest"
         >
-          {/* <svg
-            width="100%"
-            height="100%"
-            id="svg"
-            viewBox="0 0 1440 390"
-            xmlns="http://www.w3.org/2000/svg"
-            class="transition duration-300 ease-in-out delay-150"
-          >
-            <defs>
-              <linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%">
-                <stop offset="5%" stop-color="#F78DA7"></stop>
-                <stop offset="95%" stop-color="#8ED1FC"></stop>
-              </linearGradient>
-            </defs>
-            <path
-              d="M 0,400 L 0,225 C 98.75,242.44642857142856 197.5,259.8928571428571 337,253 C 476.5,246.10714285714286 656.7500000000001,214.875 784,171 C 911.2499999999999,127.125 985.5,70.60714285714286 1086,40 C 1186.5,9.39285714285714 1313.25,4.69642857142857 1440,0 L 1440,400 L 0,400 Z"
-              stroke="none"
-              stroke-width="0"
-              fill="url(#gradient)"
-              fill-opacity="1"
-              class="transition-all duration-300 ease-in-out delay-150 path-0"
-            ></path>
-          </svg> */}
-          {/* <h1 style={{ textAlign: "center" }}>작업물</h1> */}
-
-          <div class="row tit-box">
-            <div class="col"></div>
-            <div class="col desc">
-              <h1 class="">Works</h1>
-            </div>
-            <div class="col"></div>
+          <div className="row tit-box">
+            <dlv className="col"></dlv>
+            <div className="col desc">
+              <h1 className="">Works</h1>
+            </div>{" "}
+            <dlv className="col"></dlv>
           </div>
 
           <div className="introduce-wrap">
             {/* box1 - works */}
             {/* temp test */}
-            {data.career.map((list, index) => {
-              return (
-                <>
-                  <div className="box">
-                    <div className="proj-box">
-                      <div className="contents">
-                        <div className="company-info">
-                          <h2>{list.companyName}</h2>
-                          <p>
-                            {list.date} <br /> {list.totalDate}
-                          </p>
-                        </div>
+            <div className="row">
+              <div className="col"></div>
+              <div className="col">
+                {" "}
+                {data.career.map((list, index) => {
+                  return (
+                    <>
+                      <div className="box">
+                        <div className="proj-box">
+                          <div className="contents">
+                            <div className="company-info">
+                              <h2>{list.companyName}</h2>
+                              <p>
+                                {list.date} <br /> {list.totalDate}
+                              </p>
+                            </div>
 
-                        <ul>
-                          <li className="desc-wrapp">
-                            {list.projList.map((project) => {
-                              return (
-                                <>
-                                  <div className="proj-info">
-                                    <img
-                                      src={project.imgUrl}
-                                      className="pic"
-                                      alt=""
-                                    />
-                                    <h3 className="txt-proj-name">
-                                      {project.projName}
-                                    </h3>
-                                    <a href={`${project.url}`} target="_blank">
-                                      링크
-                                    </a>
+                            <ul ref={boxRef1}>
+                              <li className="desc-wrapp ani">
+                                {list.projList.map((project) => {
+                                  return (
+                                    <>
+                                      <div className="proj-info">
+                                        <img
+                                          src={project.imgUrl}
+                                          className="pic"
+                                          alt=""
+                                        />
+                                        <h3 className="txt-proj-name">
+                                          {project.projName}
+                                        </h3>
+                                        <a
+                                          href={`${project.url}`}
+                                          target="_blank"
+                                        >
+                                          링크
+                                        </a>
 
-                                    <div className="proj-info__desc">
-                                      {project.desc.map((descItm) => {
-                                        return <p>{descItm}</p>;
-                                      })}
-                                      <div className="label-wrap">
-                                        {project.skill.map((skillItm) => {
-                                          const chipSkill =
-                                            sList[skillItm] || "";
-                                          return (
-                                            <span
-                                              className={`label ${skillItm}`}
-                                            >
-                                              {chipSkill}
-                                            </span>
-                                          );
-                                        })}
+                                        <div className="proj-info__desc">
+                                          {project.desc.map((descItm) => {
+                                            return <p>{descItm}</p>;
+                                          })}
+                                          <div className="label-wrap">
+                                            {project.skill.map((skillItm) => {
+                                              const chipSkill =
+                                                sList[skillItm] || "";
+                                              return (
+                                                <span
+                                                  className={`label ${skillItm}`}
+                                                >
+                                                  {chipSkill}
+                                                </span>
+                                              );
+                                            })}
+                                          </div>
+                                        </div>
                                       </div>
-                                    </div>
-                                  </div>
-                                </>
-                              );
-                            })}
-                          </li>
-                        </ul>
+                                    </>
+                                  );
+                                })}
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </>
-              );
-            })}
-            {/* // */}
-
-            {/* box2 - others: private1 */}
-            <div className="box">
-              {/* <p>
-            2024
-          </p> */}
-              {/* <div className="date">Others</div> */}
-              <div className="proj-box">
-                <div className="contents">
-                  <div>
-                    <h2>개인 프로젝트</h2>
-                  </div>
-                  <ul>
-                    <li className="desc-wrapp">
-                      <h3 className="txt-proj-name">ㅇㅇ</h3>
-                      <p>
-                        가벼운 원페이지로 작업. 숫자 입력하면 단번에 알 수
-                        있도록.
-                      </p>
-                      <p>링크</p>
-                    </li>
-                  </ul>
-                </div>
+                    </>
+                  );
+                })}
               </div>
+              <div className="col"></div>
             </div>
 
-            {/* box3 - others: private2 ; contribution */}
-            <div className="box">
-              {/* <div className="date">Others</div> */}
-              <div className="proj-box">
-                <div className="contents">
-                  <div>
-                    <h2>Others </h2>
-                  </div>
-                  <ul>
-                    <li>
-                      <h3 className="txt-proj-name">
-                        MDN 웹 문서 영한번역 기여
-                      </h3>
-                    </li>
-                    {data.others[1].projList.map((list, index) => {
-                      return (
-                        <li className="desc-wrapp others">
-                          <h3>{list.projName}</h3>
-                          <span className="box-with-link">
-                            <p>{list.projName}</p>
-                            <a href="" target="_blank">
-                              {list.url}
-                            </a>
-                          </span>
+            {/* // */}
+            <div className="row tit-box">
+              <dlv className="col"></dlv>
+              <div className="col desc">
+                <h1 className="">Others</h1>
+              </div>{" "}
+              <dlv className="col"></dlv>
+            </div>
+            <div className="row">
+              <div className="col"></div>
+              <div className="col">
+                {" "}
+                <div className="box">
+                  {/* <div className="date">Others</div> */}
+                  <div className="proj-box">
+                    <div className="contents">
+                      <div>
+                        <h2>개인 프로젝트</h2>
+                      </div>
+                      <ul>
+                        <li className="desc-wrapp">
+                          <h3 className="txt-proj-name">ㅇㅇ</h3>
+                          <p>
+                            가벼운 원페이지로 작업. 숫자 입력하면 단번에 알 수
+                            있도록.
+                          </p>
+                          <p>링크</p>
                         </li>
-                      );
-                    })}
-                  </ul>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col"></div>
+            </div>
 
-                  <ul>
-                    <li className="desc-wrapp others">
-                      <h3 className="txt-proj-name">
-                        regexlearn 한국어 번역 기여
-                      </h3>
-                    </li>
-                    <li>
-                      {data.others[2].projList.map((list, index) => {
-                        return (
-                          <li className="desc-wrapp others">
-                            <span className="box-with-link">
-                              <p>{list.projName}</p>
+            {/*  */}
+            <div className="row others">
+              <div className="col"></div>
+              <div className="col">
+                {" "}
+                {/* box3 - others: private2 ; contribution */}
+                <div className="box">
+                  {/* <div className="date">Others</div> */}
+                  <div className="proj-box">
+                    <div className="contents">
+                      <div>
+                        <h2>Others </h2>
+                      </div>
+                      <ul>
+                        <li>
+                          <h3 className="txt-proj-name">
+                            MDN 웹 문서 영한번역 기여
+                          </h3>
+                        </li>
+                        {data.others[1].projList.map((list, index) => {
+                          return (
+                            <li className="desc-wrapp others">
+                              <h3>{list.projName}</h3>
                               <span className="box-with-link">
                                 <a href="" target="_blank">
                                   {list.url}
                                 </a>
                               </span>
-                            </span>
-                          </li>
-                        );
-                      })}
-                    </li>
-                  </ul>
+                            </li>
+                          );
+                        })}
+                        <li>
+                          <h3 className="txt-proj-name">
+                            regexlearn 한국어 번역 기여
+                          </h3>
+                        </li>{" "}
+                        {data.others[2].projList.map((list, index) => {
+                          return (
+                            <li className="desc-wrapp others">
+                              <span className="box-with-link">
+                                <a href="" target="_blank">
+                                  {list.url}
+                                </a>{" "}
+                                <p>{list.projName}</p>
+                              </span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
+              <div className="col"></div>
             </div>
+
+            {/* box2 - others: private1 */}
+
             {/* // .projbox */}
           </div>
         </div>
         {/****************** works end *******************/}
       </article>
       <nav onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <span className="infoo" onClick={() => scrollToSection("skill")}>
-          소개
-        </span>
+        <div className="nav-wrap">
+          <span className="infoo" onClick={() => scrollToSection("skill")}>
+            소개
+          </span>
 
-        <span className="infoo" onClick={() => scrollToSection("fulltest")}>
-          스킬
-        </span>
-        <span className="infoo">작업물</span>
-        <span>
-          <a href="" target="_blank">
-            gh
-          </a>
-        </span>
-        <span>
-          <a href="" target="_blank">
-            mail
-          </a>
-        </span>
+          <span className="infoo" onClick={() => scrollToSection("fulltest")}>
+            스킬
+          </span>
+          <span className="infoo">작업물</span>
+          <span>
+            <a href="" target="_blank">
+              gh
+            </a>
+          </span>
+          <span>
+            <a href="" target="_blank">
+              mail
+            </a>
+          </span>
+        </div>
       </nav>
     </>
   );

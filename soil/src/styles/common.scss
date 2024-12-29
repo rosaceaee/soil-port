@@ -27,11 +27,6 @@ html {
   font-style: normal;
 }
 
-.App {
-  &:before {
-  }
-}
-
 .App-circle {
   width: 100%;
 
@@ -49,6 +44,50 @@ html {
   height: 700px;
   transition: bottom 0.1s linear;
   left: auto;
+  .row {
+    display: grid;
+    grid-template-columns: 10% 1fr 14%;
+
+    &.others {
+      .col {
+        .proj-box {
+          .contents {
+            ul {
+              li {
+                .txt-proj-name {
+                  font-size: calc(24 / 16 * 1rem);
+                }
+              }
+              .desc-wrapp {
+                display: flex;
+                justify-content: start;
+                align-items: center !important;
+
+                &.others {
+                  ul {
+                    li {
+                      padding: 0.3rem 0;
+                    }
+                  }
+                }
+                h3 {
+                  width: 100%;
+                  max-width: 170px;
+                  margin-left: 1rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .col {
+      &:nth-child(2) {
+        border-left: 2px solid #1b699d;
+        border-right: 2px solid #1b699d;
+      }
+    }
+  }
   .box.tit {
     .row {
       .col {
@@ -58,13 +97,11 @@ html {
   }
 
   .row.tit-box {
-    display: grid;
-    grid-template-columns: 10% 2fr 10%;
     .col {
       &.desc {
         position: relative;
         height: 250px;
-        width: 100%;
+
         display: flex;
         justify-content: flex-end;
       }
@@ -83,7 +120,6 @@ html {
 
   .desc-wrapp.others {
     align-items: start !important;
-    padding: 1rem 0;
   }
 }
 
@@ -103,7 +139,7 @@ article {
         .box {
           .row {
             display: grid;
-            grid-template-columns: 10% 2fr 10%;
+            grid-template-columns: 10% 1fr 14%;
 
             &:nth-child(1) {
               .col {
@@ -114,7 +150,6 @@ article {
                   position: relative;
 
                   height: 250px;
-                  max-width: 1600px;
                 }
                 h1 {
                   font-size: 3rem;
@@ -130,7 +165,6 @@ article {
             &:nth-child(2) {
               .col {
                 &.desc {
-                  max-width: 1600px;
                   padding: 1rem;
                   display: flex;
                   justify-content: space-between;
@@ -165,7 +199,6 @@ article {
             &:nth-child(3) {
               .col {
                 &.desc {
-                  max-width: 1600px;
                   position: relative;
 
                   height: 250px;
@@ -237,8 +270,9 @@ article {
           border-right: 1px solid #1b699d;
           background: #fff;
           margin: 0 auto;
-          width: calc(100% - 330px);
+
           li {
+            border: 1px solid;
             list-style: none;
             margin-bottom: 2rem;
             padding: 0.5rem 2rem 0;
@@ -278,24 +312,30 @@ article {
 }
 
 .cursor-hover {
-  color: red !important;
   transition: all 0.3s ease-in-out;
+  filter: blur(3px);
 }
 
 nav {
-  background: #dba968;
-  width: calc(90% - 10rem);
-  margin: 0 auto;
-  padding: 1rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   position: fixed;
   bottom: 0;
-  left: auto;
-  right: auto;
-  display: flex;
+  left: 0;
   justify-self: center;
   justify-content: center;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+
+  .nav-wrap {
+    background: #dba968;
+
+    margin: 0 auto;
+    width: calc(60% - 1rem);
+    padding: 2rem 2rem;
+    display: flex;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
 
   span {
     padding: 10px;
@@ -458,11 +498,10 @@ nav {
 .introduce-wrap {
   margin: -1rem auto 0;
   position: relative;
-  width: calc(100% - 9rem);
+  width: 100%;
   .box {
     &:last-child {
       .desc-wrapp {
-        border: 2px solid red !important;
       }
 
       .proj-box {
@@ -476,7 +515,7 @@ nav {
   }
   .proj-box {
     margin: 0 auto;
-    width: calc(90% - 2rem);
+    width: 100%;
     .contents {
       display: grid;
       grid-template-columns: 20% 80%;
@@ -512,7 +551,7 @@ nav {
         margin-inline-start: 0px;
         margin-inline-end: 0px;
         padding-inline-start: 0;
-        border: 1px solid;
+
         width: 100%;
         margin: 0 auto;
         text-align: left;
@@ -525,8 +564,7 @@ nav {
         .desc-wrapp {
           margin: 0 0 0.5rem;
           list-style: none;
-          border-top: 1px solid gray;
-          border-bottom: 1px solid gray;
+
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           justify-content: center;
@@ -566,7 +604,6 @@ nav {
             }
 
             &__desc {
-              border: 3px solid red I !important;
               margin: 1rem 0;
             }
           }
@@ -608,7 +645,6 @@ nav {
                     position: relative;
                     border: 1px solid #cbc9bc;
                     height: 100px;
-                    max-width: 1600px;
                     .align-r {
                       font-size: 2.2rem;
                     }
@@ -681,7 +717,7 @@ nav {
           width: 100%;
           ul {
             display: block;
-            width: calc(100% - 4.5rem);
+            width: 100%;
             padding: 1rem 0;
             li {
               padding: 0.5rem 1rem 0;
@@ -695,6 +731,10 @@ nav {
   .fulltest {
     margin: 0 auto;
     width: 100%;
+
+    .row {
+      display: block;
+    }
 
     .introduce-wrap {
       width: 100%;
@@ -745,6 +785,7 @@ nav {
                 justify-content: flex-end;
                 margin-bottom: 1.3rem;
                 flex-direction: column;
+                padding: 0;
 
                 h3 {
                   &.txt-proj-name {
@@ -782,7 +823,7 @@ nav {
   }
 
   nav {
-    width: 100%;
+    width: calc(64% - 6rem);
     span {
       &:nth-child(4) {
         margin-left: 0;
@@ -800,10 +841,13 @@ nav {
 }
 
 .up {
-  order: 1px solid red;
   position: absolute;
   bottom: 0;
   width: 100%;
   font-size: 3rem;
   text-align: right;
+}
+
+.stack1 {
+  filter: blur(3px);
 }

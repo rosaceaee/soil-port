@@ -194,7 +194,7 @@ export const data = {
         {
           listIdx: 1,
           projName:
-            "부자연스러운 한국어 문장을 교정하여 한국어 학습자의 가독성을 높임.",
+            "기존 번역문장의 자연스럽지 않은 한국어 문장을 교정하여 한국어 학습자의 가독성을 높임.",
           url: "https://regexlearn.com/ko",
         },
       ],
