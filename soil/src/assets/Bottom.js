@@ -213,11 +213,11 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
 
         {/****************** works start *******************/}
         <div
-          className="fulltest"
+          className="work-container"
           // style={{
           //   bottom: `${workPosition}px`,
           // }}
-          id="fulltest"
+          id="work-container"
         >
           <div className="row tit-box">
             <dlv className="col"></dlv>
@@ -233,7 +233,6 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
             <div className="row">
               <div className="col"></div>
               <div className="col">
-                {" "}
                 {data.career.map((list, index) => {
                   return (
                     <>
@@ -292,8 +291,11 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                                 })}
                               </li>
                             </ul>
+                            {/* //.contents */}
                           </div>
+                          {/* //.proj-box */}
                         </div>
+                        {/* //.box */}
                       </div>
                     </>
                   );
@@ -307,13 +309,12 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
               <dlv className="col"></dlv>
               <div className="col desc">
                 <h1 className="">Others</h1>
-              </div>{" "}
+              </div>
               <dlv className="col"></dlv>
             </div>
             <div className="row">
               <div className="col"></div>
               <div className="col">
-                {" "}
                 <div className="box">
                   {/* <div className="date">Others</div> */}
                   <div className="proj-box">
@@ -342,7 +343,6 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
             <div className="row others">
               <div className="col"></div>
               <div className="col">
-                {" "}
                 {/* box3 - others: private2 ; contribution */}
                 <div className="box">
                   {/* <div className="date">Others</div> */}
@@ -359,7 +359,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                         </li>
                         {data.others[1].projList.map((list, index) => {
                           return (
-                            <li className="desc-wrapp others">
+                            <li className="desc-wrapp otherWork">
                               <h3>{list.projName}</h3>
                               <span className="box-with-link">
                                 <a href="" target="_blank">
@@ -373,14 +373,14 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                           <h3 className="txt-proj-name">
                             regexlearn 한국어 번역 기여
                           </h3>
-                        </li>{" "}
+                        </li>
                         {data.others[2].projList.map((list, index) => {
                           return (
-                            <li className="desc-wrapp others">
+                            <li className="desc-wrapp otherWork">
                               <span className="box-with-link">
                                 <a href="" target="_blank">
                                   {list.url}
-                                </a>{" "}
+                                </a>
                                 <p>{list.projName}</p>
                               </span>
                             </li>
@@ -407,7 +407,10 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
             소개
           </span>
 
-          <span className="infoo" onClick={() => scrollToSection("fulltest")}>
+          <span
+            className="infoo"
+            onClick={() => scrollToSection("work-container")}
+          >
             스킬
           </span>
           <span className="infoo">작업물</span>
