@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { data, career, others } from "./data";
@@ -63,32 +63,78 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
     css: "css",
     pug: "pug",
     html: "html",
+    figma: "figma",
+    adobe: "adobe",
   };
 
   const boxRef1 = useRef(null);
+
   useEffect(() => {
-    const boxItems = gsap.context((self) => {
-      const boxes = self.selector(".ani");
-      boxes.forEach((box) => {
-        gsap.from(box, {
-          y: 300,
-          opacity: 0,
-          stagger: 1,
-          scrollTrigger: {
-            trigger: box,
-            start: "top bottom", // 셀렉터로 등록한 요소의 상단이 뷰포트의 바닥에 있을 때 시작
-            end: "top 5%", // 상단 20프로에서 완료
-            scrub: true, // 하위요소를 하나씩 순차적으로 하고 싶어서 등록
-          },
+    const setAnimation = () => {
+      const boxItems = gsap.context((self) => {
+        const boxes = self.selector(".ani");
+        const isMobile = window.innerWidth < 768;
+
+        boxes.forEach((box) => {
+          gsap.from(box, {
+            y: isMobile ? 150 : 300,
+            opacity: 0,
+            stagger: isMobile ? 0.5 : 1,
+            scrollTrigger: {
+              trigger: box,
+              start: "top bottom",
+              end: isMobile ? "top 20%" : "top 5%",
+              scrub: true,
+            },
+          });
+          gsap.to(box, {
+            y: 0,
+            opacity: 0,
+          });
         });
-        gsap.to(box, {
-          y: 0,
-          opacity: 0,
-        });
-      });
-    }, boxRef1); // ref 값은 scope로만 등록한다
-    return () => boxItems.revert(); // clean up
-  }, []); // <- Scope!
+      }, boxRef1);
+
+      return boxItems;
+    };
+
+    let boxItems = setAnimation();
+
+    const handleResize = () => {
+      boxItems.revert();
+      boxItems = setAnimation();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      boxItems.revert();
+    };
+  }, []);
+
+  // useEffect(() => {
+  //   let mm = gsap.matchMedia();
+  //   const boxItems = gsap.context((self) => {
+  //     const boxes = self.selector(".ani");
+  //     boxes.forEach((box) => {
+  //       gsap.from(box, {
+  //         y: 300,
+  //         opacity: 0,
+  //         stagger: 1,
+  //         scrollTrigger: {
+  //           trigger: box,
+  //           start: "top bottom", // 셀렉터로 등록한 요소의 상단이 뷰포트의 바닥에 있을 때 시작
+  //           end: "top 5%", // 상단 20프로에서 완료
+  //           scrub: true, // 하위요소를 하나씩 순차적으로 하고 싶어서 등록
+  //         },
+  //       });
+  //       gsap.to(box, {
+  //         y: 0,
+  //         opacity: 0,
+  //       });
+  //     });
+  //   }, boxRef1); // ref 값은 scope로만 등록한다
+  //   return () => boxItems.revert(); // clean up
+  // }, []); // <- Scope!
 
   return (
     <>
@@ -96,7 +142,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
         <div className="wrap">
           <section className="info">
             {/* <img src={require("../img/sprout-sm.png")} alt="" /> */}
-            <div class="box">
+            <div className="box">
               <div className="row">
                 <div className="col bg"></div>
                 <div className="col desc">
@@ -229,7 +275,6 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
 
           <div className="introduce-wrap">
             {/* box1 - works */}
-            {/* temp test */}
             <div className="row">
               <div className="col"></div>
               <div className="col">
@@ -268,21 +313,28 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                                         </a>
 
                                         <div className="proj-info__desc">
-                                          {project.desc.map((descItm) => {
-                                            return <p>{descItm}</p>;
-                                          })}
-                                          <div className="label-wrap">
-                                            {project.skill.map((skillItm) => {
-                                              const chipSkill =
-                                                sList[skillItm] || "";
+                                          {project.desc.map(
+                                            (descItm, index) => {
                                               return (
-                                                <span
-                                                  className={`label ${skillItm}`}
-                                                >
-                                                  {chipSkill}
-                                                </span>
+                                                <p key={index}>{descItm}</p>
                                               );
-                                            })}
+                                            }
+                                          )}
+                                          <div className="label-wrap">
+                                            {project.skill.map(
+                                              (skillItm, index) => {
+                                                const chipSkill =
+                                                  sList[skillItm] || "";
+                                                return (
+                                                  <span
+                                                    key={index}
+                                                    className={`label ${skillItm}`}
+                                                  >
+                                                    {chipSkill}
+                                                  </span>
+                                                );
+                                              }
+                                            )}
                                           </div>
                                         </div>
                                       </div>
@@ -303,8 +355,8 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
               </div>
               <div className="col"></div>
             </div>
-
             {/* // */}
+            {/* box2 - others */}
             <div className="row tit-box">
               <dlv className="col"></dlv>
               <div className="col desc">
@@ -316,7 +368,6 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
               <div className="col"></div>
               <div className="col">
                 <div className="box">
-                  {/* <div className="date">Others</div> */}
                   <div className="proj-box">
                     <div className="contents">
                       <div>
@@ -338,8 +389,8 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
               </div>
               <div className="col"></div>
             </div>
-
-            {/*  */}
+            {/* // */}
+            {/* box3 - others */}
             <div className="row others">
               <div className="col"></div>
               <div className="col">
@@ -361,11 +412,13 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                           return (
                             <li className="desc-wrapp otherWork">
                               <h3>{list.projName}</h3>
-                              <span className="box-with-link">
-                                <a href="" target="_blank">
-                                  {list.url}
-                                </a>
-                              </span>
+                              <a
+                                className="box-with-link"
+                                href=""
+                                target="_blank"
+                              >
+                                {list.url}
+                              </a>
                             </li>
                           );
                         })}
@@ -393,9 +446,6 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
               </div>
               <div className="col"></div>
             </div>
-
-            {/* box2 - others: private1 */}
-
             {/* // .projbox */}
           </div>
         </div>
