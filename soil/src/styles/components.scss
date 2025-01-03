@@ -1,0 +1,67 @@
+/* color */
+$red: #ff5757;
+$sunGlow: #ffc547;
+$indigoBlue: #1b699d;
+$linen: #f9f3eb;
+$space: #31373a;
+$spaceLight: #42494d;
+
+@font-face {
+  font-family: "GangwonEduPowerExtraBoldA";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.label-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 20%;
+  margin: 1rem auto 1rem 2rem;
+  .label {
+    padding: 8px 10px;
+    border-radius: 20px;
+    max-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: antiquewhite;
+    font-size: 14px;
+    font-weight: 700;
+    &.html {
+      background: $red;
+      color: #fff;
+    }
+    &.pug {
+      background: rgb(115, 131, 86);
+      color: #fff;
+    }
+    &.css {
+      background: rgb(30, 61, 234);
+      color: #fff;
+    }
+    &.scss {
+      background: #eb5059;
+      color: #fff;
+    }
+    &.js {
+      background: rgb(255, 196, 0);
+      color: #333;
+    }
+    &.react {
+      background: rgb(0, 195, 255);
+      color: rgb(250, 250, 250);
+    }
+    &.reactNative {
+      background: rgb(67, 95, 104);
+      color: rgb(250, 250, 250);
+    }
+    &.figma {
+      background: #9d56f7;
+      color: rgb(250, 250, 250);
+    }
+  }
+}

@@ -36,6 +36,7 @@ export const Contents = () => {
         </Grid>
       </Grid>
 
+      {/*  */}
       <Grid container spacing={1} justifyContent="center">
         <Grid size={{ xs: 3, md: 3 }}>
           <div className="line">l</div>
@@ -52,20 +53,26 @@ export const Contents = () => {
         </Grid>
       </Grid>
 
-      <div className="center">
+      {/*  */}
+      <div className="center" style={{ flexDirection: "column" }}>
         {data.career.map((list, index) => {
           return (
             <>
-              {" "}
               <Grid size={12} container spacing={1} direction="column">
-                <Grid size={12} container className="line">
-                  <Grid size={2} className="line">
+                <Grid
+                  size={12}
+                  container
+                  className="line"
+                  direction="row"
+                  justifyContent="center"
+                >
+                  <Grid size={1} spacing={2} className="line">
                     <h2>dd</h2>
                     <p>
                       {list.date} <br /> {list.totalDate}
                     </p>
                   </Grid>
-                  <Grid size={6} className="line">
+                  <Grid size={7} spacing={2} className="line">
                     <ul className="works-wrap">
                       <li className="works-wrap__desc ani">
                         {list.projList.map((project) => {

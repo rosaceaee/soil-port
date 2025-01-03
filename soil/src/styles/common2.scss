@@ -1,10 +1,4 @@
-/* color */
-$red: #ff5757;
-$sunGlow: #ffc547;
-$indigoBlue: #1b699d;
-$linen: #f9f3eb;
-$space: #31373a;
-$spaceLight: #42494d;
+@import "components.scss";
 
 html,
 body {
@@ -15,7 +9,6 @@ body {
     linear-gradient(to right, rgba(239, 81, 81, 0.19) 2px, transparent 2px);
   background-size: 26px 26px;
   background-color: #f9f3eb;
-
   margin: 0;
   padding: 0;
 
@@ -80,11 +73,6 @@ nav {
 .center {
   justify-content: center;
   display: flex;
-
-  ul {
-    li {
-    }
-  }
 }
 
 img {
