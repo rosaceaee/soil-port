@@ -61,6 +61,10 @@ nav {
   }
 }
 
+.block {
+  background-color: #fff;
+}
+
 .line {
   border: 1px solid $indigoBlue;
   &.red {
@@ -70,9 +74,18 @@ nav {
   }
 }
 
-.center {
+.wrap {
   justify-content: center;
   display: flex;
+  min-height: calc(400 / 16 * 1rem);
+  &__top {
+    .block {
+      height: 400px;
+      max-height: 100%;
+      overflow: auto;
+      box-sizing: border-box;
+    }
+  }
 }
 
 img {
