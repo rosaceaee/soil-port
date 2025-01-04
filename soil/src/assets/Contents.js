@@ -62,26 +62,37 @@ export const Contents = () => {
           </div>
         </Grid>
       </Grid>
-      {/*  */}{" "}
+      {/*  */}
       <Grid size={{ xs: 12, md: 12 }}>
         <div className="line">l</div>
       </Grid>
-      <Grid container spacing={1} className="wrap" justifyContent="center">
-        <Grid size={{ xs: 12, md: 12 }}>
-          <Grid size={6} className="line">
-            <div>11</div>
-          </Grid>
-          <Grid size={6} className="line">
-            <div>11</div>
-          </Grid>
+      <Grid container spacing={1} justifyContent="center">
+        <Grid
+          size={12}
+          container
+          className="line"
+          direction="row"
+          justifyContent="center"
+        >
+          {data.skills.map((a, b) => {
+            return (
+              <>
+                <Grid size={6} key={b}>
+                  <h2>{a.tit}</h2>
+                  <p>{a.skillList.join(", ")}</p>
+                </Grid>
+              </>
+            );
+          })}
         </Grid>
       </Grid>
+
       {/*  */}
       <div className="wrap" style={{ flexDirection: "column" }}>
         {data.career.map((list, index) => {
           return (
             <>
-              <Grid size={12} container spacing={1} direction="column">
+              <Grid size={12} container spacing={3} direction="column">
                 <Grid
                   size={12}
                   container
@@ -144,6 +155,23 @@ export const Contents = () => {
             </>
           );
         })}
+      </div>
+
+      {/*  */}
+
+      <div className="wrap" style={{ flexDirection: "column" }}>
+        <Grid container size={12}>
+          {data.others[1].projList.map((list, index) => {
+            return (
+              <>
+                <Grid size={4}>{list.projName}</Grid>
+                <Grid size={8}>
+                  <a href={`${list.url}`}>d</a>
+                </Grid>
+              </>
+            );
+          })}
+        </Grid>
       </div>
     </>
   );
