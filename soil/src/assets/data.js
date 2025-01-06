@@ -205,4 +205,26 @@ export const data = {
       ],
     },
   ],
+  skills: [
+    {
+      tit: "dev",
+      skillList: ["dd", "dddd", "ddddddd", "dddd"],
+    },
+    {
+      tit: "UI",
+      skillList: ["dd", "dddd", "ddddddd", "dddd"],
+    },
+    {
+      tit: "design",
+      skillList: ["dd", "dddd", "ddddddd", "dddd"],
+    },
+    {
+      tit: "interested",
+      skillList: ["dd", "dddd", "ddddddd", "dddd"],
+    },
+    {
+      tit: "asdf",
+      skillList: ["dd", "dddd", "ddddddd", "dddd"],
+    },
+  ],
 };
