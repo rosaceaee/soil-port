@@ -1,37 +1,29 @@
-/* color */
-$red: #ff5757;
-$sunGlow: #ffc547;
-$indigoBlue: #1b699d;
-$linen: #f9f3eb;
-$space: #31373a;
-$spaceLight: #42494d;
+@import "components.scss";
 
 /*
-
 background-image: linear-gradient(rgba(239, 81, 81, 0.19) 2px, transparent 2px), linear-gradient(to right, rgba(239, 81, 81, 0.19) 2px, transparent 2px);
 background-size: 32px 32px;
 background-color: #f9f3eb;
-
 */
-
-@font-face {
-  font-family: "GangwonEduPowerExtraBoldA";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
 
 body,
 html {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  // background-color: #f9f3eb;
+  background-image: linear-gradient(
+      rgba(239, 81, 81, 0.19) 2px,
+      transparent 2px
+    ),
+    linear-gradient(to right, rgba(239, 81, 81, 0.19) 2px, transparent 2px);
+  background-size: 26px 26px;
   background-color: #f9f3eb;
+  margin: 0;
+  padding: 0;
 }
 
 .App {
-  // display: grid;
   border: 1px solid $indigoBlue !important;
 }
 
@@ -42,6 +34,44 @@ html {
     max-width: 10rem;
     display: block;
     margin: 0 auto;
+  }
+}
+
+nav {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  justify-self: center;
+  justify-content: center;
+
+  .nav-wrap {
+    // background: #dba968;
+    background: rgba(219, 169, 104, 0.5);
+    margin: 0 auto;
+    width: calc(80% - 1rem);
+    padding: 1rem 1rem;
+    display: flex;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  span {
+    padding: 0 10px;
+    margin: 0 10px;
+    cursor: pointer;
+
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      margin: 0 5px;
+    }
+
+    &:nth-child(4) {
+      margin-left: auto;
+    }
   }
 }
 
@@ -109,7 +139,6 @@ html {
       &.desc {
         position: relative;
         height: 250px;
-
         display: flex;
         justify-content: flex-end;
         &:after {
@@ -151,7 +180,6 @@ article {
       .info {
         left: 0;
         width: 100%;
-        background-color: $linen;
 
         .box {
           .row {
@@ -165,7 +193,6 @@ article {
                 }
                 &.desc {
                   position: relative;
-
                   height: 250px;
                 }
                 h1 {
@@ -186,7 +213,6 @@ article {
                   display: flex;
                   justify-content: space-between;
                   align-items: flex-end;
-
                   border: 1px solid $indigoBlue;
 
                   &.center {
@@ -328,98 +354,8 @@ article {
 }
 
 .cursor-hover {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.05s ease-in-out;
   filter: blur(3px);
-}
-
-nav {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  justify-self: center;
-  justify-content: center;
-
-  .nav-wrap {
-    background: #dba968;
-
-    margin: 0 auto;
-    width: calc(60% - 1rem);
-    padding: 2rem 2rem;
-    display: flex;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-  }
-
-  span {
-    padding: 10px;
-    margin: 0 10px;
-    cursor: pointer;
-
-    &:nth-child(1),
-    &:nth-child(2),
-    &:nth-child(3) {
-      margin: 0 5px;
-    }
-
-    &:nth-child(4) {
-      margin-left: auto;
-    }
-  }
-}
-
-.label-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-  width: 20%;
-  margin: 1rem auto 1rem 2rem;
-  .label {
-    padding: 8px 10px;
-    border-radius: 20px;
-    max-width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: antiquewhite;
-    font-size: 14px;
-    font-weight: 700;
-    &.html {
-      background: $red;
-      color: #fff;
-    }
-    &.pug {
-      background: rgb(115, 131, 86);
-      color: #fff;
-    }
-    &.css {
-      background: rgb(30, 61, 234);
-      color: #fff;
-    }
-    &.scss {
-      background: #eb5059;
-      color: #fff;
-    }
-    &.js {
-      background: rgb(255, 196, 0);
-      color: #333;
-    }
-    &.react {
-      background: rgb(0, 195, 255);
-      color: rgb(250, 250, 250);
-    }
-    &.reactNative {
-      background: rgb(67, 95, 104);
-      color: rgb(250, 250, 250);
-    }
-    &.figma {
-      background: #9d56f7;
-      color: rgb(250, 250, 250);
-    }
-  }
 }
 
 .animate-wrap {
@@ -879,7 +815,7 @@ nav {
     width: calc(100% - 1rem);
 
     .nav-wrap {
-      padding: 0 2rem;
+      padding: 1rem 2rem;
     }
     span {
       &:nth-child(4) {
