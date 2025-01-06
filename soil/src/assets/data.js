@@ -12,9 +12,8 @@ export const data = {
           imgUrl: "/img/lge1.png",
           url: "https://play.google.com/store/apps/details?id=com.mMiraeAssetLife&hl=ko",
           desc: [
-            "작업 생산성을 높이기 위하여 컴포넌트 CSS, JS 레거시 코드 수정 후 컴포넌트 활용",
-            "단위, 통합테스트 대응하여 ui 화면 개선",
-            "イベントページの簡単ゲームのコード仕組み作成などの簡単なイベント関数の運用",
+            "기존 적용된 컴포넌트 CSS, JS의 레거시 코드 수정 -> 팀 내 작업자의 생산성 향상",
+            "단위, 통합테스트에 대응하여 ui 화면 개선",
           ],
           skill: ["js", "scss", "html", "figma"],
         },
@@ -24,10 +23,9 @@ export const data = {
           imgUrl: "/img/lge1.png",
           url: "https://www.lg.com/hu/",
           desc: [
-            "헝가리, 오스트리아 사이트 UIUX 구축 및 운영",
+            "대만, 헝가리, 오스트리아 사이트 UIUX 구축 및 운영",
             "결제 모듈 ui영역 개선 담당",
-            "기존 ui관련 레거시 코드 개선",
-            "다른 다국어 사이트와 균일한 ui 구현을 위하여 컴포넌트 디자인 개선",
+            "다른 다국어 사이트와 공통 ui 구현을 위하여 컴포넌트 디자인 개선",
           ],
           skill: ["js", "scss", "pug", "figma"],
         },
@@ -39,7 +37,7 @@ export const data = {
           desc: [
             "ui디자인 일관성과 생산성을 높이기 위한 컴포넌트 시스템 개선 및 참여",
             "단위, 통합테스트 대응하여 ui 화면 개선",
-            "다국어 사이트 반영 담당",
+            "영문 사이트 퍼블리싱 담당",
           ],
           skill: ["js", "scss", "html", "figma"],
         },
@@ -54,24 +52,22 @@ export const data = {
         {
           listIdx: 1,
           imgUrl: "/img/lge1.png",
-
           projName: "최선어학원 creo 유지보수",
           desc: [
-            "유지보수, 테스트",
-            " 기존 ui 스타일 소스 레거시 정리 및 코드 경제?사용?성 개선",
-            "ui 테스트 작업 대응하여 디바이스 최적화로 사용자 학습도움에 기여",
+            "웹, 앱의 UIUX 유지보수 및 테스트",
+            "ui에 적용된 기존 레거시 소스 정리 및 코드 개선하여 코드 가독성과 사용성 개선",
+            "ui 테스트 작업 대응하여 디바이스 최적화로 사용자 경험(학습)에 기여함",
           ],
           skill: ["react", "reactNative", "scss", "html"],
         },
         {
           listIdx: 2,
           imgUrl: "/img/lge1.png",
-
           projName: "metaexam 영어시험 구축",
           url: "url",
           desc: [
             "전체 페이지 UI 퍼블리싱, 화면 검수 및 테스트 참여",
-            "수험자의 이해를 돕기 위한 uiux 디자인 참여. 직관적인 스타일로 작업함",
+            "수험자의 이해를 돕기 위한 uiux 레이아웃 설계에 일부 참여",
             "사용한 ui라이브러리: ant design",
           ],
           skill: ["react", "scss", "html"],
@@ -79,27 +75,14 @@ export const data = {
         {
           listIdx: 3,
           imgUrl: "/img/lge1.png",
-
           projName: " phonics monster 교육 툴 유지보수",
           url: "url",
           desc: [
             "퍼블리싱, 테스트",
-            "css 레거시 코드 정리 및 전체 소스 리팩토링",
+            "기존에 사용된 css 레거시 코드 정리 및 전체 소스 리팩토링으로 코드 가독성 개선",
             "ui 테스트 작업 대응하여 디바이스 최적화 작업",
           ],
           skill: ["js", "css", "html"],
-        },
-        {
-          listIdx: 4,
-          imgUrl: "/img/lge1.png",
-
-          projName: "루시드 영어",
-          desc: [
-            "학원 교육 부교재용 앱 구축",
-            "컴포넌트 UI 구현, 디바이스 별 반응형 구현",
-            "ui 테스트 작업 대응하여 디바이스 최적화 작업",
-          ],
-          skill: ["react", "reactNative", "scss", "html"],
         },
       ],
     },
@@ -208,23 +191,37 @@ export const data = {
   skills: [
     {
       tit: "dev",
-      skillList: ["dd", "dddd", "ddddddd", "dddd"],
+      skillList: [
+        "Javascript(ES6)",
+        "React",
+        "ReactNative",
+        "Html5",
+        "Pug",
+        "Postman",
+        "GitHub/GitLab",
+      ],
     },
     {
       tit: "UI",
-      skillList: ["dd", "dddd", "ddddddd", "dddd"],
+      skillList: [
+        "CSS3/SCSS/SASS",
+        "Styled Components",
+        "Ant design",
+        "Bootstrap",
+        "MUI",
+      ],
     },
     {
       tit: "design",
-      skillList: ["dd", "dddd", "ddddddd", "dddd"],
+      skillList: ["Figma", "Adobe products"],
     },
     {
       tit: "interested",
-      skillList: ["dd", "dddd", "ddddddd", "dddd"],
+      skillList: ["python"],
     },
     {
       tit: "asdf",
-      skillList: ["dd", "dddd", "ddddddd", "dddd"],
+      skillList: ["English", "日本語"],
     },
   ],
 };
