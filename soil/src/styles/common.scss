@@ -184,9 +184,12 @@ nav {
         margin-block-start: 0;
         margin-block-end: 0;
         bottom: -1rem;
-        font-size: 4rem;
+        font-size: 5rem;
         margin: 0 auto;
         display: block;
+        letter-spacing: 0.3rem;
+        color: rgba(146, 107, 106, 1);
+        font-weight: 800;
       }
     }
   }
@@ -910,4 +913,8 @@ article {
 
 .stack1 {
   filter: blur(3px);
+}
+
+.ani {
+  border: 3px solid red;
 }

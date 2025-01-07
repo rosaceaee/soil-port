@@ -72,48 +72,6 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
   const navWrapRef = useRef(null);
 
   useEffect(() => {
-    const setAnimation = () => {
-      const boxItems = gsap.context((self) => {
-        const boxes = self.selector(".ani");
-        const isMobile = window.innerWidth < 768;
-
-        boxes.forEach((box) => {
-          gsap.from(box, {
-            y: isMobile ? 150 : 300,
-            opacity: 0,
-            stagger: isMobile ? 0.5 : 1,
-            scrollTrigger: {
-              trigger: box,
-              start: "top bottom",
-              end: isMobile ? "top 20%" : "top 5%",
-              scrub: true,
-            },
-          });
-          gsap.to(box, {
-            y: 0,
-            opacity: 0,
-          });
-        });
-      }, boxRef1);
-
-      return boxItems;
-    };
-
-    let boxItems = setAnimation();
-
-    const handleResize = () => {
-      boxItems.revert();
-      boxItems = setAnimation();
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      boxItems.revert();
-    };
-  }, []);
-
-  useEffect(() => {
     const container = containerRef.current;
     const navWrap = navWrapRef.current;
     const elements = container?.querySelectorAll(
@@ -178,7 +136,54 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  useEffect(() => {
+    let ctx;
 
+    const setAnimation = () => {
+      ctx = gsap.context(() => {
+        const boxes = gsap.utils.toArray(".ani");
+        const isMobile = window.innerWidth < 768;
+
+        boxes.forEach((box) => {
+          gsap.fromTo(
+            box,
+            {
+              y: isMobile ? 150 : 300,
+              opacity: 0,
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1.5,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: box,
+                start: "top bottom",
+                end: isMobile ? "top 20%" : "top 5%",
+                scrub: true,
+              },
+            }
+          );
+        });
+      });
+    };
+
+    setAnimation();
+
+    const handleResize = () => {
+      ctx?.revert();
+      setAnimation();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      ctx?.revert(); // cleanup
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  console.log(ScrollTrigger.getAll());
   // useEffect(() => {
   //   let mm = gsap.matchMedia();
   //   const boxItems = gsap.context((self) => {
@@ -364,12 +369,15 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                               </p>
                             </div>
 
-                            <ul ref={boxRef1}>
-                              <li className="desc-wrapp ani">
+                            <ul>
+                              <li className="desc-wrapp" ref={boxRef1}>
                                 {list.projList.map((project) => {
                                   return (
                                     <>
-                                      <div className="proj-info">
+                                      <div
+                                        className="proj-info ani"
+                                        key={index}
+                                      >
                                         <img
                                           src={project.imgUrl}
                                           className="pic"
