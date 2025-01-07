@@ -149,8 +149,8 @@ nav {
     }
     .col {
       &:nth-child(2) {
-        border-left: 2px solid #1b699d;
-        border-right: 2px solid #1b699d;
+        border-left: 2px solid $indigoBlue;
+        border-right: 2px solid $indigoBlue;
       }
     }
   }
@@ -242,7 +242,7 @@ article {
                   align-items: flex-end;
 
                   &.center {
-                    background-color: #1b699d;
+                    background-color: $indigoBlue;
                   }
                   .cont-left {
                     width: 60%;
@@ -282,7 +282,7 @@ article {
                     position: absolute;
                     bottom: -11px;
                     left: -32px;
-                    color: #1b699d;
+                    color: $indigoBlue;
                   }
                 }
               }
@@ -330,9 +330,9 @@ article {
           grid-template-columns: 1fr 1fr;
           text-align: left;
           flex-direction: column;
-          border-top: 3px solid #1b699d;
-          border-left: 1px solid #1b699d;
-          border-right: 1px solid #1b699d;
+          border-top: 3px solid $indigoBlue;
+          border-left: 1px solid $indigoBlue;
+          border-right: 1px solid $indigoBlue;
           background: #fff;
           margin: 0 auto;
 
@@ -506,12 +506,6 @@ article {
       ul {
         display: block;
         list-style-type: disc;
-        margin-block-start: 0;
-        margin-block-end: 0;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        padding-inline-start: 0;
-
         width: 100%;
         margin: 0 auto;
         text-align: left;
@@ -539,6 +533,9 @@ article {
             background: #fff;
             color: black;
             border-radius: 20px;
+            -webkit-box-shadow: -3px 12px 2px -6px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: -3px 12px 2px -6px rgba(0, 0, 0, 0.5);
+            box-shadow: -3px 12px 2px -6px rgba(0, 0, 0, 0.5);
             h3 {
               margin: 0;
               &.txt-proj-name {
@@ -599,7 +596,7 @@ article {
           .box {
             .row {
               &:nth-child(1) {
-                & .col {
+                &.col {
                   &.desc {
                     position: relative;
 
@@ -667,6 +664,7 @@ article {
               }
             }
           }
+          /* // .info */
         }
 
         .skill {
@@ -682,6 +680,7 @@ article {
               margin-bottom: 0.8rem;
             }
           }
+          /* // .skill */
         }
       }
 
@@ -740,18 +739,27 @@ article {
                               }
                             }
                           }
+                          /* // .desc-wrapp */
                         }
+                        /* // .contents > ul */
                       }
+                      /* // .contents */
                     }
+                    /* // .proj-box */
                   }
+                  /* // .box */
                 }
               }
+              /* // .row.others */
             }
           }
+          /* // .introduce-wrap */
         }
+        /* // .work-container */
       }
     }
   }
+
   .work-container {
     .row {
       display: block;
@@ -847,7 +855,7 @@ article {
                   width: 6px;
                   height: 6px;
                   border-radius: 50%;
-                  background-color: #1b699d;
+                  background-color: $indigoBlue;
                 }
               }
             }
