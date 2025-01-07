@@ -116,7 +116,9 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
   useEffect(() => {
     const container = containerRef.current;
     const navWrap = navWrapRef.current;
-    const elements = container?.querySelectorAll(".wrap p, .work-con p");
+    const elements = container?.querySelectorAll(
+      ".wrap p, .wrap h3, .work-con p, .work-container h2,.work-container h3, .work-container p"
+    );
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -205,7 +207,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
   return (
     <>
       <article className="container" ref={containerRef}>
-        <div className="wrap">
+        <div className="wrap" id="top">
           <section className="info">
             {/* <img src={require("../img/sprout-sm.png")} alt="" /> */}
             <div className="box">
@@ -217,7 +219,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                     onMouseEnter={(e) => handleMouseEnter("stack1", e)}
                     onMouseLeave={(e) => handleMouseLeave("stack1", e)}
                   >
-                    안녕하세요
+                    .
                   </h1>
                 </div>
                 <div className="col"></div>
@@ -245,21 +247,25 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                           새로운 정보와 즐거운 것들을 같이 경험하는 것을
                           좋아합니다.
                         </h3>
-                        React와 Js로 웹 퍼블리싱과 프론트작업을 하며 중간 역할과
-                        더불어 UIUX개선을 하며 프로젝트를 성공적으로
-                        완수하였습니다.
-                        <br />
-                        혼자만 아는 것보다 스스로의 능력이 사람들에게 도움이
-                        되길 바라며 웹 문서의 영한번역에도 기여하고 있습니다.
-                        <br />
-                        <br />
-                        기획자와 디자이너 사이에서 비개발 직군에게도 이해하기
-                        쉽게 설명하여 원활한 작업진행에 도움이 되는 것에 보람을
-                        느낍니다.
-                        <br />
-                        인터랙션, 심미성이 높은 UI 구현과 더불어 사용자 경험의
-                        향상, 그리고 변화하는 개발 생태계에서 끊임없이 배우며
-                        같이 일하고 싶은 개발자가 되고 싶습니다.
+                        <p>
+                          React와 Js로 웹 퍼블리싱과 프론트작업을 하며 중간
+                          역할과 더불어 UIUX개선을 하며 프로젝트를 성공적으로
+                          완수하였습니다.
+                        </p>
+                        <p>
+                          혼자만 아는 것보다 스스로의 능력이 사람들에게 도움이
+                          되길 바라며 웹 문서의 영한번역에도 기여하고 있습니다.
+                        </p>
+                        <p>
+                          기획자와 디자이너 사이에서 비개발 직군에게도 이해하기
+                          쉽게 설명하여 원활한 작업진행에 도움이 되는 것에
+                          보람을 느낍니다.
+                        </p>
+                        <p>
+                          인터랙션, 심미성이 높은 UI 구현과 더불어 사용자 경험의
+                          향상, 그리고 변화하는 개발 생태계에서 끊임없이 배우며
+                          같이 일하고 싶은 개발자가 되고 싶습니다.
+                        </p>
                       </span>
                     </div>
                   </div>
@@ -335,7 +341,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
           <div className="row tit-box">
             <dlv className="col"></dlv>
             <div className="col desc">
-              <h1 className="">Works</h1>
+              <h1 className="tit">Works</h1>
             </div>
             <dlv className="col"></dlv>
           </div>
@@ -475,37 +481,37 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                             MDN 웹 문서 영한번역 기여
                           </h3>
                         </li>
-                        {data.others[1].projList.map((list, index) => {
-                          return (
-                            <li className="desc-wrapp otherWork">
-                              <h3>{list.projName}</h3>
+                        <li className="desc-wrapp otherWork">
+                          {data.others[1].projList.map((list, index) => {
+                            return (
                               <a
                                 className="box-with-link"
-                                href=""
+                                href={`${list.url}`}
                                 target="_blank"
                               >
-                                {list.url}
+                                <button>{list.projName}</button>
                               </a>
-                            </li>
-                          );
-                        })}
+                            );
+                          })}
+                        </li>
                         <li>
                           <h3 className="txt-proj-name">
                             regexlearn 한국어 번역 기여
                           </h3>
                         </li>
-                        {data.others[2].projList.map((list, index) => {
-                          return (
-                            <li className="desc-wrapp otherWork">
-                              <span className="box-with-link">
-                                <a href="" target="_blank">
-                                  {list.url}
-                                </a>
-                                <p>{list.projName}</p>
-                              </span>
-                            </li>
-                          );
-                        })}
+                        <li className="desc-wrapp otherWork">
+                          {data.others[2].projList.map((list, index) => {
+                            return (
+                              <a
+                                className="box-with-link"
+                                href={`${list.url}`}
+                                target="_blank"
+                              >
+                                <button>{list.projName}</button>
+                              </a>
+                            );
+                          })}
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -521,9 +527,13 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
 
       <nav onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <div className="nav-wrap" ref={navWrapRef}>
-          <span onClick={() => scrollToSection("skill")}>1</span>
-          <span onClick={() => scrollToSection("work-container")}>1</span>
-          <span>
+          <span className="wrap">
+            <span onClick={() => scrollToSection("top")}>소개</span>
+            <span onClick={() => scrollToSection("skill")}>Stack</span>
+            <span onClick={() => scrollToSection("work-container")}>Works</span>
+          </span>
+
+          <span style={{ marginLeft: "auto", display: "block" }}>
             <a href="" target="_blank">
               gh
             </a>
