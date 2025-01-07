@@ -449,10 +449,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                       <ul>
                         <li className="desc-wrapp">
                           <h3 className="txt-proj-name">ㅇㅇ</h3>
-                          <p>
-                            가벼운 원페이지로 작업. 숫자 입력하면 단번에 알 수
-                            있도록.
-                          </p>
+                          <p>노년층을 대상으로 싱글 페이지로 작업함</p>
                           <p>링크</p>
                         </li>
                       </ul>

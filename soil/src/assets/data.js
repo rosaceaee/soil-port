@@ -140,11 +140,7 @@ export const data = {
           listIdx: 1,
           projName: "projname1",
           url: "url",
-          desc: [
-            "사용자 연령층이 노년층을 대상으로 싱글 페이지로 작업함",
-            "",
-            "desc3",
-          ],
+          desc: ["노년층을 대상으로 싱글 페이지로 작업함", "", "desc3"],
           skill: ["react", "scss"],
         },
       ],
