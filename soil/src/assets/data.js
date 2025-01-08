@@ -226,9 +226,9 @@ export const data = {
     career: [
       {
         id: 1,
-        companyName: "HI~~~~~",
-        date: "2024.5. ~ 현재",
-        totalDate: "(풀타임)",
+        companyName: "ザ・フィフティーワン",
+        date: "2024.5. ~ 現在",
+        totalDate: "正社員",
         projList: [
           {
             listIdx: 1,
@@ -271,7 +271,7 @@ export const data = {
         id: 2,
         companyName: "주식회사 클라우봇",
         date: "2021.12. ~ 2023.07.",
-        totalDate: "(1년 7개월, 풀타임)",
+        totalDate: "(１年 7ヵ月, 正社員)",
         projList: [
           {
             listIdx: 1,
@@ -287,7 +287,7 @@ export const data = {
           {
             listIdx: 2,
             imgUrl: "/img/lge1.png",
-            projName: "metaexam 영어시험 구축",
+            projName: "metaexam 영어시험 立ち上げ",
             url: "url",
             desc: [
               "전체 페이지 UI 퍼블리싱, 화면 검수 및 테스트 참여",
@@ -299,7 +299,7 @@ export const data = {
           {
             listIdx: 3,
             imgUrl: "/img/lge1.png",
-            projName: " phonics monster 교육 툴 유지보수",
+            projName: " phonics monster 교육 툴 運用",
             url: "url",
             desc: [
               "퍼블리싱, 테스트",
@@ -314,7 +314,7 @@ export const data = {
         id: 3,
         companyName: "잡코리아",
         date: " 2019.7. ~ 2021.3.",
-        totalDate: "(1년 8개월, 풀타임)",
+        totalDate: "(１年 ８ヵ月, 正社員)",
         projList: [
           {
             listIdx: 1,
@@ -329,7 +329,7 @@ export const data = {
         id: 4,
         companyName: "리눅스웨어",
         date: "2019.2. ~ 2019.5.",
-        totalDate: "(3개월, 아르바이트)",
+        totalDate: "(3か月, アルバイト)",
         projList: [
           {
             listIdx: 1,
@@ -358,7 +358,7 @@ export const data = {
     others: [
       {
         id: 1,
-        projName: "privateWork",
+        projName: "サイドプロジェクト",
         projList: [
           {
             listIdx: 1,
@@ -371,7 +371,7 @@ export const data = {
       },
       {
         id: 2,
-        projName: "MDN 웹 문서 영한번역 기여",
+        projName: "MDN ウェブドックス英韓翻訳 기여",
         projList: [
           {
             listIdx: 1,
@@ -397,7 +397,7 @@ export const data = {
       },
       {
         id: 3,
-        projName: " regexlearn 한국어 번역 기여",
+        projName: " regexlearn 英韓翻訳およびチェック",
         projList: [
           {
             listIdx: 1,
