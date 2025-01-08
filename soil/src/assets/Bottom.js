@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
-import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { data, career, others } from "./data";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,6 +8,8 @@ import {
   handleMouseEnter,
   handleMouseLeave,
   cursorClassName,
+  useNavWithBlurEffect,
+  useAnimateBoxes,
 } from "../utills/UiEffect";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -88,118 +89,121 @@ export const Bottom = () => {
   const containerRef = useRef(null);
   const navWrapRef = useRef(null);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    const navWrap = navWrapRef.current;
-    const elements = container?.querySelectorAll(
-      ".wrap p, .wrap h3, .work-con p, .work-container h2,.work-container h3, .work-container p"
-    );
+  useNavWithBlurEffect(containerRef, navWrapRef);
+  useAnimateBoxes(gsap);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (!navWrap) return;
+  // useEffect(() => {
+  //   const container = containerRef.current;
+  //   const navWrap = navWrapRef.current;
+  //   const elements = container?.querySelectorAll(
+  //     ".wrap p, .wrap h3, .work-con p, .work-container h2,.work-container h3, .work-container p"
+  //   );
 
-        const navRect = navWrap.getBoundingClientRect();
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       if (!navWrap) return;
 
-        entries.forEach((entry) => {
-          const elementRect = entry.target.getBoundingClientRect();
+  //       const navRect = navWrap.getBoundingClientRect();
 
-          // nav-wrap과의 겹침을 더 엄격하게 계산
-          const isIntersecting =
-            elementRect.bottom > navRect.top &&
-            elementRect.top < navRect.bottom &&
-            elementRect.right > navRect.left &&
-            elementRect.left < navRect.right &&
-            // 요소가 viewport 내에 있는지 확인
-            elementRect.top < window.innerHeight &&
-            elementRect.bottom > 0;
+  //       entries.forEach((entry) => {
+  //         const elementRect = entry.target.getBoundingClientRect();
 
-          entry.target.classList.toggle("cursor-hover", isIntersecting);
-        });
-      },
-      {
-        root: null,
-        // rootMargin을 nav-wrap의 실제 높이에 맞게 조정
-        rootMargin: "-20% 0px -20% 0px", // 위아래 여백을 줄임
-        threshold: [0, 1.0], // threshold 값을 단순화
-      }
-    );
+  //         // nav-wrap과의 겹침을 더 엄격하게 계산
+  //         const isIntersecting =
+  //           elementRect.bottom > navRect.top &&
+  //           elementRect.top < navRect.bottom &&
+  //           elementRect.right > navRect.left &&
+  //           elementRect.left < navRect.right &&
+  //           // 요소가 viewport 내에 있는지 확인
+  //           elementRect.top < window.innerHeight &&
+  //           elementRect.bottom > 0;
 
-    elements?.forEach((element) => observer.observe(element));
+  //         entry.target.classList.toggle("cursor-hover", isIntersecting);
+  //       });
+  //     },
+  //     {
+  //       root: null,
+  //       // rootMargin을 nav-wrap의 실제 높이에 맞게 조정
+  //       rootMargin: "-20% 0px -20% 0px", // 위아래 여백을 줄임
+  //       threshold: [0, 1.0], // threshold 값을 단순화
+  //     }
+  //   );
 
-    // 스크롤 이벤트에서도 체크하여 더 부드러운 전환 구현
-    const handleScroll = () => {
-      if (!navWrap) return;
-      const navRect = navWrap.getBoundingClientRect();
+  //   elements?.forEach((element) => observer.observe(element));
 
-      elements?.forEach((element) => {
-        const elementRect = element.getBoundingClientRect();
-        const isIntersecting =
-          elementRect.bottom > navRect.top &&
-          elementRect.top < navRect.bottom &&
-          elementRect.right > navRect.left &&
-          elementRect.left < navRect.right &&
-          elementRect.top < window.innerHeight &&
-          elementRect.bottom > 0;
+  //   // 스크롤 이벤트에서도 체크하여 더 부드러운 전환 구현
+  //   const handleScroll = () => {
+  //     if (!navWrap) return;
+  //     const navRect = navWrap.getBoundingClientRect();
 
-        element.classList.toggle("cursor-hover", isIntersecting);
-      });
-    };
+  //     elements?.forEach((element) => {
+  //       const elementRect = element.getBoundingClientRect();
+  //       const isIntersecting =
+  //         elementRect.bottom > navRect.top &&
+  //         elementRect.top < navRect.bottom &&
+  //         elementRect.right > navRect.left &&
+  //         elementRect.left < navRect.right &&
+  //         elementRect.top < window.innerHeight &&
+  //         elementRect.bottom > 0;
 
-    window.addEventListener("scroll", handleScroll);
+  //       element.classList.toggle("cursor-hover", isIntersecting);
+  //     });
+  //   };
 
-    return () => {
-      elements?.forEach((element) => observer.unobserve(element));
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
 
-  useEffect(() => {
-    let ctx;
+  //   return () => {
+  //     elements?.forEach((element) => observer.unobserve(element));
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
-    const setAnimation = () => {
-      ctx = gsap.context(() => {
-        const boxes = gsap.utils.toArray(".ani");
-        const isMobile = window.innerWidth < 768;
+  // useEffect(() => {
+  //   let ctx;
 
-        boxes.forEach((box) => {
-          gsap.fromTo(
-            box,
-            {
-              y: isMobile ? 150 : 300,
-              opacity: 0,
-            },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 1.5,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: box,
-                start: "top bottom",
-                end: isMobile ? "top 20%" : "top 5%",
-                scrub: true,
-              },
-            }
-          );
-        });
-      });
-    };
+  //   const setAnimation = () => {
+  //     ctx = gsap.context(() => {
+  //       const boxes = gsap.utils.toArray(".ani");
+  //       const isMobile = window.innerWidth < 768;
 
-    setAnimation();
+  //       boxes.forEach((box) => {
+  //         gsap.fromTo(
+  //           box,
+  //           {
+  //             y: isMobile ? 150 : 300,
+  //             opacity: 0,
+  //           },
+  //           {
+  //             y: 0,
+  //             opacity: 1,
+  //             duration: 1.5,
+  //             ease: "power3.out",
+  //             scrollTrigger: {
+  //               trigger: box,
+  //               start: "top bottom",
+  //               end: isMobile ? "top 20%" : "top 5%",
+  //               scrub: true,
+  //             },
+  //           }
+  //         );
+  //       });
+  //     });
+  //   };
 
-    const handleResize = () => {
-      ctx?.revert();
-      setAnimation();
-    };
+  //   setAnimation();
 
-    window.addEventListener("resize", handleResize);
+  //   const handleResize = () => {
+  //     ctx?.revert();
+  //     setAnimation();
+  //   };
 
-    return () => {
-      ctx?.revert(); // cleanup
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  //   window.addEventListener("resize", handleResize);
+
+  //   return () => {
+  //     ctx?.revert(); // cleanup
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   return (
     <>
@@ -212,11 +216,11 @@ export const Bottom = () => {
                 <div className="col bg"></div>
                 <div className="col desc">
                   <h1
-                    className={cursorClassName("stack1")}
-                    onMouseEnter={(e) => handleMouseEnter("stack1", e)}
-                    onMouseLeave={(e) => handleMouseLeave("stack1", e)}
+                    className={cursorClassName("stack1", isHovered)}
+                    onMouseEnter={(e) => onMouseEnter("stack1", e)}
+                    onMouseLeave={(e) => onMouseLeave("stack1", e)}
                   >
-                    .
+                    .asdf
                   </h1>
                 </div>
                 <div className="col"></div>
@@ -522,7 +526,11 @@ export const Bottom = () => {
         {/****************** works end *******************/}
       </article>
 
-      <nav onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <nav
+        ref={navWrapRef}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className="nav-wrap" ref={navWrapRef}>
           <span className="wrap">
             <span onClick={() => scrollToSection("top")}>소개</span>
