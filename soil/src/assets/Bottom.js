@@ -2,15 +2,22 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { data, career, others } from "./data";
-
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLang } from "./useLang";
+import {
+  scrollToSection,
+  handleMouseEnter,
+  handleMouseLeave,
+  cursorClassName,
+} from "../utills/UiEffect";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
+export const Bottom = () => {
   const [isHovered, setIsHovered] = useState({});
   const [up, setUp] = useState(0);
   const [workPosition, setWorkPosition] = useState(-180 * 16);
+  const { currentData, language, changeLanguage } = useLang();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,38 +28,36 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
     return () => clearInterval(interval);
   }, []);
 
-  // const handleMouseEnter = (e) => {
-  //   setIsHovered(true);
+  // const handleMouseEnter = (id, e) => {
+  //   setIsHovered((prev) => ({ ...prev, [id]: true }));
   //   onMouseEnter && onMouseEnter(e);
   // };
-  const handleMouseEnter = (id, e) => {
-    setIsHovered((prev) => ({ ...prev, [id]: true }));
-    onMouseEnter && onMouseEnter(e);
-  };
-  const handleMouseLeave = (id, e) => {
-    setIsHovered((prev) => ({ ...prev, [id]: false }));
-    onMouseLeave && onMouseLeave(e);
-  };
-
-  // const handleMouseLeave = (e) => {
-  //   setIsHovered(false);
+  // const handleMouseLeave = (id, e) => {
+  //   setIsHovered((prev) => ({ ...prev, [id]: false }));
   //   onMouseLeave && onMouseLeave(e);
   // };
 
-  // nav
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
+  // const scrollToSection = (sectionId) => {
+  //   const section = document.getElementById(sectionId);
+  //   if (section) {
+  //     section.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
+
+  // // cursor toggle class
+  // const cursorClassName = (id) => {
+  //   const base = "allign-r";
+  //   const hoverIt = isHovered[id] ? "cursor-toUp" : "";
+
+  //   return `${base} ${hoverIt}`.trim();
+  // };
+
+  const onMouseEnter = (id, e) => {
+    handleMouseEnter(id, e, setIsHovered);
   };
 
-  // cursor toggle class
-  const cursorClassName = (id) => {
-    const base = "allign-r";
-    const hoverIt = isHovered[id] ? "cursor-toUp" : "";
-
-    return `${base} ${hoverIt}`.trim();
+  const onMouseLeave = (id, e) => {
+    handleMouseLeave(id, e, setIsHovered);
   };
 
   const sList = {
@@ -66,6 +71,18 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
     figma: "figma",
     adobe: "adobe",
   };
+
+  // lang
+  const ChangeLangBtn = ({ changeLanguage }) => {
+    // const { changeLanguage } = useLang();
+    return (
+      <>
+        <button onClick={() => changeLanguage("ko")}>11</button>
+        <button onClick={() => changeLanguage("ja")}>111</button>
+      </>
+    );
+  };
+  // lang end
 
   const boxRef1 = useRef(null);
   const containerRef = useRef(null);
@@ -136,6 +153,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   useEffect(() => {
     let ctx;
 
@@ -182,32 +200,6 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  console.log(ScrollTrigger.getAll());
-  // useEffect(() => {
-  //   let mm = gsap.matchMedia();
-  //   const boxItems = gsap.context((self) => {
-  //     const boxes = self.selector(".ani");
-  //     boxes.forEach((box) => {
-  //       gsap.from(box, {
-  //         y: 300,
-  //         opacity: 0,
-  //         stagger: 1,
-  //         scrollTrigger: {
-  //           trigger: box,
-  //           start: "top bottom", // 셀렉터로 등록한 요소의 상단이 뷰포트의 바닥에 있을 때 시작
-  //           end: "top 5%", // 상단 20프로에서 완료
-  //           scrub: true, // 하위요소를 하나씩 순차적으로 하고 싶어서 등록
-  //         },
-  //       });
-  //       gsap.to(box, {
-  //         y: 0,
-  //         opacity: 0,
-  //       });
-  //     });
-  //   }, boxRef1); // ref 값은 scope로만 등록한다
-  //   return () => boxItems.revert(); // clean up
-  // }, []); // <- Scope!
 
   return (
     <>
@@ -350,13 +342,13 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
             </div>
             <dlv className="col"></dlv>
           </div>
-
+          <ChangeLangBtn changeLanguage={changeLanguage} />
           <div className="introduce-wrap">
             {/* box1 - works */}
             <div className="row">
               <div className="col"></div>
               <div className="col">
-                {data.career.map((list, index) => {
+                {currentData.career.map((list, index) => {
                   return (
                     <>
                       <div className="box">
@@ -487,7 +479,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                           </h3>
                         </li>
                         <li className="desc-wrapp otherWork">
-                          {data.others[1].projList.map((list, index) => {
+                          {currentData.others[1].projList.map((list, index) => {
                             return (
                               <a
                                 className="box-with-link"
@@ -505,7 +497,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                           </h3>
                         </li>
                         <li className="desc-wrapp otherWork">
-                          {data.others[2].projList.map((list, index) => {
+                          {currentData.others[2].projList.map((list, index) => {
                             return (
                               <a
                                 className="box-with-link"
