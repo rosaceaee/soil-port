@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
-import { data, career, others } from "./data";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLang } from "./useLang";
 import {
@@ -10,15 +9,24 @@ import {
   cursorClassName,
   useNavWithBlurEffect,
   useAnimateBoxes,
+  DrawLinesNavElem,
 } from "../utills/UiEffect";
+import { data, career, others } from "./data";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const Bottom = () => {
   const [isHovered, setIsHovered] = useState({});
   const [up, setUp] = useState(0);
-  const [workPosition, setWorkPosition] = useState(-180 * 16);
+  // const [workPosition, setWorkPosition] = useState(-180 * 16);
   const { currentData, language, changeLanguage } = useLang();
+
+  const boxRef1 = useRef(null);
+  const containerRef = useRef(null);
+  const navWrapRef = useRef(null);
+
+  useNavWithBlurEffect(containerRef, navWrapRef);
+  useAnimateBoxes(gsap);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -28,30 +36,6 @@ export const Bottom = () => {
 
     return () => clearInterval(interval);
   }, []);
-
-  // const handleMouseEnter = (id, e) => {
-  //   setIsHovered((prev) => ({ ...prev, [id]: true }));
-  //   onMouseEnter && onMouseEnter(e);
-  // };
-  // const handleMouseLeave = (id, e) => {
-  //   setIsHovered((prev) => ({ ...prev, [id]: false }));
-  //   onMouseLeave && onMouseLeave(e);
-  // };
-
-  // const scrollToSection = (sectionId) => {
-  //   const section = document.getElementById(sectionId);
-  //   if (section) {
-  //     section.scrollIntoView({ behavior: "smooth" });
-  //   }
-  // };
-
-  // // cursor toggle class
-  // const cursorClassName = (id) => {
-  //   const base = "allign-r";
-  //   const hoverIt = isHovered[id] ? "cursor-toUp" : "";
-
-  //   return `${base} ${hoverIt}`.trim();
-  // };
 
   const onMouseEnter = (id, e) => {
     handleMouseEnter(id, e, setIsHovered);
@@ -78,136 +62,21 @@ export const Bottom = () => {
     // const { changeLanguage } = useLang();
     return (
       <>
-        <button onClick={() => changeLanguage("ko")}>11</button>
-        <button onClick={() => changeLanguage("ja")}>111</button>
+        <button className="lang-btn" onClick={() => changeLanguage("ko")}>
+          11
+        </button>
+        <button className="lang-btn" onClick={() => changeLanguage("ja")}>
+          111
+        </button>
       </>
     );
   };
   // lang end
 
-  const boxRef1 = useRef(null);
-  const containerRef = useRef(null);
-  const navWrapRef = useRef(null);
-
-  useNavWithBlurEffect(containerRef, navWrapRef);
-  useAnimateBoxes(gsap);
-
-  // useEffect(() => {
-  //   const container = containerRef.current;
-  //   const navWrap = navWrapRef.current;
-  //   const elements = container?.querySelectorAll(
-  //     ".wrap p, .wrap h3, .work-con p, .work-container h2,.work-container h3, .work-container p"
-  //   );
-
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       if (!navWrap) return;
-
-  //       const navRect = navWrap.getBoundingClientRect();
-
-  //       entries.forEach((entry) => {
-  //         const elementRect = entry.target.getBoundingClientRect();
-
-  //         // nav-wrap과의 겹침을 더 엄격하게 계산
-  //         const isIntersecting =
-  //           elementRect.bottom > navRect.top &&
-  //           elementRect.top < navRect.bottom &&
-  //           elementRect.right > navRect.left &&
-  //           elementRect.left < navRect.right &&
-  //           // 요소가 viewport 내에 있는지 확인
-  //           elementRect.top < window.innerHeight &&
-  //           elementRect.bottom > 0;
-
-  //         entry.target.classList.toggle("cursor-hover", isIntersecting);
-  //       });
-  //     },
-  //     {
-  //       root: null,
-  //       // rootMargin을 nav-wrap의 실제 높이에 맞게 조정
-  //       rootMargin: "-20% 0px -20% 0px", // 위아래 여백을 줄임
-  //       threshold: [0, 1.0], // threshold 값을 단순화
-  //     }
-  //   );
-
-  //   elements?.forEach((element) => observer.observe(element));
-
-  //   // 스크롤 이벤트에서도 체크하여 더 부드러운 전환 구현
-  //   const handleScroll = () => {
-  //     if (!navWrap) return;
-  //     const navRect = navWrap.getBoundingClientRect();
-
-  //     elements?.forEach((element) => {
-  //       const elementRect = element.getBoundingClientRect();
-  //       const isIntersecting =
-  //         elementRect.bottom > navRect.top &&
-  //         elementRect.top < navRect.bottom &&
-  //         elementRect.right > navRect.left &&
-  //         elementRect.left < navRect.right &&
-  //         elementRect.top < window.innerHeight &&
-  //         elementRect.bottom > 0;
-
-  //       element.classList.toggle("cursor-hover", isIntersecting);
-  //     });
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   return () => {
-  //     elements?.forEach((element) => observer.unobserve(element));
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   let ctx;
-
-  //   const setAnimation = () => {
-  //     ctx = gsap.context(() => {
-  //       const boxes = gsap.utils.toArray(".ani");
-  //       const isMobile = window.innerWidth < 768;
-
-  //       boxes.forEach((box) => {
-  //         gsap.fromTo(
-  //           box,
-  //           {
-  //             y: isMobile ? 150 : 300,
-  //             opacity: 0,
-  //           },
-  //           {
-  //             y: 0,
-  //             opacity: 1,
-  //             duration: 1.5,
-  //             ease: "power3.out",
-  //             scrollTrigger: {
-  //               trigger: box,
-  //               start: "top bottom",
-  //               end: isMobile ? "top 20%" : "top 5%",
-  //               scrub: true,
-  //             },
-  //           }
-  //         );
-  //       });
-  //     });
-  //   };
-
-  //   setAnimation();
-
-  //   const handleResize = () => {
-  //     ctx?.revert();
-  //     setAnimation();
-  //   };
-
-  //   window.addEventListener("resize", handleResize);
-
-  //   return () => {
-  //     ctx?.revert(); // cleanup
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, []);
-
   return (
     <>
       <article className="container" ref={containerRef}>
+        <DrawLinesNavElem />
         <div className="wrap" id="top">
           <section className="info">
             {/* <img src={require("../img/sprout-sm.png")} alt="" /> */}
@@ -346,7 +215,6 @@ export const Bottom = () => {
             </div>
             <dlv className="col"></dlv>
           </div>
-          <ChangeLangBtn changeLanguage={changeLanguage} />
           <div className="introduce-wrap">
             {/* box1 - works */}
             <div className="row">
@@ -355,7 +223,7 @@ export const Bottom = () => {
                 {currentData.career.map((list, index) => {
                   return (
                     <>
-                      <div className="box">
+                      <div className="box" key={index}>
                         <div className="proj-box">
                           <div className="contents">
                             <div className="company-info">
@@ -367,13 +235,10 @@ export const Bottom = () => {
 
                             <ul>
                               <li className="desc-wrapp" ref={boxRef1}>
-                                {list.projList.map((project) => {
+                                {list.projList.map((project, indx) => {
                                   return (
                                     <>
-                                      <div
-                                        className="proj-info ani"
-                                        key={index}
-                                      >
+                                      <div className="proj-info ani" key={indx}>
                                         <img
                                           src={project.imgUrl}
                                           className="pic"
@@ -531,21 +396,17 @@ export const Bottom = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="nav-wrap" ref={navWrapRef}>
+        <div className="nav-wrap">
           <span className="wrap">
             <span onClick={() => scrollToSection("top")}>소개</span>
             <span onClick={() => scrollToSection("skill")}>Stack</span>
             <span onClick={() => scrollToSection("work-container")}>Works</span>
           </span>
 
+          <ChangeLangBtn changeLanguage={changeLanguage} />
           <span style={{ marginLeft: "auto", display: "block" }}>
             <a href="" target="_blank">
               gh
-            </a>
-          </span>
-          <span>
-            <a href="" target="_blank">
-              mail
             </a>
           </span>
         </div>

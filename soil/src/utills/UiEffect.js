@@ -93,13 +93,6 @@ export const useNavWithBlurEffect = (containerRef, navWrapRef) => {
 };
 /////////////////////////// [END] Nav Functions  //////////////////////////////////
 
-export const cursorClassName = (id, isHovered, setIsHovered) => {
-  const base = "allign-r";
-  const hoverIt = isHovered && isHovered[id] ? "cursor-toUp" : "";
-
-  return `${base} ${hoverIt}`.trim();
-};
-
 /////////////////////////// [START] GSAP Animation Function  //////////////////////////////////
 export const useAnimateBoxes = (gsap) => {
   useEffect(() => {
@@ -150,3 +143,31 @@ export const useAnimateBoxes = (gsap) => {
   }, []);
 };
 /////////////////////////// [END] GSAP Animation Function   //////////////////////////////////
+
+/////////////////////////// [Start] Nav Animation Function   //////////////////////////////////
+export const DrawLinesNavElem = (scrollToSection) => {
+  // 특정 state가 true가 되었을 때 onChange로 각 h3에 페이드인 애니메이션 클래스 토글.
+  // 세로줄이 좌->우 방향으로 위에서 아래로 하나씩 0.05s로 드로잉 페이드인.
+  // 그 후 가로줄도 세로줄과 같은 흐름으로 드로잉 페이드인.
+  // 마크업 구조는 div 3개로. 기존 nav 마크업은 살리지않습니다.
+
+  return (
+    <>
+      <section className="menu-container">
+        <span className="wrap">
+          <h3>one</h3>
+          <h3>t</h3>
+          <h3>th</h3>
+        </span>
+      </section>
+    </>
+  );
+};
+/////////////////////////// [END] Nav Animation Function   //////////////////////////////////
+
+export const cursorClassName = (id, isHovered, setIsHovered) => {
+  const base = "allign-r";
+  const hoverIt = isHovered && isHovered[id] ? "cursor-toUp" : "";
+
+  return `${base} ${hoverIt}`.trim();
+};

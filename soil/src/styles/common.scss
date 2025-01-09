@@ -72,6 +72,17 @@ nav {
       margin-left: auto;
     }
   }
+
+  button {
+    &.lang-btn {
+      background: none;
+      border: 1px solid gray;
+      &.active {
+        background: #333;
+        color: #fff;
+      }
+    }
+  }
 }
 
 .row {
@@ -886,10 +897,23 @@ article {
         }
       }
     }
+
     span {
       padding: 0;
       &:nth-child(4) {
         margin-left: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  nav {
+    .nav-wrap {
+      width: 100%;
+    }
+    button {
+      &.lang-btn {
       }
     }
   }
@@ -916,6 +940,23 @@ article {
   filter: blur(3px);
 }
 
-.ani {
-  border: 3px solid red;
+//
+.menu-container {
+  height: 100dvh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h3 {
+    color: rgba(0, 217, 255, 0.7);
+    line-height: 1.6;
+  }
 }
