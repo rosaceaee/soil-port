@@ -574,8 +574,15 @@ article {
             overflow: hidden;
             text-overflow: ellipsis;
             width: 55%;
+            text-decoration: none;
+            border-radius: 10px;
+            border: none;
+
             button {
               width: 100%;
+              padding: 1rem 0;
+              font-size: 1rem;
+              border: none;
             }
           }
           p {
@@ -897,6 +904,7 @@ article {
 
 .pic {
   width: 100%;
+  margin: 0.5rem 0;
 }
 
 .cursor-toUp {
@@ -913,8 +921,4 @@ article {
 
 .stack1 {
   filter: blur(3px);
-}
-
-.ani {
-  border: 3px solid red;
 }
