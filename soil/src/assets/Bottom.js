@@ -15,6 +15,22 @@ import { data, career, others } from "./data";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// lang
+const ChangeLangBtn = ({ changeLanguage }) => {
+  // const { changeLanguage } = useLang();
+  return (
+    <>
+      <button className="lang-btn" onClick={() => changeLanguage("ko")}>
+        11
+      </button>
+      <button className="lang-btn" onClick={() => changeLanguage("ja")}>
+        111
+      </button>
+    </>
+  );
+};
+// lang end
+
 export const Bottom = () => {
   const [isHovered, setIsHovered] = useState({});
   const [up, setUp] = useState(0);
@@ -57,26 +73,9 @@ export const Bottom = () => {
     adobe: "adobe",
   };
 
-  // lang
-  const ChangeLangBtn = ({ changeLanguage }) => {
-    // const { changeLanguage } = useLang();
-    return (
-      <>
-        <button className="lang-btn" onClick={() => changeLanguage("ko")}>
-          11
-        </button>
-        <button className="lang-btn" onClick={() => changeLanguage("ja")}>
-          111
-        </button>
-      </>
-    );
-  };
-  // lang end
-
   return (
     <>
       <article className="container" ref={containerRef}>
-        <DrawLinesNavElem />
         <div className="wrap" id="top">
           <section className="info">
             {/* <img src={require("../img/sprout-sm.png")} alt="" /> */}
@@ -393,8 +392,8 @@ export const Bottom = () => {
 
       <nav
         ref={navWrapRef}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        onMouseEnter={(e) => onMouseEnter("nav", e)}
+        onMouseLeave={(e) => onMouseLeave("nav", e)}
       >
         <div className="nav-wrap">
           <span className="wrap">

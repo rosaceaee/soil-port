@@ -8,15 +8,15 @@ export const useLang = () => {
   const changeLanguage = (lang) => {
     setLanguage(lang);
     setCurrentData(data[lang]);
-    // localStorage.setItem("language", lang);
+    localStorage.setItem("language", lang);
   };
 
   useEffect(() => {
-    // const savedLang = localStorage.getItem("language");
-    // if (savedLang) {
-    //   setLanguage(savedLang);
-    //   setCurrentData(data[savedLang]);
-    // }
+    const savedLang = localStorage.getItem("language");
+    if (savedLang) {
+      setLanguage(savedLang);
+      setCurrentData(data[savedLang]);
+    }
   }, []);
 
   return { currentData, language, changeLanguage };
