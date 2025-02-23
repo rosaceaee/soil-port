@@ -31,6 +31,39 @@ const ChangeLangBtn = ({ changeLanguage }) => {
 };
 // lang end
 
+// nav
+const NavElem1 = React.memo(
+  ({
+    navWrapRef,
+    onMouseEnter,
+    onMouseLeave,
+    scrollToSection,
+    changeLanguage,
+  }) => {
+    const handleMouseEnter = (e) => onMouseEnter("nav", e);
+    const handleMouseLeave = (e) => onMouseLeave("nav", e);
+
+    return (
+      <nav ref={navWrapRef}>
+        <div
+          className="nav-wrap"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <span className="wrap">
+            <span onClick={() => scrollToSection("1")}>111</span>
+            <span onClick={() => scrollToSection("2")}>2</span>
+            <span onClick={() => scrollToSection("3")}>3</span>
+          </span>
+          <span>
+            <ChangeLangBtn changeLanguage={changeLanguage} />
+          </span>
+        </div>
+      </nav>
+    );
+  }
+);
+
 export const Bottom = () => {
   const [isHovered, setIsHovered] = useState({});
   const [up, setUp] = useState(0);
@@ -73,8 +106,41 @@ export const Bottom = () => {
     adobe: "adobe",
   };
 
+  const NavElem = () => {
+    return (
+      <nav ref={navWrapRef}>
+        <div
+          className="nav-wrap"
+          onMouseEnter={(e) => onMouseEnter("nav", e)}
+          onMouseLeave={(e) => onMouseLeave("nav", e)}
+        >
+          <span className="wrap">
+            <span onClick={() => scrollToSection("top")}>소개</span>
+            <span onClick={() => scrollToSection("skill")}>Stack</span>
+            <span onClick={() => scrollToSection("work-container")}>Works</span>
+          </span>
+
+          <span
+            style={{
+              marginLeft: "auto",
+              display: "flex",
+              justifyContent: "space-between",
+              gap: "1rem",
+            }}
+          >
+            <ChangeLangBtn changeLanguage={changeLanguage} />
+            <a href="" target="_blank">
+              gh
+            </a>
+          </span>
+        </div>
+      </nav>
+    );
+  };
+
   return (
     <>
+      <NavElem1 navWrapRef={navWrapRef} />
       <article className="container" ref={containerRef}>
         <div className="wrap" id="top">
           <section className="info">
@@ -97,11 +163,11 @@ export const Bottom = () => {
                 <div className="col"></div>
                 <div className="col desc center">
                   <div className="cont-left">
-                    <span className="up">
+                    {/* <span className="up">
                       {up === 1 ? "자주적인" : null}
                       {up === 2 ? "호기심 많은" : null}
                       {up === 3 ? "" : null} <span>MONO</span>
-                    </span>
+                    </span> */}
                   </div>
                   <div className="cont-right">
                     <div className="col desc">
@@ -144,13 +210,14 @@ export const Bottom = () => {
               <div className="row">
                 <div className="col"></div>
                 <div className="col desc">
-                  <h1
-                    className={isHovered["stack111"] ? "cursor-hover" : ""}
+                  {/* <h1
+                    className={
+                      isHovered["stack111"] ? "sec-title cursor-hover" : ""
+                    }
                     onMouseEnter={(e) => handleMouseEnter("stack111", e)}
                     onMouseLeave={(e) => handleMouseLeave("stack111", e)}
-                  >
-                    Stack
-                  </h1>
+                  > */}
+                  <h1 className="sec-title">Stack</h1>
                 </div>
                 <div className="col"></div>
               </div>
@@ -389,27 +456,6 @@ export const Bottom = () => {
         </div>
         {/****************** works end *******************/}
       </article>
-
-      <nav
-        ref={navWrapRef}
-        onMouseEnter={(e) => onMouseEnter("nav", e)}
-        onMouseLeave={(e) => onMouseLeave("nav", e)}
-      >
-        <div className="nav-wrap">
-          <span className="wrap">
-            <span onClick={() => scrollToSection("top")}>소개</span>
-            <span onClick={() => scrollToSection("skill")}>Stack</span>
-            <span onClick={() => scrollToSection("work-container")}>Works</span>
-          </span>
-
-          <ChangeLangBtn changeLanguage={changeLanguage} />
-          <span style={{ marginLeft: "auto", display: "block" }}>
-            <a href="" target="_blank">
-              gh
-            </a>
-          </span>
-        </div>
-      </nav>
     </>
   );
 };

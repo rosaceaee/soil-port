@@ -41,20 +41,20 @@ nav {
   margin: 0;
   padding: 0;
   position: fixed;
-  bottom: 0;
+  top: 2rem;
   left: 0;
   justify-self: center;
   justify-content: center;
+  z-index: 999;
 
   .nav-wrap {
     // background: #dba968;
     background: rgba(219, 169, 104, 0.7);
     margin: 0 auto;
     width: calc(50% - 1rem);
-    padding: 1rem 1rem;
+    padding: 2rem 1rem;
     display: flex;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-radius: 20px;
   }
 
   span {
@@ -65,7 +65,8 @@ nav {
     &:nth-child(1),
     &:nth-child(2),
     &:nth-child(3) {
-      margin: 0 5px;
+      margin: 0 1rem;
+      font-size: 1.2rem;
     }
 
     &:nth-child(4) {
@@ -77,6 +78,8 @@ nav {
     &.lang-btn {
       background: none;
       border: 1px solid gray;
+      background: #fff;
+      padding: 0 10px;
       &.active {
         background: #333;
         color: #fff;
@@ -201,6 +204,10 @@ nav {
         letter-spacing: 0.3rem;
         color: rgba(146, 107, 106, 1);
         font-weight: 800;
+        font-family: "KBO-Dia-Gothic_bold";
+        &.sec-title {
+          font-family: "KBO-Dia-Gothic_bold";
+        }
       }
     }
   }
@@ -210,6 +217,9 @@ nav {
   }
 }
 
+.sec-title {
+  font-family: "KBO-Dia-Gothic_bold";
+}
 article {
   &.container {
     min-height: 100vh;
@@ -230,7 +240,7 @@ article {
             &:nth-child(1) {
               .col {
                 &.bg {
-                  background: #dba968;
+                  // background: #dba968;
                 }
                 &.desc {
                   position: relative;
@@ -274,6 +284,7 @@ article {
                     span {
                       font-size: 1.2rem;
                       line-height: 1.7;
+                      font-family: "SUIT-Regular";
                     }
                   }
                 }
