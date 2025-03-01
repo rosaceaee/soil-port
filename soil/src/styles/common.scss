@@ -23,9 +23,6 @@ html {
   padding: 0;
 }
 
-.App {
-}
-
 .App-circle {
   width: 100%;
 
@@ -260,7 +257,7 @@ article {
             &:nth-child(2) {
               .col {
                 &.desc {
-                  padding: 1rem;
+                  padding: 0.5rem;
                   display: flex;
                   justify-content: space-between;
                   align-items: flex-end;
@@ -921,7 +918,7 @@ article {
 @media screen and (max-width: 500px) {
   nav {
     .nav-wrap {
-      width: 100%;
+      width: calc(100% - 5rem);
     }
     button {
       &.lang-btn {

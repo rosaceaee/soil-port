@@ -1,16 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLang } from "./useLang";
 import {
-  scrollToSection,
   handleMouseEnter,
   handleMouseLeave,
   cursorClassName,
   useNavWithBlurEffect,
   useAnimateBoxes,
   DrawLinesNavElem,
+  scrollIt,
 } from "../utills/UiEffect";
+
 import { data, career, others } from "./data";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -21,10 +22,10 @@ const ChangeLangBtn = ({ changeLanguage }) => {
   return (
     <>
       <button className="lang-btn" onClick={() => changeLanguage("ko")}>
-        11
+        ko
       </button>
       <button className="lang-btn" onClick={() => changeLanguage("ja")}>
-        111
+        ja
       </button>
     </>
   );
@@ -32,30 +33,24 @@ const ChangeLangBtn = ({ changeLanguage }) => {
 // lang end
 
 // nav
-const NavElem1 = React.memo(
-  ({
-    navWrapRef,
-    onMouseEnter,
-    onMouseLeave,
-    scrollToSection,
-    changeLanguage,
-  }) => {
-    const handleMouseEnter = (e) => onMouseEnter("nav", e);
-    const handleMouseLeave = (e) => onMouseLeave("nav", e);
+const NavElem = React.memo(
+  ({ navWrapRef, onMouseEnter, onMouseLeave, scrollIt, changeLanguage }) => {
+    const detectScroll = useCallback(
+      (sectionId) => {
+        scrollIt(sectionId);
+      },
+      [scrollIt]
+    );
 
     return (
       <nav ref={navWrapRef}>
-        <div
-          className="nav-wrap"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
+        <div className="nav-wrap">
           <span className="wrap">
-            <span onClick={() => scrollToSection("1")}>111</span>
-            <span onClick={() => scrollToSection("2")}>2</span>
-            <span onClick={() => scrollToSection("3")}>3</span>
+            {/* <span onClick={() => detectScroll("top")}>인사</span> */}
+            <span onClick={() => detectScroll("work-container")}>works</span>
+            <span onClick={() => detectScroll("3")}>other</span>
           </span>
-          <span>
+          <span style={{ marginLeft: "auto" }}>
             <ChangeLangBtn changeLanguage={changeLanguage} />
           </span>
         </div>
@@ -106,41 +101,13 @@ export const Bottom = () => {
     adobe: "adobe",
   };
 
-  const NavElem = () => {
-    return (
-      <nav ref={navWrapRef}>
-        <div
-          className="nav-wrap"
-          onMouseEnter={(e) => onMouseEnter("nav", e)}
-          onMouseLeave={(e) => onMouseLeave("nav", e)}
-        >
-          <span className="wrap">
-            <span onClick={() => scrollToSection("top")}>소개</span>
-            <span onClick={() => scrollToSection("skill")}>Stack</span>
-            <span onClick={() => scrollToSection("work-container")}>Works</span>
-          </span>
-
-          <span
-            style={{
-              marginLeft: "auto",
-              display: "flex",
-              justifyContent: "space-between",
-              gap: "1rem",
-            }}
-          >
-            <ChangeLangBtn changeLanguage={changeLanguage} />
-            <a href="" target="_blank">
-              gh
-            </a>
-          </span>
-        </div>
-      </nav>
-    );
-  };
-
   return (
     <>
-      <NavElem1 navWrapRef={navWrapRef} />
+      <NavElem
+        scrollIt={scrollIt}
+        navWrapRef={navWrapRef}
+        changeLanguage={changeLanguage}
+      />
       <article className="container" ref={containerRef}>
         <div className="wrap" id="top">
           <section className="info">
@@ -385,7 +352,14 @@ export const Bottom = () => {
                         <li className="desc-wrapp">
                           <h3 className="txt-proj-name">ㅇㅇ</h3>
                           <p>노년층을 대상으로 싱글 페이지로 작업함</p>
-                          <p>링크</p>
+                          <p>
+                            <a
+                              href="https://rosaceaee.github.io/log-sapjil/"
+                              target="_blank"
+                            >
+                              link
+                            </a>
+                          </p>
                         </li>
                       </ul>
                     </div>

@@ -4,8 +4,9 @@ import { useEffect } from "react";
 ////////////////////////////////////////////////////////////////////////////////////
 
 // nav click scroll evt
-export const scrollToSection = (sectionId) => {
+export const scrollIt = (sectionId) => {
   const section = document.getElementById(sectionId);
+
   if (section) {
     section.scrollIntoView({ behavior: "smooth" });
   }
