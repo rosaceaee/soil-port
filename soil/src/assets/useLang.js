@@ -1,16 +1,13 @@
 import { useState, useEffect } from "react";
 import { data } from "./data";
-
 export const useLang = () => {
   const [language, setLanguage] = useState("ko");
   const [currentData, setCurrentData] = useState(data[language]);
-
   const changeLanguage = (lang) => {
     setLanguage(lang);
     setCurrentData(data[lang]);
     localStorage.setItem("language", lang);
   };
-
   useEffect(() => {
     const savedLang = localStorage.getItem("language");
     if (savedLang) {
@@ -18,7 +15,6 @@ export const useLang = () => {
       setCurrentData(data[savedLang]);
     }
   }, []);
-
   return { currentData, language, changeLanguage };
 };
 
