@@ -9,6 +9,17 @@ export const data = {
         projList: [
           {
             listIdx: 1,
+            projName: "LG전자 고객서비스 웹 사이트 운영",
+            imgUrl: "/img/lge1.png",
+            url: "https://play.google.com/store/apps/details?id=com.mMiraeAssetLife&hl=ko",
+            desc: [
+              "UI 단위 테스트 대응",
+              "프로젝트 가이드 문서 작성하여 신규 입사자에게 원활한 온보딩에 기여",
+            ],
+            skill: ["js", "scss", "html"],
+          },
+          {
+            listIdx: 1,
             projName: "미래에셋생명",
             imgUrl: "/img/lge1.png",
             url: "https://play.google.com/store/apps/details?id=com.mMiraeAssetLife&hl=ko",
