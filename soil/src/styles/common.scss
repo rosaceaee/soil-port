@@ -44,7 +44,7 @@ nav {
   .nav-wrap {
     // background: #dba968;
     // background: rgba(219, 169, 104, 0.7);
-    background: $timidRed-bg;
+    background: $timidBl;
     margin: 0 auto;
     width: calc(50% - 1rem);
     padding: 2rem 1rem;
@@ -591,6 +591,16 @@ article {
             &__desc {
               margin: 1rem 0;
             }
+
+            a {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100%;
+              padding-top: 10px;
+              svg {
+              }
+            }
           }
 
           .box-with-link {
@@ -680,7 +690,7 @@ article {
               &:nth-child(2) {
                 .col {
                   &.desc {
-                    height: 700px;
+                    height: 445px;
                     flex-wrap: wrap;
                     display: flex;
                     justify-content: space-between;
@@ -849,6 +859,29 @@ article {
     .introduce-wrap {
       width: 100%;
       padding: 0;
+
+      .row {
+        &.private-works {
+          .proj-box {
+            .contents {
+              .desc-wrapp {
+                &:nth-child(1) {
+                  margin: 0rem 0;
+                }
+
+                &:nth-child(2) {
+                  margin: 3.5rem 0 0;
+                }
+                p {
+                  &:before {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
       .box {
         &:last-child {
           // padding-bottom: 4rem;

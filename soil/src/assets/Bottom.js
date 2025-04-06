@@ -74,7 +74,7 @@ const NavElem = React.memo(
           <span className="wrap">
             {/* <span onClick={() => detectScroll("top")}>인사</span> */}
             <span onClick={() => detectScroll("work-container")}>works</span>
-            <span onClick={() => detectScroll("3")}>other</span>
+            <span onClick={() => detectScroll("private-works")}>other</span>
           </span>
           <span style={{ marginLeft: "auto" }}>
             {
@@ -335,19 +335,75 @@ export const Bottom = () => {
                                         </h3>
                                         <a
                                           href={`${project.url}`}
+                                          className="link"
                                           target="_blank"
                                         >
-                                          링크
+                                          <svg
+                                            width="25px"
+                                            height="25px"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          >
+                                            <g
+                                              id="SVGRepo_bgCarrier"
+                                              stroke-width="0"
+                                            ></g>
+                                            <g
+                                              id="SVGRepo_tracerCarrier"
+                                              stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                            ></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                              {" "}
+                                              <g clip-path="url(#clip0_429_11072)">
+                                                {" "}
+                                                <path
+                                                  d="M11 3.99994H4V17.9999C4 19.1045 4.89543 19.9999 6 19.9999H18C19.1046 19.9999 20 19.1045 20 17.9999V12.9999"
+                                                  stroke="#926b6a"
+                                                  stroke-width="2.5"
+                                                  stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                ></path>{" "}
+                                                <path
+                                                  d="M9 14.9999L20 3.99994"
+                                                  stroke="#926b6a"
+                                                  stroke-width="2.5"
+                                                  stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                ></path>{" "}
+                                                <path
+                                                  d="M15 3.99994H20V8.99994"
+                                                  stroke="#926b6a"
+                                                  stroke-width="2.5"
+                                                  stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                ></path>{" "}
+                                              </g>{" "}
+                                              <defs>
+                                                {" "}
+                                                <clipPath id="clip0_429_11072">
+                                                  {" "}
+                                                  <rect
+                                                    width="24"
+                                                    height="24"
+                                                    fill="white"
+                                                  ></rect>{" "}
+                                                </clipPath>{" "}
+                                              </defs>{" "}
+                                            </g>
+                                          </svg>
                                         </a>
 
                                         <div className="proj-info__desc">
                                           {project.desc.map(
                                             (descItm, index) => {
-                                              return (
+                                              return descItm ? (
                                                 <p key={index}>{descItm}</p>
-                                              );
+                                              ) : null;
                                             }
                                           )}
+
                                           <div className="label-wrap">
                                             {project.skill.map(
                                               (skillItm, index) => {
@@ -392,7 +448,7 @@ export const Bottom = () => {
               </div>
               <dlv className="col"></dlv>
             </div>
-            <div className="row private-works">
+            <div className="row private-works" id="private-works">
               <div className="col"></div>
               <div className="col">
                 <div className="box">
@@ -412,7 +468,58 @@ export const Bottom = () => {
                               href="https://rosaceaee.github.io/log-sapjil/"
                               target="_blank"
                             >
-                              link
+                              <svg
+                                width="25px"
+                                height="25px"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g
+                                  id="SVGRepo_tracerCarrier"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                ></g>
+                                <g id="SVGRepo_iconCarrier">
+                                  {" "}
+                                  <g clip-path="url(#clip0_429_11072)">
+                                    {" "}
+                                    <path
+                                      d="M11 3.99994H4V17.9999C4 19.1045 4.89543 19.9999 6 19.9999H18C19.1046 19.9999 20 19.1045 20 17.9999V12.9999"
+                                      stroke="#fff"
+                                      stroke-width="2.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    ></path>{" "}
+                                    <path
+                                      d="M9 14.9999L20 3.99994"
+                                      stroke="#fff"
+                                      stroke-width="2.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    ></path>{" "}
+                                    <path
+                                      d="M15 3.99994H20V8.99994"
+                                      stroke="#fff"
+                                      stroke-width="2.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    ></path>{" "}
+                                  </g>{" "}
+                                  <defs>
+                                    {" "}
+                                    <clipPath id="clip0_429_11072">
+                                      {" "}
+                                      <rect
+                                        width="24"
+                                        height="24"
+                                        fill="white"
+                                      ></rect>{" "}
+                                    </clipPath>{" "}
+                                  </defs>{" "}
+                                </g>
+                              </svg>
                             </a>
                           </p>
                         </li>
@@ -427,7 +534,58 @@ export const Bottom = () => {
                               href="https://rosaceaee.github.io/log-sapjil/"
                               target="_blank"
                             >
-                              link
+                              <svg
+                                width="25px"
+                                height="25px"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g
+                                  id="SVGRepo_tracerCarrier"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                ></g>
+                                <g id="SVGRepo_iconCarrier">
+                                  {" "}
+                                  <g clip-path="url(#clip0_429_11072)">
+                                    {" "}
+                                    <path
+                                      d="M11 3.99994H4V17.9999C4 19.1045 4.89543 19.9999 6 19.9999H18C19.1046 19.9999 20 19.1045 20 17.9999V12.9999"
+                                      stroke="#fff"
+                                      stroke-width="2.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    ></path>{" "}
+                                    <path
+                                      d="M9 14.9999L20 3.99994"
+                                      stroke="#fff"
+                                      stroke-width="2.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    ></path>{" "}
+                                    <path
+                                      d="M15 3.99994H20V8.99994"
+                                      stroke="#fff"
+                                      stroke-width="2.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    ></path>{" "}
+                                  </g>{" "}
+                                  <defs>
+                                    {" "}
+                                    <clipPath id="clip0_429_11072">
+                                      {" "}
+                                      <rect
+                                        width="24"
+                                        height="24"
+                                        fill="white"
+                                      ></rect>{" "}
+                                    </clipPath>{" "}
+                                  </defs>{" "}
+                                </g>
+                              </svg>
                             </a>
                           </p>
                         </li>
@@ -545,7 +703,61 @@ export const Bottom = () => {
                                 href={`${list.url}`}
                                 target="_blank"
                               >
-                                <span>링크</span>
+                                <svg
+                                  width="25px"
+                                  height="25px"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <g
+                                    id="SVGRepo_bgCarrier"
+                                    stroke-width="0"
+                                  ></g>
+                                  <g
+                                    id="SVGRepo_tracerCarrier"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  ></g>
+                                  <g id="SVGRepo_iconCarrier">
+                                    {" "}
+                                    <g clip-path="url(#clip0_429_11072)">
+                                      {" "}
+                                      <path
+                                        d="M11 3.99994H4V17.9999C4 19.1045 4.89543 19.9999 6 19.9999H18C19.1046 19.9999 20 19.1045 20 17.9999V12.9999"
+                                        stroke="#fff"
+                                        stroke-width="2.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      ></path>{" "}
+                                      <path
+                                        d="M9 14.9999L20 3.99994"
+                                        stroke="#fff"
+                                        stroke-width="2.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      ></path>{" "}
+                                      <path
+                                        d="M15 3.99994H20V8.99994"
+                                        stroke="#fff"
+                                        stroke-width="2.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      ></path>{" "}
+                                    </g>{" "}
+                                    <defs>
+                                      {" "}
+                                      <clipPath id="clip0_429_11072">
+                                        {" "}
+                                        <rect
+                                          width="24"
+                                          height="24"
+                                          fill="white"
+                                        ></rect>{" "}
+                                      </clipPath>{" "}
+                                    </defs>{" "}
+                                  </g>
+                                </svg>
                               </a>
                             );
                           })}

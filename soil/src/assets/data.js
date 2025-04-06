@@ -10,8 +10,8 @@ export const data = {
           {
             listIdx: 1,
             projName: "LG전자 고객서비스 웹 사이트 운영",
-            imgUrl: "/img/lge1.png",
-            url: "https://play.google.com/store/apps/details?id=com.mMiraeAssetLife&hl=ko",
+            imgUrl: "/img/lge0.png",
+            url: "https://www.lge.co.kr/support",
             desc: [
               "UI 단위 테스트 대응",
               "프로젝트 가이드 문서 작성하여 신규 입사자에게 원활한 온보딩에 기여",
@@ -44,7 +44,7 @@ export const data = {
           {
             listIdx: 3,
             projName: "현대자동차 N브랜드 사이트 리뉴얼",
-            imgUrl: "/img/lge1.png",
+            imgUrl: "/img/nbrand2.png",
             url: "https://www.hyundai-n.com/",
             desc: [
               "ui디자인 일관성과 생산성을 높이기 위한 컴포넌트 시스템 개선 및 참여",
@@ -63,8 +63,9 @@ export const data = {
         projList: [
           {
             listIdx: 1,
-            imgUrl: "/img/lge1.png",
+            // imgUrl: "/img/lge1.png",
             projName: "최선어학원 creo 유지보수",
+            url: "https://play.google.com/store/apps/details?id=com.culpmobile.creo&pcampaignid=web_share",
             desc: [
               "웹, 앱의 UIUX 유지보수 및 테스트",
               "ui에 적용된 기존 레거시 소스 정리 및 코드 개선하여 코드 가독성과 사용성 개선",
@@ -72,25 +73,25 @@ export const data = {
             ],
             skill: ["react", "reactNative", "scss", "html"],
           },
-          {
-            listIdx: 2,
-            imgUrl: "/img/lge1.png",
-            projName: "metaexam 영어시험 구축",
-            url: "url",
-            desc: [
-              "전체 페이지 UI 퍼블리싱, 화면 검수 및 테스트 참여",
-              "수험자의 이해를 돕기 위한 uiux 레이아웃 설계에 일부 참여",
-              "사용한 ui라이브러리: ant design",
-            ],
-            skill: ["react", "scss", "html"],
-          },
+          // {
+          //   listIdx: 2,
+          //   imgUrl: "/img/lge1.png",
+          //   projName: "metaexam 영어시험 구축",
+          //   url: "url",
+          //   desc: [
+          //     "전체 페이지 UI 퍼블리싱, 화면 검수 및 테스트 참여",
+          //     "수험자의 이해를 돕기 위한 uiux 레이아웃 설계에 일부 참여",
+          //     "사용한 ui라이브러리: ant design",
+          //   ],
+          //   skill: ["react", "scss", "html"],
+          // },
           {
             listIdx: 3,
-            imgUrl: "/img/lge1.png",
+            // imgUrl: "/img/lge1.png",
             projName: " phonics monster 교육 툴 유지보수",
-            url: "url",
+            url: "https://play.google.com/store/apps/details?id=com.epublic.phonicsmonster",
             desc: [
-              "퍼블리싱, 테스트",
+              "퍼블리싱, 단위 테스트",
               "기존에 사용된 css 레거시 코드 정리 및 전체 소스 리팩토링으로 코드 가독성 개선",
               "ui 테스트 작업 대응하여 디바이스 최적화 작업",
             ],
@@ -106,9 +107,9 @@ export const data = {
         projList: [
           {
             listIdx: 1,
-            projName: "구인구직 공고 페이지 운영",
-            url: "url",
-            desc: ["구인구직 공고페이지 운영 및 공고 관리"],
+            projName: "잡코리아 공고 페이지 운영",
+            url: "https://www.jobkorea.co.kr/",
+            desc: ["잡코리아 공고페이지 운영 및 공고 관리"],
             skill: ["css", "html"],
           },
         ],
@@ -122,21 +123,21 @@ export const data = {
           {
             listIdx: 1,
             projName: "서울여자대학교 아동학과",
-            url: "url",
+            url: "https://childstudy.swu.ac.kr/",
             desc: [""],
             skill: ["js", "css", "html"],
           },
           {
             listIdx: 2,
             projName: "ssmedipia",
-            url: "url",
+            url: "http://www.ssmedipia.com/",
             desc: [""],
             skill: ["js", "css", "html"],
           },
           {
             listIdx: 3,
             projName: "파란관세사무소",
-            url: "url",
+            url: "http://bluecustoms.co.kr/",
             desc: [""],
             skill: ["js", "css", "html"],
           },
@@ -243,7 +244,7 @@ export const data = {
         projList: [
           {
             listIdx: 1,
-            projName: "미래에셋생명",
+            projName: "미래에셋생명 앱 구축",
             imgUrl: "/img/lge1.png",
             url: "https://play.google.com/store/apps/details?id=com.mMiraeAssetLife&hl=ko",
             desc: [
@@ -254,7 +255,7 @@ export const data = {
           },
           {
             listIdx: 2,
-            projName: "LG global platform",
+            projName: "LG global platform 구축",
             imgUrl: "/img/lge1.png",
             url: "https://www.lg.com/hu/",
             desc: [
@@ -329,9 +330,9 @@ export const data = {
         projList: [
           {
             listIdx: 1,
-            projName: "구인구직 공고 페이지 운영",
+            projName: "잡코리아 공고 페이지 운영",
             url: "url",
-            desc: ["구인구직 공고페이지 운영 및 공고 관리"],
+            desc: ["잡코리아 공고페이지 운영 및 공고 관리"],
             skill: ["css", "html"],
           },
         ],
