@@ -152,8 +152,8 @@ export const data = {
           {
             listIdx: 1,
             projName: "projname1",
-            url: "url",
-            desc: ["노년층을 대상으로 싱글 페이지로 작업함", "", "desc3"],
+            url: "https://rosaceaee.github.io/log-sapjil/",
+            desc: ["노년층을 대상으로 싱글 페이지로 작업", "", "desc3"],
             skill: ["react", "scss"],
           },
         ],
@@ -375,8 +375,8 @@ export const data = {
           {
             listIdx: 1,
             projName: "projname1",
-            url: "url",
-            desc: ["노년층을 대상으로 싱글 페이지로 작업함", "", "desc3"],
+            url: "https://rosaceaee.github.io/log-sapjil/",
+            desc: ["노년층을 대상으로 싱글 페이지로 작업", "", "desc3"],
             skill: ["react", "scss"],
           },
         ],

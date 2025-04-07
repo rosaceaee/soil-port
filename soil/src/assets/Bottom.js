@@ -267,7 +267,7 @@ export const Bottom = () => {
                         </li>
                         <li>
                           <p className="tit">Interested in...</p>
-                          <p>Python, </p>
+                          <p>to improve my health </p>
                         </li>
                         <li>
                           <p className="tit">Also available...</p>
@@ -462,7 +462,11 @@ export const Bottom = () => {
                           <h3 className="txt-proj-name">
                             숫자 검색 싱글페이지
                           </h3>
-                          <p>노년층을 대상으로 싱글 페이지로 작업함</p>
+                          <p>
+                            노년층을 대상으로 싱글 페이지로 작업함
+                            <br />
+                            React
+                          </p>
                           <p>
                             <a
                               href="https://rosaceaee.github.io/log-sapjil/"
@@ -526,8 +530,8 @@ export const Bottom = () => {
                         <li className="desc-wrapp">
                           <h3 className="txt-proj-name">환율 크롤링 위젯</h3>
                           <p>
-                            실시간 환율 크롤링 페이지. <br /> cheerio를 사용하여
-                            크롤링
+                            실시간 환율 크롤링 페이지. <br />
+                            React, Node.js
                           </p>
                           <p>
                             <a
