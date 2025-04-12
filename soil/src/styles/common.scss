@@ -613,6 +613,7 @@ article {
             width: 55%;
             text-decoration: none;
 
+
             button {
               width: 100%;
               padding: 10px 5px;
@@ -627,6 +628,8 @@ article {
                 width: 20px !important;
                 height: 20px !important;
               }
+
+
             }
           }
           p {
@@ -1014,6 +1017,7 @@ article {
 
 .pic {
   width: 100%;
+  margin: 0.5rem 0;
 }
 
 .cursor-toUp {
@@ -1033,7 +1037,7 @@ article {
   filter: blur(3px);
 }
 
-//
+
 .menu-container {
   height: 100dvh;
   width: 100%;
@@ -1053,3 +1057,4 @@ article {
     line-height: 1.6;
   }
 }
+
