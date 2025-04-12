@@ -1,16 +1,136 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
-import { data, career, others } from "./data";
-
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLang } from "./useLang";
+import {
+  handleMouseEnter,
+  handleMouseLeave,
+  cursorClassName,
+  useNavWithBlurEffect,
+  useAnimateBoxes,
+  DrawLinesNavElem,
+  scrollIt,
+} from "../utills/UiEffect";
+
+import { data, career, others } from "./data";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
+// lang
+const ChangeLangBtn = ({ changeLanguage }) => {
+  const [activeLanguage, setActiveLanguage] = useState("ko");
+
+  useEffect(() => {
+    const savedLang = localStorage.getItem("language");
+    if (savedLang) {
+      setActiveLanguage(savedLang);
+    }
+  }, []);
+
+  const handleLanguageChange = (lang) => {
+    setActiveLanguage(lang);
+    changeLanguage(lang);
+  };
+
+  return (
+    <>
+      <button
+        className={`lang-btn ${activeLanguage === "ko" ? "active" : ""}`}
+        onClick={() => handleLanguageChange("ko")}
+      >
+        ko
+      </button>
+      <button
+        className={`lang-btn ${activeLanguage === "ja" ? "active" : ""}`}
+        onClick={() => handleLanguageChange("ja")}
+      >
+        ja
+      </button>
+    </>
+  );
+};
+// lang end
+
+// nav
+const NavElem = React.memo(
+  ({
+    navWrapRef,
+    onMouseEnter,
+    onMouseLeave,
+    scrollIt,
+    changeLanguage,
+    language,
+  }) => {
+    const detectScroll = useCallback(
+      (sectionId) => {
+        scrollIt(sectionId);
+      },
+      [scrollIt]
+    );
+
+    return (
+      <nav ref={navWrapRef}>
+        <div className="nav-wrap">
+          <span className="wrap">
+            {/* <span onClick={() => detectScroll("top")}>인사</span> */}
+            <span onClick={() => detectScroll("work-container")}>works</span>
+            <span onClick={() => detectScroll("private-works")}>other</span>
+          </span>
+          <span style={{ marginLeft: "auto" }}>
+            {
+              <ChangeLangBtn
+                changeLanguage={changeLanguage}
+                currentLanguage={language}
+              />
+            }
+          </span>
+        </div>
+
+        <span className="btn-top" onClick={() => detectScroll("top")}>
+          <svg
+            width="70px"
+            height="70px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              {" "}
+              <path
+                opacity="0.4"
+                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                fill="#926b6a"
+              ></path>{" "}
+              <path
+                d="M15.5295 10.9699L12.5295 7.96994C12.2395 7.67994 11.7595 7.67994 11.4695 7.96994L8.46945 10.9699C8.17945 11.2599 8.17945 11.7399 8.46945 12.0299C8.75945 12.3199 9.23945 12.3199 9.52945 12.0299L11.2495 10.3099V15.4999C11.2495 15.9099 11.5895 16.2499 11.9995 16.2499C12.4095 16.2499 12.7495 15.9099 12.7495 15.4999V10.3099L14.4695 12.0299C14.6195 12.1799 14.8095 12.2499 14.9995 12.2499C15.1895 12.2499 15.3795 12.1799 15.5295 12.0299C15.8195 11.7399 15.8195 11.2599 15.5295 10.9699Z"
+                fill="#926b6a"
+              ></path>{" "}
+            </g>
+          </svg>
+        </span>
+      </nav>
+    );
+  }
+);
+
+export const Bottom = () => {
   const [isHovered, setIsHovered] = useState({});
   const [up, setUp] = useState(0);
-  const [workPosition, setWorkPosition] = useState(-180 * 16);
+  // const [workPosition, setWorkPosition] = useState(-180 * 16);
+  const { currentData, language, changeLanguage } = useLang();
+
+  const boxRef1 = useRef(null);
+  const containerRef = useRef(null);
+  const navWrapRef = useRef(null);
+
+  useNavWithBlurEffect(containerRef, navWrapRef);
+  useAnimateBoxes(gsap);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,38 +141,12 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
     return () => clearInterval(interval);
   }, []);
 
-  // const handleMouseEnter = (e) => {
-  //   setIsHovered(true);
-  //   onMouseEnter && onMouseEnter(e);
-  // };
-  const handleMouseEnter = (id, e) => {
-    setIsHovered((prev) => ({ ...prev, [id]: true }));
-    onMouseEnter && onMouseEnter(e);
-  };
-  const handleMouseLeave = (id, e) => {
-    setIsHovered((prev) => ({ ...prev, [id]: false }));
-    onMouseLeave && onMouseLeave(e);
+  const onMouseEnter = (id, e) => {
+    handleMouseEnter(id, e, setIsHovered);
   };
 
-  // const handleMouseLeave = (e) => {
-  //   setIsHovered(false);
-  //   onMouseLeave && onMouseLeave(e);
-  // };
-
-  // nav
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  // cursor toggle class
-  const cursorClassName = (id) => {
-    const base = "allign-r";
-    const hoverIt = isHovered[id] ? "cursor-toUp" : "";
-
-    return `${base} ${hoverIt}`.trim();
+  const onMouseLeave = (id, e) => {
+    handleMouseLeave(id, e, setIsHovered);
   };
 
   const sList = {
@@ -67,150 +161,13 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
     adobe: "adobe",
   };
 
-  const boxRef1 = useRef(null);
-  const containerRef = useRef(null);
-  const navWrapRef = useRef(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    const navWrap = navWrapRef.current;
-    const elements = container?.querySelectorAll(
-      ".wrap p, .wrap h3, .work-con p, .work-container h2,.work-container h3, .work-container p"
-    );
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (!navWrap) return;
-
-        const navRect = navWrap.getBoundingClientRect();
-
-        entries.forEach((entry) => {
-          const elementRect = entry.target.getBoundingClientRect();
-
-          // nav-wrap과의 겹침을 더 엄격하게 계산
-          const isIntersecting =
-            elementRect.bottom > navRect.top &&
-            elementRect.top < navRect.bottom &&
-            elementRect.right > navRect.left &&
-            elementRect.left < navRect.right &&
-            // 요소가 viewport 내에 있는지 확인
-            elementRect.top < window.innerHeight &&
-            elementRect.bottom > 0;
-
-          entry.target.classList.toggle("cursor-hover", isIntersecting);
-        });
-      },
-      {
-        root: null,
-        // rootMargin을 nav-wrap의 실제 높이에 맞게 조정
-        rootMargin: "-20% 0px -20% 0px", // 위아래 여백을 줄임
-        threshold: [0, 1.0], // threshold 값을 단순화
-      }
-    );
-
-    elements?.forEach((element) => observer.observe(element));
-
-    // 스크롤 이벤트에서도 체크하여 더 부드러운 전환 구현
-    const handleScroll = () => {
-      if (!navWrap) return;
-      const navRect = navWrap.getBoundingClientRect();
-
-      elements?.forEach((element) => {
-        const elementRect = element.getBoundingClientRect();
-        const isIntersecting =
-          elementRect.bottom > navRect.top &&
-          elementRect.top < navRect.bottom &&
-          elementRect.right > navRect.left &&
-          elementRect.left < navRect.right &&
-          elementRect.top < window.innerHeight &&
-          elementRect.bottom > 0;
-
-        element.classList.toggle("cursor-hover", isIntersecting);
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      elements?.forEach((element) => observer.unobserve(element));
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-  useEffect(() => {
-    let ctx;
-
-    const setAnimation = () => {
-      ctx = gsap.context(() => {
-        const boxes = gsap.utils.toArray(".ani");
-        const isMobile = window.innerWidth < 768;
-
-        boxes.forEach((box) => {
-          gsap.fromTo(
-            box,
-            {
-              y: isMobile ? 150 : 300,
-              opacity: 0,
-            },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 1.5,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: box,
-                start: "top bottom",
-                end: isMobile ? "top 20%" : "top 5%",
-                scrub: true,
-              },
-            }
-          );
-        });
-      });
-    };
-
-    setAnimation();
-
-    const handleResize = () => {
-      ctx?.revert();
-      setAnimation();
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      ctx?.revert(); // cleanup
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  console.log(ScrollTrigger.getAll());
-  // useEffect(() => {
-  //   let mm = gsap.matchMedia();
-  //   const boxItems = gsap.context((self) => {
-  //     const boxes = self.selector(".ani");
-  //     boxes.forEach((box) => {
-  //       gsap.from(box, {
-  //         y: 300,
-  //         opacity: 0,
-  //         stagger: 1,
-  //         scrollTrigger: {
-  //           trigger: box,
-  //           start: "top bottom", // 셀렉터로 등록한 요소의 상단이 뷰포트의 바닥에 있을 때 시작
-  //           end: "top 5%", // 상단 20프로에서 완료
-  //           scrub: true, // 하위요소를 하나씩 순차적으로 하고 싶어서 등록
-  //         },
-  //       });
-  //       gsap.to(box, {
-  //         y: 0,
-  //         opacity: 0,
-  //       });
-  //     });
-  //   }, boxRef1); // ref 값은 scope로만 등록한다
-  //   return () => boxItems.revert(); // clean up
-  // }, []); // <- Scope!
-
   return (
     <>
+      <NavElem
+        scrollIt={scrollIt}
+        navWrapRef={navWrapRef}
+        changeLanguage={changeLanguage}
+      />
       <article className="container" ref={containerRef}>
         <div className="wrap" id="top">
           <section className="info">
@@ -220,11 +177,11 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                 <div className="col bg"></div>
                 <div className="col desc">
                   <h1
-                    className={cursorClassName("stack1")}
-                    onMouseEnter={(e) => handleMouseEnter("stack1", e)}
-                    onMouseLeave={(e) => handleMouseLeave("stack1", e)}
+                    className={cursorClassName("stack1", isHovered)}
+                    onMouseEnter={(e) => onMouseEnter("stack1", e)}
+                    onMouseLeave={(e) => onMouseLeave("stack1", e)}
                   >
-                    .
+                    .asdf
                   </h1>
                 </div>
                 <div className="col"></div>
@@ -232,13 +189,6 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
               <div className="row">
                 <div className="col"></div>
                 <div className="col desc center">
-                  <div className="cont-left">
-                    <span className="up">
-                      {up === 1 ? "자주적인" : null}
-                      {up === 2 ? "호기심 많은" : null}
-                      {up === 3 ? "" : null} <span>MONO</span>
-                    </span>
-                  </div>
                   <div className="cont-right">
                     <div className="col desc">
                       <span>
@@ -248,29 +198,29 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                         <br />
                         なお、学習者のため勉強しやすくするためにウェブサイトの翻訳にも興味があって、
                         こんちゅりびゅーとしてます。 */}
-                        <h3>
-                          새로운 정보와 즐거운 것들을 같이 경험하는 것을
-                          좋아합니다.
+                        <h3 style={{ textAlign: "right" }}>
+                          더 나은 UI/UX와 조화로운 협업으로, <br />
+                          사용자와 개발자가 모두 만족하는 UI를 만드는
+                          뫄뫄뫄입니다.
                         </h3>
                         <p>
-                          React와 Js로 웹 퍼블리싱과 프론트작업을 하며 중간
-                          역할과 더불어 UIUX개선을 하며 프로젝트를 성공적으로
-                          완수하였습니다.
+                          웹 퍼블리싱으로 시작하여 프론트엔드 개발까지, UI/UX
+                          개선과 중간 역할을 수행하여 프로젝트를 성공적으로
+                          완수했습니다. 디자이너, 기획자, 개발자와 원활한 협업을
+                          통해 디자인 시스템을 정리하고, UI/UX 개선하며
+                          프로젝트를 성공적으로 완수했습니다.
                         </p>
                         <p>
-                          혼자만 아는 것보다 스스로의 능력이 사람들에게 도움이
-                          되길 바라며 웹 문서의 영한번역에도 기여하고 있습니다.
+                          기획자와 디자이너 사이에서 비개발 직군과 원활한
+                          작업진행에 도움이 되는 것에 보람을 느낍니다.
                         </p>
-                        <p>
-                          기획자와 디자이너 사이에서 비개발 직군에게도 이해하기
-                          쉽게 설명하여 원활한 작업진행에 도움이 되는 것에
-                          보람을 느낍니다.
-                        </p>
-                        <p>
-                          인터랙션, 심미성이 높은 UI 구현과 더불어 사용자 경험의
-                          향상, 그리고 변화하는 개발 생태계에서 끊임없이 배우며
-                          같이 일하고 싶은 개발자가 되고 싶습니다.
-                        </p>
+                        {/* <p>
+                          또한, 웹 접근성과 가독성을 고려한 UI 설계를 중요하게
+                          생각하며, 글로벌 사용자를 위해 웹 문서의 영한 번역에도
+                          기여하고 있습니다. 변화하는 웹 환경에서 더 나은 사용자
+                          경험을 고민하고, 개발 생산성을 높이는 UI 솔루션을
+                          탐구하며, 지속적으로 성장하는 개발자가 되고 싶습니다.
+                        </p> */}
                       </span>
                     </div>
                   </div>
@@ -280,13 +230,14 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
               <div className="row">
                 <div className="col"></div>
                 <div className="col desc">
-                  <h1
-                    className={isHovered["stack111"] ? "cursor-hover" : ""}
+                  {/* <h1
+                    className={
+                      isHovered["stack111"] ? "sec-title cursor-hover" : ""
+                    }
                     onMouseEnter={(e) => handleMouseEnter("stack111", e)}
                     onMouseLeave={(e) => handleMouseLeave("stack111", e)}
-                  >
-                    Stack
-                  </h1>
+                  > */}
+                  <h1 className="sec-title">Stack</h1>
                 </div>
                 <div className="col"></div>
               </div>
@@ -316,7 +267,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                         </li>
                         <li>
                           <p className="tit">Interested in...</p>
-                          <p>Python, </p>
+                          <p>to improve my health </p>
                         </li>
                         <li>
                           <p className="tit">Also available...</p>
@@ -350,16 +301,15 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
             </div>
             <dlv className="col"></dlv>
           </div>
-
           <div className="introduce-wrap">
             {/* box1 - works */}
             <div className="row">
               <div className="col"></div>
               <div className="col">
-                {data.career.map((list, index) => {
+                {currentData.career.map((list, index) => {
                   return (
                     <>
-                      <div className="box">
+                      <div className="box" key={index}>
                         <div className="proj-box">
                           <div className="contents">
                             <div className="company-info">
@@ -371,13 +321,10 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
 
                             <ul>
                               <li className="desc-wrapp" ref={boxRef1}>
-                                {list.projList.map((project) => {
+                                {list.projList.map((project, indx) => {
                                   return (
                                     <>
-                                      <div
-                                        className="proj-info ani"
-                                        key={index}
-                                      >
+                                      <div className="proj-info ani" key={indx}>
                                         <img
                                           src={project.imgUrl}
                                           className="pic"
@@ -388,19 +335,75 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                                         </h3>
                                         <a
                                           href={`${project.url}`}
+                                          className="link"
                                           target="_blank"
                                         >
-                                          링크
+                                          <svg
+                                            width="25px"
+                                            height="25px"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          >
+                                            <g
+                                              id="SVGRepo_bgCarrier"
+                                              stroke-width="0"
+                                            ></g>
+                                            <g
+                                              id="SVGRepo_tracerCarrier"
+                                              stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                            ></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                              {" "}
+                                              <g clip-path="url(#clip0_429_11072)">
+                                                {" "}
+                                                <path
+                                                  d="M11 3.99994H4V17.9999C4 19.1045 4.89543 19.9999 6 19.9999H18C19.1046 19.9999 20 19.1045 20 17.9999V12.9999"
+                                                  stroke="#926b6a"
+                                                  stroke-width="2.5"
+                                                  stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                ></path>{" "}
+                                                <path
+                                                  d="M9 14.9999L20 3.99994"
+                                                  stroke="#926b6a"
+                                                  stroke-width="2.5"
+                                                  stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                ></path>{" "}
+                                                <path
+                                                  d="M15 3.99994H20V8.99994"
+                                                  stroke="#926b6a"
+                                                  stroke-width="2.5"
+                                                  stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                ></path>{" "}
+                                              </g>{" "}
+                                              <defs>
+                                                {" "}
+                                                <clipPath id="clip0_429_11072">
+                                                  {" "}
+                                                  <rect
+                                                    width="24"
+                                                    height="24"
+                                                    fill="white"
+                                                  ></rect>{" "}
+                                                </clipPath>{" "}
+                                              </defs>{" "}
+                                            </g>
+                                          </svg>
                                         </a>
 
                                         <div className="proj-info__desc">
                                           {project.desc.map(
                                             (descItm, index) => {
-                                              return (
+                                              return descItm ? (
                                                 <p key={index}>{descItm}</p>
-                                              );
+                                              ) : null;
                                             }
                                           )}
+
                                           <div className="label-wrap">
                                             {project.skill.map(
                                               (skillItm, index) => {
@@ -445,7 +448,7 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
               </div>
               <dlv className="col"></dlv>
             </div>
-            <div className="row">
+            <div className="row private-works" id="private-works">
               <div className="col"></div>
               <div className="col">
                 <div className="box">
@@ -456,9 +459,139 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                       </div>
                       <ul>
                         <li className="desc-wrapp">
-                          <h3 className="txt-proj-name">ㅇㅇ</h3>
-                          <p>노년층을 대상으로 싱글 페이지로 작업함</p>
-                          <p>링크</p>
+                          <h3 className="txt-proj-name">
+                            숫자 검색 싱글페이지
+                          </h3>
+                          <p>
+                            노년층을 대상으로 싱글 페이지로 작업함
+                            <br />
+                            React
+                          </p>
+                          <p>
+                            <a
+                              href="https://rosaceaee.github.io/log-sapjil/"
+                              target="_blank"
+                            >
+                              <svg
+                                width="25px"
+                                height="25px"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g
+                                  id="SVGRepo_tracerCarrier"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                ></g>
+                                <g id="SVGRepo_iconCarrier">
+                                  {" "}
+                                  <g clip-path="url(#clip0_429_11072)">
+                                    {" "}
+                                    <path
+                                      d="M11 3.99994H4V17.9999C4 19.1045 4.89543 19.9999 6 19.9999H18C19.1046 19.9999 20 19.1045 20 17.9999V12.9999"
+                                      stroke="#fff"
+                                      stroke-width="2.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    ></path>{" "}
+                                    <path
+                                      d="M9 14.9999L20 3.99994"
+                                      stroke="#fff"
+                                      stroke-width="2.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    ></path>{" "}
+                                    <path
+                                      d="M15 3.99994H20V8.99994"
+                                      stroke="#fff"
+                                      stroke-width="2.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    ></path>{" "}
+                                  </g>{" "}
+                                  <defs>
+                                    {" "}
+                                    <clipPath id="clip0_429_11072">
+                                      {" "}
+                                      <rect
+                                        width="24"
+                                        height="24"
+                                        fill="white"
+                                      ></rect>{" "}
+                                    </clipPath>{" "}
+                                  </defs>{" "}
+                                </g>
+                              </svg>
+                            </a>
+                          </p>
+                        </li>
+                        <li className="desc-wrapp">
+                          <h3 className="txt-proj-name">환율 크롤링 위젯</h3>
+                          <p>
+                            실시간 환율 크롤링 페이지. <br />
+                            React, Node.js
+                          </p>
+                          <p>
+                            <a
+                              href="https://rosaceaee.github.io/log-sapjil/"
+                              target="_blank"
+                            >
+                              <svg
+                                width="25px"
+                                height="25px"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g
+                                  id="SVGRepo_tracerCarrier"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                ></g>
+                                <g id="SVGRepo_iconCarrier">
+                                  {" "}
+                                  <g clip-path="url(#clip0_429_11072)">
+                                    {" "}
+                                    <path
+                                      d="M11 3.99994H4V17.9999C4 19.1045 4.89543 19.9999 6 19.9999H18C19.1046 19.9999 20 19.1045 20 17.9999V12.9999"
+                                      stroke="#fff"
+                                      stroke-width="2.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    ></path>{" "}
+                                    <path
+                                      d="M9 14.9999L20 3.99994"
+                                      stroke="#fff"
+                                      stroke-width="2.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    ></path>{" "}
+                                    <path
+                                      d="M15 3.99994H20V8.99994"
+                                      stroke="#fff"
+                                      stroke-width="2.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    ></path>{" "}
+                                  </g>{" "}
+                                  <defs>
+                                    {" "}
+                                    <clipPath id="clip0_429_11072">
+                                      {" "}
+                                      <rect
+                                        width="24"
+                                        height="24"
+                                        fill="white"
+                                      ></rect>{" "}
+                                    </clipPath>{" "}
+                                  </defs>{" "}
+                                </g>
+                              </svg>
+                            </a>
+                          </p>
                         </li>
                       </ul>
                     </div>
@@ -487,36 +620,153 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
                           </h3>
                         </li>
                         <li className="desc-wrapp otherWork">
-                          {data.others[1].projList.map((list, index) => {
+                          {currentData.others[1].projList.map((list, index) => {
                             return (
                               <a
-                                className="box-with-link"
+                                className={`box-with-link ${index}`}
                                 href={`${list.url}`}
                                 target="_blank"
                               >
-                                <button>{list.projName}</button>
+                                <button>
+                                  {list.projName}
+                                  <svg
+                                    width="30px"
+                                    height="30px"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <g
+                                      id="SVGRepo_bgCarrier"
+                                      stroke-width="0"
+                                    ></g>
+                                    <g
+                                      id="SVGRepo_tracerCarrier"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    ></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                      {" "}
+                                      <g clip-path="url(#clip0_429_11072)">
+                                        {" "}
+                                        <path
+                                          d="M11 3.99994H4V17.9999C4 19.1045 4.89543 19.9999 6 19.9999H18C19.1046 19.9999 20 19.1045 20 17.9999V12.9999"
+                                          stroke="#926b6a"
+                                          stroke-width="2.5"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        ></path>{" "}
+                                        <path
+                                          d="M9 14.9999L20 3.99994"
+                                          stroke="#926b6a"
+                                          stroke-width="2.5"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        ></path>{" "}
+                                        <path
+                                          d="M15 3.99994H20V8.99994"
+                                          stroke="#926b6a"
+                                          stroke-width="2.5"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        ></path>{" "}
+                                      </g>{" "}
+                                      <defs>
+                                        {" "}
+                                        <clipPath id="clip0_429_11072">
+                                          {" "}
+                                          <rect
+                                            width="24"
+                                            height="24"
+                                            fill="white"
+                                          ></rect>{" "}
+                                        </clipPath>{" "}
+                                      </defs>{" "}
+                                    </g>
+                                  </svg>
+                                </button>
                               </a>
                             );
                           })}
                         </li>
-                        <li>
+
+                        <li
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "10px",
+                          }}
+                        >
                           <h3 className="txt-proj-name">
                             regexlearn 한국어 번역 기여
                           </h3>
-                        </li>
-                        <li className="desc-wrapp otherWork">
-                          {data.others[2].projList.map((list, index) => {
+                          {currentData.others[2].projList.map((list, index) => {
                             return (
                               <a
-                                className="box-with-link"
+                                className={`box-with-link ${index}`}
                                 href={`${list.url}`}
                                 target="_blank"
                               >
-                                <button>{list.projName}</button>
+                                <svg
+                                  width="25px"
+                                  height="25px"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <g
+                                    id="SVGRepo_bgCarrier"
+                                    stroke-width="0"
+                                  ></g>
+                                  <g
+                                    id="SVGRepo_tracerCarrier"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  ></g>
+                                  <g id="SVGRepo_iconCarrier">
+                                    {" "}
+                                    <g clip-path="url(#clip0_429_11072)">
+                                      {" "}
+                                      <path
+                                        d="M11 3.99994H4V17.9999C4 19.1045 4.89543 19.9999 6 19.9999H18C19.1046 19.9999 20 19.1045 20 17.9999V12.9999"
+                                        stroke="#fff"
+                                        stroke-width="2.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      ></path>{" "}
+                                      <path
+                                        d="M9 14.9999L20 3.99994"
+                                        stroke="#fff"
+                                        stroke-width="2.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      ></path>{" "}
+                                      <path
+                                        d="M15 3.99994H20V8.99994"
+                                        stroke="#fff"
+                                        stroke-width="2.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      ></path>{" "}
+                                    </g>{" "}
+                                    <defs>
+                                      {" "}
+                                      <clipPath id="clip0_429_11072">
+                                        {" "}
+                                        <rect
+                                          width="24"
+                                          height="24"
+                                          fill="white"
+                                        ></rect>{" "}
+                                      </clipPath>{" "}
+                                    </defs>{" "}
+                                  </g>
+                                </svg>
                               </a>
                             );
                           })}
                         </li>
+                        <li className="desc-wrapp otherWork"></li>
                       </ul>
                     </div>
                   </div>
@@ -525,31 +775,11 @@ export const Bottom = ({ onMouseEnter, onMouseLeave }) => {
               <div className="col"></div>
             </div>
             {/* // .projbox */}
+            <div>hehehe</div>
           </div>
         </div>
         {/****************** works end *******************/}
       </article>
-
-      <nav onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <div className="nav-wrap" ref={navWrapRef}>
-          <span className="wrap">
-            <span onClick={() => scrollToSection("top")}>소개</span>
-            <span onClick={() => scrollToSection("skill")}>Stack</span>
-            <span onClick={() => scrollToSection("work-container")}>Works</span>
-          </span>
-
-          <span style={{ marginLeft: "auto", display: "block" }}>
-            <a href="" target="_blank">
-              gh
-            </a>
-          </span>
-          <span>
-            <a href="" target="_blank">
-              mail
-            </a>
-          </span>
-        </div>
-      </nav>
     </>
   );
 };

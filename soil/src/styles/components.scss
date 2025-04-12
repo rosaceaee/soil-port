@@ -1,5 +1,8 @@
 /* color */
 $red: #ff5757;
+$timidRed: rgba(239, 81, 81, 0.19);
+$timidRed-bg: rgba(180, 82, 82, 0.6);
+$timidBl: rgba(27, 105, 157, 0.7);
 $sunGlow: #ffc547;
 $indigoBlue: #1b699d;
 $linen: #f9f3eb;
@@ -27,6 +30,22 @@ $spaceLight: #42494d;
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2")
     format("woff2");
   font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GowunDodum-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "KBO-Dia-Gothic_bold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/KBO-Dia-Gothic_bold.woff")
+    format("woff");
+  font-weight: 700;
   font-style: normal;
 }
 
