@@ -199,28 +199,10 @@ export const Bottom = () => {
                         なお、学習者のため勉強しやすくするためにウェブサイトの翻訳にも興味があって、
                         こんちゅりびゅーとしてます。 */}
                         <h3 style={{ textAlign: "right" }}>
-                          더 나은 UI/UX와 조화로운 협업으로, <br />
-                          사용자와 개발자가 모두 만족하는 UI를 만드는
-                          뫄뫄뫄입니다.
+                          {currentData.header[0]}
                         </h3>
-                        <p>
-                          웹 퍼블리싱으로 시작하여 프론트엔드 개발까지, UI/UX
-                          개선과 중간 역할을 수행하여 프로젝트를 성공적으로
-                          완수했습니다. 디자이너, 기획자, 개발자와 원활한 협업을
-                          통해 디자인 시스템을 정리하고, UI/UX 개선하며
-                          프로젝트를 성공적으로 완수했습니다.
-                        </p>
-                        <p>
-                          기획자와 디자이너 사이에서 비개발 직군과 원활한
-                          작업진행에 도움이 되는 것에 보람을 느낍니다.
-                        </p>
-                        {/* <p>
-                          또한, 웹 접근성과 가독성을 고려한 UI 설계를 중요하게
-                          생각하며, 글로벌 사용자를 위해 웹 문서의 영한 번역에도
-                          기여하고 있습니다. 변화하는 웹 환경에서 더 나은 사용자
-                          경험을 고민하고, 개발 생산성을 높이는 UI 솔루션을
-                          탐구하며, 지속적으로 성장하는 개발자가 되고 싶습니다.
-                        </p> */}
+                        <p>{currentData.header[1]}</p>
+                        <p>{currentData.header[2]}</p>
                       </span>
                     </div>
                   </div>
@@ -237,7 +219,7 @@ export const Bottom = () => {
                     onMouseEnter={(e) => handleMouseEnter("stack111", e)}
                     onMouseLeave={(e) => handleMouseLeave("stack111", e)}
                   > */}
-                  <h1 className="sec-title">Stack</h1>
+                  <h1 className="sec-title">Skills</h1>
                 </div>
                 <div className="col"></div>
               </div>
@@ -248,26 +230,26 @@ export const Bottom = () => {
                     <div className="curr">
                       <ul>
                         <li>
-                          <p className="tit">frentend dev? tools</p>
+                          <p className="tit">FE</p>
                           <p>
-                            Javascript(ES6), React, ReactNative, Html5, Pug,
-                            Postman, GitHub/GitLab
+                            Javascript(ES6), React, Html5, Pug, Postman,
+                            GitHub/GitLab
                           </p>
                         </li>
                         <li>
                           <p className="tit">UI libraries</p>
                           <p>
-                            CSS3/SCSS/SASS, Tailwind CSS, Styled Components, Ant
-                            design, Bootstrap.
+                            CSS3/SASS, Tailwind, Styled Components, Ant design,
+                            Bootstrap.
                           </p>
                         </li>
                         <li>
-                          <p className="tit">design tools</p>
+                          <p className="tit">Design tools</p>
                           <p>Figma, Adobe products </p>
                         </li>
                         <li>
                           <p className="tit">Interested in...</p>
-                          <p>to improve my health </p>
+                          <p>python </p>
                         </li>
                         <li>
                           <p className="tit">Also available...</p>
@@ -280,8 +262,6 @@ export const Bottom = () => {
                 <div className="col"></div>
               </div>
             </div>
-
-            {/* <img src={require("../img/info.jpeg")} className="pic" alt="" /> */}
           </section>
         </div>
         {/****************** information end *******************/}
@@ -460,7 +440,7 @@ export const Bottom = () => {
                       <ul>
                         <li className="desc-wrapp">
                           <h3 className="txt-proj-name">
-                            숫자 검색 싱글페이지
+                            {currentData.others[0].projName}
                           </h3>
                           <p>
                             노년층을 대상으로 싱글 페이지로 작업함
@@ -528,7 +508,9 @@ export const Bottom = () => {
                           </p>
                         </li>
                         <li className="desc-wrapp">
-                          <h3 className="txt-proj-name">환율 크롤링 위젯</h3>
+                          <h3 className="txt-proj-name">
+                            {currentData.others[1].projName}
+                          </h3>
                           <p>
                             실시간 환율 크롤링 페이지. <br />
                             React, Node.js
