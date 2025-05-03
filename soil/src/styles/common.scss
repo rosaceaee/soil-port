@@ -71,8 +71,8 @@ nav {
 
     &.btn-top {
       position: fixed;
-      right: 3rem;
-      bottom: 2rem;
+      right: 0rem;
+      bottom: 7rem;
     }
   }
 
@@ -94,12 +94,20 @@ nav {
 
 .row {
   .col {
-    &:nth-child(1) {
-      border-right: 1px solid $indigoBlue;
+    &:nth-child(1):not(.desc) {
+      // border-right: 1px solid $indigoBlue;
+      display: flex;
+      flex-flow: row wrap;
+      min-width: 0;
+      flex: 0 0 60.666666666666664%;
+      max-width: 100%;
     }
 
     &:nth-child(2) {
       border-bottom: 1px solid $indigoBlue;
+      min-width: 0;
+      flex: 0 0 66.66666666666666%;
+      max-width: 100%;
     }
 
     &.desc {
@@ -107,7 +115,12 @@ nav {
     }
 
     &:nth-child(3) {
-      border-left: 1px solid $indigoBlue;
+      // border-left: 1px solid $indigoBlue;
+      display: flex;
+      flex-flow: row wrap;
+      min-width: 0;
+      flex: 0 0 16.666666666666664%;
+      max-width: 100%;
     }
   }
 
@@ -120,6 +133,7 @@ nav {
     }
   }
 }
+
 .work-container {
   position: absolute;
   margin: 0;
@@ -130,7 +144,7 @@ nav {
   font-family: "SUIT-Regular";
   .row {
     display: grid;
-    grid-template-columns: 15% 1fr 15%;
+    grid-template-columns: 10% 1fr 10%;
 
     &.others {
       .col {
@@ -167,14 +181,8 @@ nav {
     }
     .col {
       &:nth-child(2) {
-        border-left: 2px solid $indigoBlue;
-        border-right: 2px solid $indigoBlue;
-      }
-    }
-  }
-  .box.tit {
-    .row {
-      .col {
+        // border-left: 2px solid $indigoBlue;
+        // border-right: 2px solid $indigoBlue;
       }
     }
   }
@@ -201,7 +209,7 @@ nav {
         right: auto;
         margin-block-start: 0;
         margin-block-end: 0;
-        bottom: -1rem;
+        bottom: -1.5rem;
         font-size: 5rem;
         margin: 0 auto;
         display: block;
@@ -209,6 +217,7 @@ nav {
         color: rgba(146, 107, 106, 1);
         font-weight: 800;
         font-family: "KBO-Dia-Gothic_bold";
+        z-index: 99;
         &.sec-title {
           font-family: "KBO-Dia-Gothic_bold";
         }
@@ -239,7 +248,7 @@ article {
         .box {
           .row {
             display: grid;
-            grid-template-columns: 15% 1fr 15%;
+            grid-template-columns: 13% 1fr 13%;
 
             &:nth-child(1) {
               .col {
@@ -510,6 +519,7 @@ article {
       align-items: start;
       margin: 1.3rem 0;
       padding: 3rem 1rem;
+      border-top: 5px solid rgb(146, 107, 106);
 
       // background: rgba(27, 69, 107, 0.8);
       // background: rgba(255, 87, 87, 0.4);
@@ -531,6 +541,10 @@ article {
         h2,
         p {
           margin: 0;
+        }
+
+        h2 {
+          font-size: 2rem;
         }
       }
       ul {
@@ -559,7 +573,7 @@ article {
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            padding: 1rem 2rem 0;
+            padding: 1rem 1rem;
             background: #fff;
             color: black;
             border-radius: 20px;
@@ -596,10 +610,7 @@ article {
               display: flex;
               align-items: center;
               justify-content: center;
-              height: 100%;
               padding-top: 10px;
-              svg {
-              }
             }
           }
 
@@ -612,7 +623,6 @@ article {
             text-overflow: ellipsis;
             width: 55%;
             text-decoration: none;
-
 
             button {
               width: 100%;
@@ -628,8 +638,6 @@ article {
                 width: 20px !important;
                 height: 20px !important;
               }
-
-
             }
           }
           p {
@@ -667,6 +675,24 @@ article {
   }
 }
 
+.last-box {
+  border: 1px solid;
+  span {
+    text-align: right;
+  }
+
+  h2 {
+    text-align: right;
+    font-size: calc(30 / 16 * 1rem);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .work-container .row {
+    grid-template-columns: 10% 1fr 10%;
+  }
+}
+
 @media screen and (max-width: 1000px) {
   article {
     &.container {
@@ -693,14 +719,13 @@ article {
               &:nth-child(2) {
                 .col {
                   &.desc {
-                    height: 445px;
                     flex-wrap: wrap;
                     display: flex;
                     justify-content: space-between;
                     align-items: flex-end;
                     width: 100%;
                     position: relative;
-                    padding: 0;
+                    padding: 5px;
                     .cont-left {
                       display: none;
                     }
@@ -708,7 +733,6 @@ article {
                     .cont-right {
                       display: flex;
                       align-items: end;
-                      position: absolute;
                       width: 100%;
                       span {
                         font-size: 1rem;
@@ -920,7 +944,6 @@ article {
             .desc-wrapp {
               margin: 1.5rem 0;
               padding: 1rem 0;
-              display: block;
               &:nth-child(1) {
                 margin: 0 0 1.5rem;
               }
@@ -971,6 +994,7 @@ article {
             }
             ul {
               padding-inline-start: 0;
+              width: calc(100% - 10rem);
               li {
                 margin: 0 1rem;
               }
@@ -998,6 +1022,38 @@ article {
       padding: 0;
       &:nth-child(4) {
         margin-left: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .work-container {
+    .introduce-wrap {
+      .box {
+        .proj-box {
+          .contents {
+            ul {
+              width: calc(100% - 3rem);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .work-container {
+    .introduce-wrap {
+      .box {
+        .proj-box {
+          .contents {
+            .desc-wrapp {
+              display: block;
+            }
+          }
+        }
       }
     }
   }
@@ -1037,7 +1093,6 @@ article {
   filter: blur(3px);
 }
 
-
 .menu-container {
   height: 100dvh;
   width: 100%;
@@ -1057,4 +1112,3 @@ article {
     line-height: 1.6;
   }
 }
-
