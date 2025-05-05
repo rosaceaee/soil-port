@@ -69,10 +69,10 @@ export const data = {
           {
             listIdx: 1,
             // imgUrl: "/img/lge1.png",
-            projName: "최선어학원 creo 유지보수",
+            projName: "최선어학원 creo 웹",
             url: "https://play.google.com/store/apps/details?id=com.culpmobile.creo&pcampaignid=web_share",
             desc: [
-              "웹, 앱의 UIUX 유지보수 및 테스트",
+              "영어 교육 툴 유지보수: 웹, 앱의 UIUX 유지보수 및 테스트",
               "ui에 적용된 기존 레거시 소스 정리 및 코드 개선하여 코드 가독성과 사용성 개선",
               "ui 테스트 작업 대응하여 디바이스 최적화로 사용자 경험(학습)에 기여함",
             ],
@@ -93,10 +93,10 @@ export const data = {
           {
             listIdx: 3,
             // imgUrl: "/img/lge1.png",
-            projName: " phonics monster 교육 툴 유지보수",
+            projName: " phonics monster 웹앱",
             url: "https://play.google.com/store/apps/details?id=com.epublic.phonicsmonster",
             desc: [
-              "퍼블리싱, 단위 테스트",
+              "영어 교육 툴 유지보수: 퍼블리싱, 단위 테스트",
               "기존에 사용된 css 레거시 코드 정리 및 전체 소스 리팩토링으로 코드 가독성 개선",
               "ui 테스트 작업 대응하여 디바이스 최적화 작업",
             ],
