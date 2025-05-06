@@ -405,21 +405,32 @@ export const data = {
     ],
     others: [
       {
-        id: 1,
-        projName: "個人プロジェクト",
+        id: 0,
+        projName: "영어 숫자 학습 페이지",
         projList: [
           {
             listIdx: 1,
-            projName: "projname1",
             url: "https://rosaceaee.github.io/log-sapjil/",
-            desc: ["노년층을 대상으로 싱글 페이지로 작업", "", "desc3"],
+            desc: ["노년층을 대상으로 싱글 페이지로 작업", "", ""],
+            skill: ["react", "scss"],
+          },
+        ],
+      },
+      {
+        id: 1,
+        projName: "환율 크롤링 페이지",
+        projList: [
+          {
+            listIdx: 1,
+            url: "https://rosaceaee.github.io/log-sapjil/",
+            desc: ["노년층을 대상으로 싱글 페이지로 작업", "", ""],
             skill: ["react", "scss"],
           },
         ],
       },
       {
         id: 2,
-        projName: "MDN ウェブドックス英韓翻訳 기여",
+        projName: "MDN 웹 문서 영한번역 기여",
         projList: [
           {
             listIdx: 1,
@@ -445,7 +456,7 @@ export const data = {
       },
       {
         id: 3,
-        projName: " regexlearn 英韓翻訳およびチェック",
+        projName: " regexlearn 한국어 번역 기여",
         projList: [
           {
             listIdx: 1,
