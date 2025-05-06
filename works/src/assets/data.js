@@ -69,10 +69,10 @@ export const data = {
           {
             listIdx: 1,
             // imgUrl: "/img/lge1.png",
-            projName: "최선어학원 creo 유지보수",
+            projName: "최선어학원 creo 웹",
             url: "https://play.google.com/store/apps/details?id=com.culpmobile.creo&pcampaignid=web_share",
             desc: [
-              "웹, 앱의 UIUX 유지보수 및 테스트",
+              "영어 교육 툴 유지보수: 웹, 앱의 UIUX 유지보수 및 테스트",
               "ui에 적용된 기존 레거시 소스 정리 및 코드 개선하여 코드 가독성과 사용성 개선",
               "ui 테스트 작업 대응하여 디바이스 최적화로 사용자 경험(학습)에 기여함",
             ],
@@ -93,10 +93,10 @@ export const data = {
           {
             listIdx: 3,
             // imgUrl: "/img/lge1.png",
-            projName: " phonics monster 교육 툴 유지보수",
+            projName: " phonics monster 웹앱",
             url: "https://play.google.com/store/apps/details?id=com.epublic.phonicsmonster",
             desc: [
-              "퍼블리싱, 단위 테스트",
+              "영어 교육 툴 유지보수: 퍼블리싱, 단위 테스트",
               "기존에 사용된 css 레거시 코드 정리 및 전체 소스 리팩토링으로 코드 가독성 개선",
               "ui 테스트 작업 대응하여 디바이스 최적화 작업",
             ],
@@ -252,7 +252,7 @@ export const data = {
   },
   ja: {
     header: [
-      "더ddd 나은 UI/UX와 조화로운 협업으로, 사용자와 개발자가 모두 만족하는 UI를 만드는 장영주입니다.",
+      "더 나은 UI/UX와 조화로운 협업으로, 사용자와 개발자가 모두 만족하는 UI를 만드는 장영주입니다.",
       "웹 퍼블리싱으로 시작하여 프론트엔드 개발까지, UI/UX 개선과 중간 역할을 수행하여 프로젝트를 성공적으로 완수했습니다. 디자이너, 기획자, 개발자와 원활한 협업을 통해 디자인 시스템을 정리하고, UI/UX 개선하며 프로젝트를 성공적으로 완수했습니다.",
       "기획자와 디자이너 사이에서 비개발 직군과 원활한 작업진행에 도움이 되는 것에 보람을 느낍니다.",
     ],
@@ -405,21 +405,32 @@ export const data = {
     ],
     others: [
       {
-        id: 1,
-        projName: "個人プロジェクト",
+        id: 0,
+        projName: "영어 숫자 학습 페이지",
         projList: [
           {
             listIdx: 1,
-            projName: "projname1",
             url: "https://rosaceaee.github.io/log-sapjil/",
-            desc: ["노년층을 대상으로 싱글 페이지로 작업", "", "desc3"],
+            desc: ["노년층을 대상으로 싱글 페이지로 작업", "", ""],
+            skill: ["react", "scss"],
+          },
+        ],
+      },
+      {
+        id: 1,
+        projName: "환율 크롤링 페이지",
+        projList: [
+          {
+            listIdx: 1,
+            url: "https://rosaceaee.github.io/log-sapjil/",
+            desc: ["노년층을 대상으로 싱글 페이지로 작업", "", ""],
             skill: ["react", "scss"],
           },
         ],
       },
       {
         id: 2,
-        projName: "MDN ウェブドックス英韓翻訳 기여",
+        projName: "MDN 웹 문서 영한번역 기여",
         projList: [
           {
             listIdx: 1,
@@ -445,7 +456,7 @@ export const data = {
       },
       {
         id: 3,
-        projName: " regexlearn 英韓翻訳およびチェック",
+        projName: " regexlearn 한국어 번역 기여",
         projList: [
           {
             listIdx: 1,

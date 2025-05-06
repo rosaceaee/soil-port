@@ -13,6 +13,7 @@ import {
 } from "../utills/UiEffect";
 
 import { data, career, others } from "./data";
+import { Row, Col } from "../compo/Frame";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -168,50 +169,47 @@ export const Bottom = () => {
         navWrapRef={navWrapRef}
         changeLanguage={changeLanguage}
       />
+
       <article className="container" ref={containerRef}>
         <div className="wrap" id="top">
           <section className="info">
             {/* <img src={require("../img/sprout-sm.png")} alt="" /> */}
+
             <div className="box">
-              <div className="row">
-                <div className="col bg"></div>
-                <div className="col desc">
+              <Row className="row">
+                <Col></Col>
+                <Col className="col desc">
                   <h1
                     className={cursorClassName("stack1", isHovered)}
                     onMouseEnter={(e) => onMouseEnter("stack1", e)}
                     onMouseLeave={(e) => onMouseLeave("stack1", e)}
-                  >
-                    .asdf
-                  </h1>
-                </div>
-                <div className="col"></div>
-              </div>
-              <div className="row">
-                <div className="col"></div>
-                <div className="col desc center">
+                  ></h1>
+                </Col>
+                <Col className="col"></Col>
+              </Row>
+
+              <Row className="row">
+                <Col></Col>
+                <Col className="col desc center">
                   <div className="cont-right">
                     <div className="col desc">
                       <span>
-                        {/* 他には
-                        「自分のスキルで他人に役に立つプロダクトを作る」を目指しています。
-                        ですので、ユーザー目線で重視しつつ仕上げしたいと思います。
-                        <br />
-                        なお、学習者のため勉強しやすくするためにウェブサイトの翻訳にも興味があって、
-                        こんちゅりびゅーとしてます。 */}
-                        <h3 style={{ textAlign: "right" }}>
+                        {/* <h3 style={{ textAlign: "right" }}>
                           {currentData.header[0]}
-                        </h3>
-                        <p>{currentData.header[1]}</p>
-                        <p>{currentData.header[2]}</p>
+                        </h3> */}
+                        <p className="infoDesc">{currentData.header[0]}</p>
+                        <p className="infoDesc">{currentData.header[1]}</p>
+                        <p className="infoDesc">{currentData.header[2]}</p>
                       </span>
                     </div>
                   </div>
-                </div>
-                <div className="col"></div>
-              </div>
-              <div className="row">
-                <div className="col"></div>
-                <div className="col desc">
+                </Col>
+                <Col></Col>
+              </Row>
+
+              <Row className="row">
+                <Col></Col>
+                <Col className="col desc">
                   {/* <h1
                     className={
                       isHovered["stack111"] ? "sec-title cursor-hover" : ""
@@ -220,12 +218,12 @@ export const Bottom = () => {
                     onMouseLeave={(e) => handleMouseLeave("stack111", e)}
                   > */}
                   <h1 className="sec-title">Skills</h1>
-                </div>
-                <div className="col"></div>
-              </div>
-              <div className="row">
-                <div className="col"></div>
-                <div className="col">
+                </Col>
+                <Col />
+              </Row>
+              <Row className="row">
+                <Col />
+                <Col>
                   <section className="skill" id="skill">
                     <div className="curr">
                       <ul>
@@ -258,9 +256,9 @@ export const Bottom = () => {
                       </ul>
                     </div>
                   </section>
-                </div>
-                <div className="col"></div>
-              </div>
+                </Col>
+                <Col />
+              </Row>
             </div>
           </section>
         </div>
@@ -274,18 +272,19 @@ export const Bottom = () => {
           // }}
           id="work-container"
         >
-          <div className="row tit-box">
-            <dlv className="col"></dlv>
+          <Row className="row tit-box">
+            <Col />
             <div className="col desc">
               <h1 className="tit">Works</h1>
             </div>
-            <dlv className="col"></dlv>
-          </div>
+            <Col />
+          </Row>
+
           <div className="introduce-wrap">
             {/* box1 - works */}
-            <div className="row">
-              <div className="col"></div>
-              <div className="col">
+            <Row className="row">
+              <Col />
+              <Col>
                 {currentData.career.map((list, index) => {
                   return (
                     <>
@@ -305,14 +304,44 @@ export const Bottom = () => {
                                   return (
                                     <>
                                       <div className="proj-info ani" key={indx}>
-                                        <img
-                                          src={project.imgUrl}
-                                          className="pic"
-                                          alt=""
-                                        />
+                                        {project.imgUrl ? (
+                                          <img
+                                            src={project.imgUrl}
+                                            className="pic"
+                                            alt=""
+                                          />
+                                        ) : null}
                                         <h3 className="txt-proj-name">
                                           {project.projName}
                                         </h3>
+
+                                        <div className="proj-info__desc">
+                                          {project.desc.map(
+                                            (descItm, index) => {
+                                              return descItm ? (
+                                                <p key={index}>{descItm}</p>
+                                              ) : null;
+                                            }
+                                          )}
+
+                                          <div className="label-wrap">
+                                            {project.skill.map(
+                                              (skillItm, index) => {
+                                                const chipSkill =
+                                                  sList[skillItm] || "";
+                                                return (
+                                                  <span
+                                                    key={index}
+                                                    className={`label ${skillItm}`}
+                                                  >
+                                                    {chipSkill}
+                                                  </span>
+                                                );
+                                              }
+                                            )}
+                                          </div>
+                                        </div>
+
                                         <a
                                           href={`${project.url}`}
                                           className="link"
@@ -374,33 +403,6 @@ export const Bottom = () => {
                                             </g>
                                           </svg>
                                         </a>
-
-                                        <div className="proj-info__desc">
-                                          {project.desc.map(
-                                            (descItm, index) => {
-                                              return descItm ? (
-                                                <p key={index}>{descItm}</p>
-                                              ) : null;
-                                            }
-                                          )}
-
-                                          <div className="label-wrap">
-                                            {project.skill.map(
-                                              (skillItm, index) => {
-                                                const chipSkill =
-                                                  sList[skillItm] || "";
-                                                return (
-                                                  <span
-                                                    key={index}
-                                                    className={`label ${skillItm}`}
-                                                  >
-                                                    {chipSkill}
-                                                  </span>
-                                                );
-                                              }
-                                            )}
-                                          </div>
-                                        </div>
                                       </div>
                                     </>
                                   );
@@ -416,21 +418,21 @@ export const Bottom = () => {
                     </>
                   );
                 })}
-              </div>
-              <div className="col"></div>
-            </div>
+              </Col>
+              <Col />
+            </Row>
             {/* // */}
             {/* box2 - others */}
             <div className="row tit-box">
-              <dlv className="col"></dlv>
+              <Col />
               <div className="col desc">
                 <h1 className="">Others</h1>
               </div>
-              <dlv className="col"></dlv>
+              <Col />
             </div>
             <div className="row private-works" id="private-works">
-              <div className="col"></div>
-              <div className="col">
+              <Col />
+              <Col>
                 <div className="box">
                   <div className="proj-box">
                     <div className="contents">
@@ -579,14 +581,14 @@ export const Bottom = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="col"></div>
+              </Col>
+              <Col />
             </div>
             {/* // */}
             {/* box3 - others */}
             <div className="row others">
-              <div className="col"></div>
-              <div className="col">
+              <Col />
+              <Col className="col">
                 {/* box3 - others: private2 ; contribution */}
                 <div className="box">
                   {/* <div className="date">Others</div> */}
@@ -602,7 +604,7 @@ export const Bottom = () => {
                           </h3>
                         </li>
                         <li className="desc-wrapp otherWork">
-                          {currentData.others[1].projList.map((list, index) => {
+                          {currentData.others[2].projList.map((list, index) => {
                             return (
                               <a
                                 className={`box-with-link ${index}`}
@@ -682,7 +684,7 @@ export const Bottom = () => {
                           <h3 className="txt-proj-name">
                             regexlearn 한국어 번역 기여
                           </h3>
-                          {currentData.others[2].projList.map((list, index) => {
+                          {currentData.others[1].projList.map((list, index) => {
                             return (
                               <a
                                 className={`box-with-link ${index}`}
@@ -753,11 +755,19 @@ export const Bottom = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="col"></div>
+              </Col>
+              <Col />
             </div>
             {/* // .projbox */}
-            <div>hehehe</div>
+            <div className="row last-box">
+              <div />
+              <span>
+                Contact
+                <h2>corydalisss@gmail.com</h2>
+              </span>
+
+              <div />
+            </div>
           </div>
         </div>
         {/****************** works end *******************/}
