@@ -16,25 +16,6 @@ export const Row = styled.div`
   @media screen and (max-width: 500px) {
     grid-template-columns: 5% 1fr 5%;
   }
-
-  &.row {
-    display: grid;
-    grid-template-columns: 13% 1fr 13%;
-
-    @media screen and (max-width: 768px) {
-      grid-template-columns: 10% 1fr 10%;
-    }
-
-    @media screen and (max-width: 500px) {
-      grid-template-columns: 5% 1fr 5%;
-    }
-  }
-
-  .infoDesc {
-    background: #fff;
-    padding: 10px 0;
-    margin: 10px 0;
-  }
 `;
 
 export const Col = styled.div`
@@ -43,14 +24,4 @@ export const Col = styled.div`
   box-sizing: border-box;
   width: 100%;
   overflow-x: hidden;
-
-  &.col {
-    min-width: 0;
-    flex: 1;
-    max-width: 100%;
-  }
-
-  &.desc {
-    border: none;
-  }
 `;
