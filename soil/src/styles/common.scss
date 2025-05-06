@@ -100,13 +100,10 @@ nav {
   display: grid;
   grid-template-columns: 13% 1fr 13%;
   width: 100%;
-  box-sizing: border-box;
-  overflow-x: hidden;
 
   .col {
     width: 100%;
     box-sizing: border-box;
-    overflow-x: hidden;
 
     &:nth-child(1):not(.desc) {
       display: flex;
@@ -171,7 +168,6 @@ nav {
     grid-template-columns: 13% 1fr 13%;
     width: 100%;
     box-sizing: border-box;
-    overflow-x: hidden;
 
     @media screen and (max-width: 768px) {
       grid-template-columns: 10% 1fr 10%;
@@ -285,7 +281,6 @@ article {
             grid-template-columns: 13% 1fr 13%;
             width: 100%;
             box-sizing: border-box;
-            overflow-x: hidden;
 
             @media screen and (max-width: 768px) {
               grid-template-columns: 10% 1fr 10%;
@@ -343,7 +338,11 @@ article {
                       font-size: 1.2rem;
                       line-height: 1.7;
                       font-family: "SUIT-Regular";
-                      padding: 0 3rem;
+                      padding: 1rem 3rem;
+                    }
+                    p {
+                      margin: 1rem 0;
+                      line-height: 1.5;
                     }
                   }
                 }
@@ -704,6 +703,7 @@ article {
             font-size: 1.2rem;
             font-weight: bold;
             text-align: center;
+            margin: 1rem 0;
           }
 
           .proj-info__desc {
@@ -732,9 +732,8 @@ article {
             align-items: center;
             justify-content: flex-start;
             gap: 10px;
-            overflow: hidden;
             text-overflow: ellipsis;
-            width: 55%;
+            width: 100%;
             text-decoration: none;
 
             button {
@@ -754,8 +753,10 @@ article {
             }
           }
           p {
-            line-height: 1;
+            line-height: 1.5;
             padding-left: 2rem;
+            margin: 16px 0;
+            text-align: left;
             &:nth-child(2) {
               margin-top: 0.5rem;
             }
@@ -775,6 +776,9 @@ article {
             .desc-wrapp {
               grid-template-columns: repeat(1, 1fr);
               gap: 10px;
+              h3 {
+                text-align: left;
+              }
               h3,
               p {
                 margin: 0;
@@ -842,7 +846,7 @@ article {
                       width: 100%;
                       span {
                         font-size: 1rem;
-                        padding: 0;
+                        padding: 1rem;
                       }
                       h3 {
                         font-size: 1.2rem;
@@ -898,6 +902,8 @@ article {
           &.tit-box {
             h1 {
               color: rgba(146, 107, 106, 1);
+              font-size: 3.2rem;
+              bottom: -15px;
             }
           }
         }
@@ -912,15 +918,22 @@ article {
                       ul {
                         li {
                           .txt-proj-name {
+                            margin: 1rem 0;
                             font-size: 1.2rem;
                           }
                         }
+
                         .desc-wrapp {
                           padding: 0rem;
                           display: grid;
                           justify-content: start;
                           grid-template-columns: 1fr 1fr;
                           gap: 10px;
+
+                          .txt-proj-name {
+                            border: 2px solid red !important;
+                          }
+
                           .box-with-link {
                             width: 100%;
                             text-decoration: none;
@@ -939,6 +952,7 @@ article {
                               }
                             }
                           }
+
                           &.otherWork {
                             &:last-child {
                               padding-bottom: 5rem;
@@ -1011,10 +1025,6 @@ article {
         }
       }
       .box {
-        &:last-child {
-          // padding-bottom: 4rem;
-        }
-
         .proj-box {
           width: 100%;
           .contents {
@@ -1150,6 +1160,16 @@ article {
           .contents {
             .desc-wrapp {
               display: block;
+              &.otherWork {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: start;
+                align-items: start;
+                gap: 16px;
+                .box-with-link {
+                  width: 45%;
+                }
+              }
             }
           }
         }
@@ -1162,10 +1182,6 @@ article {
   nav {
     .nav-wrap {
       width: calc(100% - 5rem);
-    }
-    button {
-      &.lang-btn {
-      }
     }
   }
 

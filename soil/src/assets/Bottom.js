@@ -197,6 +197,7 @@ export const Bottom = () => {
                         {/* <h3 style={{ textAlign: "right" }}>
                           {currentData.header[0]}
                         </h3> */}
+                        <p className="infoDesc">{currentData.header[0]}</p>
                         <p className="infoDesc">{currentData.header[1]}</p>
                         <p className="infoDesc">{currentData.header[2]}</p>
                       </span>
@@ -587,7 +588,7 @@ export const Bottom = () => {
             {/* box3 - others */}
             <div className="row others">
               <Col />
-              <Col>
+              <Col className="col">
                 {/* box3 - others: private2 ; contribution */}
                 <div className="box">
                   {/* <div className="date">Others</div> */}
