@@ -15,7 +15,7 @@ export const data = {
           {
             listIdx: 1,
             projName: "LG전자 고객서비스 웹 사이트 운영",
-            imgUrl: "/img/lge0.png",
+            imgUrl: "/soil-port/img/lge0.png",
             url: "https://www.lge.co.kr/support",
             desc: [
               "UI 단위 테스트 대응",
@@ -26,7 +26,7 @@ export const data = {
           {
             listIdx: 1,
             projName: "미래에셋생명",
-            imgUrl: "/img/lge1.png",
+            imgUrl: "/soil-port/img/lge1.png",
             url: "https://play.google.com/store/apps/details?id=com.mMiraeAssetLife&hl=ko",
             desc: [
               "기존 적용된 컴포넌트 CSS, JS의 레거시 코드 수정 -> 팀 내 작업자의 생산성 향상",
@@ -37,7 +37,7 @@ export const data = {
           {
             listIdx: 2,
             projName: "LG global platform",
-            imgUrl: "/img/lge1.png",
+            imgUrl: "/soil-port/img/lge1.png",
             url: "https://www.lg.com/hu/",
             desc: [
               "대만, 헝가리, 오스트리아 사이트 UIUX 구축 및 운영",
@@ -49,7 +49,7 @@ export const data = {
           {
             listIdx: 3,
             projName: "현대자동차 N브랜드 사이트 리뉴얼",
-            imgUrl: "/img/nbrand2.png",
+            imgUrl: "/soil-port/img/nbrand2.png",
             url: "https://www.hyundai-n.com/",
             desc: [
               "ui디자인 일관성과 생산성을 높이기 위한 컴포넌트 시스템 개선 및 참여",
@@ -68,7 +68,7 @@ export const data = {
         projList: [
           {
             listIdx: 1,
-            // imgUrl: "/img/lge1.png",
+            // imgUrl: "/soil-port/img/lge1.png",
             projName: "최선어학원 creo 웹",
             url: "https://play.google.com/store/apps/details?id=com.culpmobile.creo&pcampaignid=web_share",
             desc: [
@@ -80,7 +80,7 @@ export const data = {
           },
           // {
           //   listIdx: 2,
-          //   imgUrl: "/img/lge1.png",
+          //   imgUrl: "/soil-port/img/lge1.png",
           //   projName: "metaexam 영어시험 구축",
           //   url: "url",
           //   desc: [
@@ -92,7 +92,7 @@ export const data = {
           // },
           {
             listIdx: 3,
-            // imgUrl: "/img/lge1.png",
+            // imgUrl: "/soil-port/img/lge1.png",
             projName: " phonics monster 웹앱",
             url: "https://play.google.com/store/apps/details?id=com.epublic.phonicsmonster",
             desc: [
@@ -266,7 +266,7 @@ export const data = {
           {
             listIdx: 1,
             projName: "LG電子カスタマサービスのウェブサイト",
-            imgUrl: "/img/lge0.png",
+            imgUrl: "/soil-port/img/lge0.png",
             url: "https://www.lge.co.kr/support",
             desc: [
               "クライアントからの要請に応じてUI対応",
@@ -278,7 +278,7 @@ export const data = {
           {
             listIdx: 2,
             projName: "MiraeAsset健康アプリ立ち上げ",
-            imgUrl: "/img/lge1.png",
+            imgUrl: "/soil-port/img/lge1.png",
             url: "https://play.google.com/store/apps/details?id=com.mMiraeAssetLife&hl=ko",
             desc: [
               "モバイル向けのアプリUI作成担当",
@@ -290,7 +290,7 @@ export const data = {
           {
             listIdx: 3,
             projName: "LG global platform立ち上げ",
-            imgUrl: "/img/lge1.png",
+            imgUrl: "/soil-port/img/lge1.png",
             url: "https://www.lg.com/hu/",
             desc: [
               "ハンガリー、オーストリア、台湾サイトのUI改善担当",
@@ -302,7 +302,7 @@ export const data = {
           {
             listIdx: 4,
             projName: "現代自動車Nブランドサイトリニューアル",
-            imgUrl: "/img/nbrand2.png",
+            imgUrl: "/soil-port/img/nbrand2.png",
             url: "https://www.hyundai-n.com/",
             desc: [
               "UI要素の作成及びUIインタレクティブのこと作成",
@@ -321,7 +321,7 @@ export const data = {
         projList: [
           {
             listIdx: 1,
-            imgUrl: "/img/lge1.png",
+            imgUrl: "/soil-port/img/lge1.png",
             projName: "英語学習アプリUIメンテナンス",
             url: "https://play.google.com/store/apps/details?id=com.culpmobile.creo&pcampaignid=web_share",
             desc: [
@@ -333,7 +333,7 @@ export const data = {
           },
           // {
           //   listIdx: 2,
-          //   imgUrl: "/img/lge1.png",
+          //   imgUrl: "/soil-port/img/lge1.png",
           //   projName:
           //     "１０代学生向け英語レベルテストアプリの立ち上げ及びメンテナンス",
           //   url: "url",
@@ -346,7 +346,7 @@ export const data = {
           // },
           {
             listIdx: 3,
-            imgUrl: "/img/lge1.png",
+            imgUrl: "/soil-port/img/lge1.png",
             projName: "英語スピーキングアプリのUIメンテナンス",
             url: "https://play.google.com/store/apps/details?id=com.epublic.phonicsmonster",
             desc: [
