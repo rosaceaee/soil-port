@@ -39,6 +39,13 @@ section {
       margin: 1rem 4rem;
       .txt {
         word-break: break-all;
+        position: relative;
+        &:before {
+          content: "·";
+          position: absolute;
+          left: 1rem;
+          top: 7px;
+        }
       }
       &.info {
         margin: 3rem 4rem 1rem;
@@ -58,14 +65,17 @@ section {
             border: 1px solid;
             flex-direction: column;
             background-color: #fff;
+
             h3 {
               width: 100%;
               font-weight: 600;
+              font-size: 1.5rem;
             }
             span {
               display: flex;
               flex-direction: column;
               margin-top: 1rem;
+              line-height: 1.5;
             }
           }
           &.right {
@@ -84,6 +94,7 @@ section {
         margin: 4rem 0.5rem 2rem;
         font-size: 4rem;
         letter-spacing: 0.3rem;
+        text-align: right;
       }
 
       &.scnd {
@@ -102,6 +113,7 @@ section {
           background-color: #fab7b7;
 
           .title {
+            text-align: center;
           }
 
           .date {
@@ -125,7 +137,8 @@ section {
         .btn-wrap {
           flex-grow: 1;
           flex-shrink: 1;
-          width: 30px;
+          padding-bottom: 1rem;
+          padding-top: 10px;
           align-items: stretch;
           display: flex;
           button {
@@ -140,18 +153,27 @@ section {
           flex-direction: column;
           width: 100%;
           background: #fff;
+          border-radius: 10px;
 
           ul {
             &.list-desc {
               display: flex;
               flex-direction: column;
+              gap: 0;
+              position: relative;
+
+              .proj-name {
+                font-weight: 700;
+                font-size: 1.2rem;
+              }
             }
             li {
               word-break: break-all;
 
               p {
-                width: calc(100% - 3rem);
-                padding: 1rem;
+                width: 100%;
+                font-size: 1rem;
+                padding: 0.5rem 2rem;
               }
             }
           }
@@ -166,16 +188,50 @@ section {
               display: grid;
               grid-template-columns: auto;
               gap: 10px;
+
               .card {
                 ul {
                   &.list-desc {
-                    display: flex;
-                    flex-direction: column;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 10px;
+                    li {
+                      background-color: #fff;
+                      margin: 10px 0;
+                      padding: 25px 20px;
+                      border-radius: 12px;
+
+                      .skill-wrap {
+                        margin: 1rem auto 1rem 0rem;
+                      }
+                      .btn-wrap {
+                        margin-top: 14px;
+                        gap: 1rem;
+                        display: flex;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        button[type="button"] {
+                          background: tomato;
+                          padding: 10px;
+                          border-radius: 6px;
+                          outline: none;
+                          border: none;
+                          color: #fff;
+                          display: flex;
+                          align-items: center;
+                          gap: 10px;
+                          font-size: 1rem;
+                        }
+                      }
+                    }
+                  }
+                  .tit {
+                    font-size: 1.3rem;
+                    margin-bottom: 0.5rem;
                   }
                   li {
                     padding: 10px;
                     .link-wrap {
-                      border: 1px solid red;
                       display: flex;
                     }
                   }
@@ -191,6 +247,10 @@ section {
             li {
               .card-wrap {
                 grid-template-columns: auto;
+                .box-with-link {
+                  display: flex;
+                  align-items: center;
+                }
                 .btn-wrap {
                   margin-top: 14px;
                   gap: 1rem;
@@ -203,6 +263,10 @@ section {
                     outline: none;
                     border: none;
                     color: #fff;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    font-size: 1rem;
                   }
                 }
               }
@@ -221,11 +285,10 @@ section {
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
-  width: 20%;
-  margin: 1rem auto 1rem 1rem;
+  margin: 1rem auto 1rem 1.5rem;
   .chip {
     padding: 8px 10px;
-    border-radius: 20px;
+    border-radius: 12px;
     max-width: 100px;
     display: flex;
     align-items: center;
@@ -320,13 +383,10 @@ section {
               li {
                 .txt {
                   position: relative;
-                  padding: 10px 1rem;
+                  padding: 10px 2rem;
                   line-height: 1.6;
                   font-size: 14px;
                   &:before {
-                    content: "·";
-                    position: absolute;
-                    left: 10px;
                     top: 10px;
                   }
                 }
@@ -349,7 +409,6 @@ section {
 
           ul {
             &.list-wrap {
-              background-color: orange;
               li {
                 .card-wrap {
                   display: flex;

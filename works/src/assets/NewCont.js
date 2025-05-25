@@ -11,7 +11,7 @@ import {
   DrawLinesNavElem,
   scrollIt,
 } from "../utills/UiEffect";
-
+import { SvgLink } from "./SvgLink";
 import { data, career, others } from "./data";
 import { Row, Col } from "../compo/Frame";
 
@@ -171,52 +171,16 @@ const NewCont = () => {
       />
 
       <section class="container" ref={containerRef}>
-        <div class="wrap info">
+        <div class="wrap info" id="top">
           <div class="box left">
             <h3>{currentData.header[0]}</h3>
             <span>
               <p class="txt">{currentData.header[1]}</p>
               <p class="txt">{currentData.header[2]}</p>
-              <p class="txt">desc11111</p>
-              <p class="txt">
-                勺子 筷子 叉子 shao, kuai, cha 勺子 筷子 叉子ddd
-              </p>
             </span>
           </div>
 
-          <div class="box right">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 25 24"
-              height="24"
-              width="25"
-              class="tanuki-logo"
-              role="img"
-              aria-hidden="true"
-            >
-              <path
-                fill="#E24329"
-                d="m24.507 9.5-.034-.09L21.082.562a.896.896 0 0 0-1.694.091l-2.29 7.01H7.825L5.535.653a.898.898 0 0 0-1.694-.09L.451 9.411.416 9.5a6.297 6.297 0 0 0 2.09 7.278l.012.01.03.022 5.16 3.867 2.56 1.935 1.554 1.176a1.051 1.051 0 0 0 1.268 0l1.555-1.176 2.56-1.935 5.197-3.89.014-.01A6.297 6.297 0 0 0 24.507 9.5Z"
-                class="tanuki-shape tanuki"
-              ></path>
-              <path
-                fill="#FC6D26"
-                d="m24.507 9.5-.034-.09a11.44 11.44 0 0 0-4.56 2.051l-7.447 5.632 4.742 3.584 5.197-3.89.014-.01A6.297 6.297 0 0 0 24.507 9.5Z"
-                class="tanuki-shape right-cheek"
-              ></path>
-              <path
-                fill="#FCA326"
-                d="m7.707 20.677 2.56 1.935 1.555 1.176a1.051 1.051 0 0 0 1.268 0l1.555-1.176 2.56-1.935-4.743-3.584-4.755 3.584Z"
-                class="tanuki-shape chin"
-              ></path>
-              <path
-                fill="#FC6D26"
-                d="M5.01 11.461a11.43 11.43 0 0 0-4.56-2.05L.416 9.5a6.297 6.297 0 0 0 2.09 7.278l.012.01.03.022 5.16 3.867 4.745-3.584-7.444-5.632Z"
-                class="tanuki-shape left-cheek"
-              ></path>
-            </svg>
-          </div>
+          <div class="box right">dd</div>
         </div>
 
         <div class="wrap scnd" id="work-container">
@@ -244,6 +208,7 @@ const NewCont = () => {
                                       className="pic"
                                       alt=""
                                     />
+                                    <p class="proj-name">{project.projName}</p>
                                   </li>
                                   <li>
                                     {project.desc.map((descItm, index) => {
@@ -290,7 +255,7 @@ const NewCont = () => {
         {/* // wrap scnd */}
 
         <div class="wrap others" id="private-works">
-          <h1 className="div-title">Private works</h1>
+          <h1 className="div-title">Others</h1>
 
           <ul class="list-wrap">
             <li>
@@ -299,156 +264,26 @@ const NewCont = () => {
                   <ul class="list-desc">
                     <li>
                       <div class="link-wrap">
-                        <h3>{currentData.others[0].projName}</h3>
+                        <h3 class="tit">{currentData.others[0].projName}</h3>
 
                         <a
                           href="https://rosaceaee.github.io/log-sapjil/"
                           target="_blank"
                         >
-                          <svg
-                            width="25px"
-                            height="25px"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                            <g
-                              id="SVGRepo_tracerCarrier"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            ></g>
-                            <g id="SVGRepo_iconCarrier">
-                              {" "}
-                              <g clip-path="url(#clip0_429_11072)">
-                                {" "}
-                                <path
-                                  d="M11 3.99994H4V17.9999C4 19.1045 4.89543 19.9999 6 19.9999H18C19.1046 19.9999 20 19.1045 20 17.9999V12.9999"
-                                  stroke="#fff"
-                                  stroke-width="2.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                ></path>{" "}
-                                <path
-                                  d="M9 14.9999L20 3.99994"
-                                  stroke="#fff"
-                                  stroke-width="2.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                ></path>{" "}
-                                <path
-                                  d="M15 3.99994H20V8.99994"
-                                  stroke="#fff"
-                                  stroke-width="2.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                ></path>{" "}
-                              </g>{" "}
-                              <defs>
-                                {" "}
-                                <clipPath id="clip0_429_11072">
-                                  {" "}
-                                  <rect
-                                    width="24"
-                                    height="24"
-                                    fill="white"
-                                  ></rect>{" "}
-                                </clipPath>{" "}
-                              </defs>{" "}
-                            </g>
-                          </svg>
+                          <SvgLink />
                         </a>
                       </div>
 
                       <div class="desc">
-                        영어학습페이지 desc 영어학습페이지 desc 영어학습페이지
-                        desc 영어학습페이지 desc 영어학습페이지 desc
-                        영어학습페이지 desc
+                        노년층의 기초 영어학습에 도움을 주고자 제작.
+                        <div class="skill-wrap">
+                          <span class="chip react">react</span>
+                          <span class="chip scss">scss</span>
+                        </div>
                       </div>
                     </li>
                     <li>
-                      <div class="link-wrap">
-                        <h3>{currentData.others[1].projName}</h3>
-
-                        <a
-                          href="https://rosaceaee.github.io/log-sapjil/"
-                          target="_blank"
-                        >
-                          <svg
-                            width="25px"
-                            height="25px"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                            <g
-                              id="SVGRepo_tracerCarrier"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            ></g>
-                            <g id="SVGRepo_iconCarrier">
-                              {" "}
-                              <g clip-path="url(#clip0_429_11072)">
-                                {" "}
-                                <path
-                                  d="M11 3.99994H4V17.9999C4 19.1045 4.89543 19.9999 6 19.9999H18C19.1046 19.9999 20 19.1045 20 17.9999V12.9999"
-                                  stroke="#fff"
-                                  stroke-width="2.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                ></path>{" "}
-                                <path
-                                  d="M9 14.9999L20 3.99994"
-                                  stroke="#fff"
-                                  stroke-width="2.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                ></path>{" "}
-                                <path
-                                  d="M15 3.99994H20V8.99994"
-                                  stroke="#fff"
-                                  stroke-width="2.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                ></path>{" "}
-                              </g>{" "}
-                              <defs>
-                                {" "}
-                                <clipPath id="clip0_429_11072">
-                                  {" "}
-                                  <rect
-                                    width="24"
-                                    height="24"
-                                    fill="white"
-                                  ></rect>{" "}
-                                </clipPath>{" "}
-                              </defs>{" "}
-                            </g>
-                          </svg>
-                        </a>
-                      </div>
-                      <div class="desc">영어학습페이지 desc</div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-          </ul>
-
-          {/* // */}
-        </div>
-        {/* // wrap others */}
-
-        <div class="wrap others trans">
-          <h1 className="div-title">Others</h1>
-          <ul class="list-wrap">
-            <li>
-              <div class="card-wrap">
-                <div class="card">
-                  <ul class="list-desc">
-                    <li>
-                      <h3>MDN 영한번역 기여</h3>
+                      <h3 class="tit">MDN 영한번역 기여</h3>
                       <div class="btn-wrap">
                         {currentData.others[2].projList.map((list, index) => {
                           return (
@@ -459,61 +294,7 @@ const NewCont = () => {
                             >
                               <button type="button">
                                 {list.projName}
-                                <svg
-                                  width="30px"
-                                  height="30px"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <g
-                                    id="SVGRepo_bgCarrier"
-                                    stroke-width="0"
-                                  ></g>
-                                  <g
-                                    id="SVGRepo_tracerCarrier"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                  ></g>
-                                  <g id="SVGRepo_iconCarrier">
-                                    {" "}
-                                    <g clip-path="url(#clip0_429_11072)">
-                                      {" "}
-                                      <path
-                                        d="M11 3.99994H4V17.9999C4 19.1045 4.89543 19.9999 6 19.9999H18C19.1046 19.9999 20 19.1045 20 17.9999V12.9999"
-                                        stroke="#926b6a"
-                                        stroke-width="2.5"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                      ></path>{" "}
-                                      <path
-                                        d="M9 14.9999L20 3.99994"
-                                        stroke="#926b6a"
-                                        stroke-width="2.5"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                      ></path>{" "}
-                                      <path
-                                        d="M15 3.99994H20V8.99994"
-                                        stroke="#926b6a"
-                                        stroke-width="2.5"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                      ></path>{" "}
-                                    </g>{" "}
-                                    <defs>
-                                      {" "}
-                                      <clipPath id="clip0_429_11072">
-                                        {" "}
-                                        <rect
-                                          width="24"
-                                          height="24"
-                                          fill="white"
-                                        ></rect>{" "}
-                                      </clipPath>{" "}
-                                    </defs>{" "}
-                                  </g>
-                                </svg>
+                                <SvgLink />
                               </button>
                             </a>
                           );
@@ -521,7 +302,7 @@ const NewCont = () => {
                       </div>
                     </li>
                     <li>
-                      <h3>Regexlearn 한국어 번역 교정</h3>
+                      <h3 class="tit">Regexlearn 한국어 번역 교정</h3>
                       {currentData.others[1].projList.map((list, index) => {
                         return (
                           <a
@@ -531,71 +312,89 @@ const NewCont = () => {
                           >
                             <button type="button">
                               {list.projName}
-                              <svg
-                                width="30px"
-                                height="30px"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                <g
-                                  id="SVGRepo_tracerCarrier"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                ></g>
-                                <g id="SVGRepo_iconCarrier">
-                                  {" "}
-                                  <g clip-path="url(#clip0_429_11072)">
-                                    {" "}
-                                    <path
-                                      d="M11 3.99994H4V17.9999C4 19.1045 4.89543 19.9999 6 19.9999H18C19.1046 19.9999 20 19.1045 20 17.9999V12.9999"
-                                      stroke="#926b6a"
-                                      stroke-width="2.5"
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
-                                    ></path>{" "}
-                                    <path
-                                      d="M9 14.9999L20 3.99994"
-                                      stroke="#926b6a"
-                                      stroke-width="2.5"
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
-                                    ></path>{" "}
-                                    <path
-                                      d="M15 3.99994H20V8.99994"
-                                      stroke="#926b6a"
-                                      stroke-width="2.5"
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
-                                    ></path>{" "}
-                                  </g>{" "}
-                                  <defs>
-                                    {" "}
-                                    <clipPath id="clip0_429_11072">
-                                      {" "}
-                                      <rect
-                                        width="24"
-                                        height="24"
-                                        fill="white"
-                                      ></rect>{" "}
-                                    </clipPath>{" "}
-                                  </defs>{" "}
-                                </g>
-                              </svg>
+                              <SvgLink />
                             </button>
                           </a>
                         );
                       })}
                     </li>
+                    {/* <li>
+                      <div class="link-wrap">
+                        <h3 class="tit">{currentData.others[1].projName}</h3>
+
+                        <a
+                          href="https://rosaceaee.github.io/log-sapjil/"
+                          target="_blank"
+                        >
+                          <svg
+                            width="25px"
+                            height="25px"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g
+                              id="SVGRepo_tracerCarrier"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            ></g>
+                            <g id="SVGRepo_iconCarrier">
+                              {" "}
+                              <g clip-path="url(#clip0_429_11072)">
+                                {" "}
+                                <path
+                                  d="M11 3.99994H4V17.9999C4 19.1045 4.89543 19.9999 6 19.9999H18C19.1046 19.9999 20 19.1045 20 17.9999V12.9999"
+                                  stroke="#fff"
+                                  stroke-width="2.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                ></path>{" "}
+                                <path
+                                  d="M9 14.9999L20 3.99994"
+                                  stroke="#fff"
+                                  stroke-width="2.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                ></path>{" "}
+                                <path
+                                  d="M15 3.99994H20V8.99994"
+                                  stroke="#fff"
+                                  stroke-width="2.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                ></path>{" "}
+                              </g>{" "}
+                              <defs>
+                                {" "}
+                                <clipPath id="clip0_429_11072">
+                                  {" "}
+                                  <rect
+                                    width="24"
+                                    height="24"
+                                    fill="white"
+                                  ></rect>{" "}
+                                </clipPath>{" "}
+                              </defs>{" "}
+                            </g>
+                          </svg>
+                        </a>
+                      </div>
+                      <div class="desc">환율 크롤링 페이지</div>
+                      <div class="skill-wrap">
+                        <span class="chip react">react</span>
+                        <span class="chip scss">node.js</span>
+                      </div>
+                    </li> */}
                   </ul>
                 </div>
-
-                {/* // */}
               </div>
             </li>
           </ul>
+
+          {/* // */}
         </div>
+        {/* // wrap others */}
       </section>
     </>
   );
