@@ -205,6 +205,7 @@ export const data = {
         id: 3,
         projName: " regexlearn 한국어 번역 기여",
         desc: "기존 번역문장의 자연스럽지 않은 한국어 문장을 교정하여 한국어 학습자의 가독성을 높임.",
+        url: "https://regexlearn.com/ko",
 
         projList: [
           {
@@ -460,6 +461,7 @@ export const data = {
         id: 3,
         projName: " regexlearn韓国語ページの翻訳及びチェック",
         desc: "既存翻訳されている韓国語ページのチェック及び追加翻訳",
+        url: "https://regexlearn.com/ko",
 
         projList: [
           {

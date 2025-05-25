@@ -311,10 +311,7 @@ const NewCont = () => {
                       <div class="link-wrap">
                         <h3 class="tit">{currentData.others[3].projName}</h3>
 
-                        <a
-                          href="https://rosaceaee.github.io/log-sapjil/"
-                          target="_blank"
-                        >
+                        <a href={currentData.others[3].url} target="_blank">
                           <SvgLink />
                         </a>
                       </div>
