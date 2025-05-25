@@ -176,11 +176,12 @@ const NewCont = () => {
             <h3>{currentData.header[0]}</h3>
             <span>
               <p class="txt">{currentData.header[1]}</p>
-              <p class="txt">{currentData.header[2]}</p>
+              <p class="txt">{currentData.header[2]}</p>{" "}
+              <p class="txt">{currentData.header[3]}</p>
             </span>
           </div>
 
-          <div class="box right">dd</div>
+          {/* <div class="box right"></div> */}
         </div>
 
         <div class="wrap scnd" id="work-container">
@@ -199,16 +200,23 @@ const NewCont = () => {
                       return (
                         <>
                           <li>
-                            <div class="card-wrap">
-                              <div class="card">
+                            <div class="card-wrap ani ">
+                              <div class="card ">
                                 <ul class="list-desc">
-                                  <li>
+                                  <li class="">
                                     <img
                                       src={project.imgUrl}
                                       className="pic"
                                       alt=""
                                     />
-                                    <p class="proj-name">{project.projName}</p>
+                                    <div class="proj-name-wrap">
+                                      <p class="proj-name">
+                                        {project.projName}
+                                      </p>
+                                      <a href={project.url} target="_blank">
+                                        <SvgLink />
+                                      </a>
+                                    </div>
                                   </li>
                                   <li>
                                     {project.desc.map((descItm, index) => {
@@ -233,9 +241,6 @@ const NewCont = () => {
                                       </span>
                                     );
                                   })}
-                                </div>
-                                <div class="btn-wrap">
-                                  <button type="button">이동</button>
                                 </div>
                               </div>
                             </div>
@@ -301,23 +306,22 @@ const NewCont = () => {
                         })}
                       </div>
                     </li>
+
                     <li>
-                      <h3 class="tit">Regexlearn 한국어 번역 교정</h3>
-                      {currentData.others[1].projList.map((list, index) => {
-                        return (
-                          <a
-                            className={`box-with-link ${index}`}
-                            href={`${list.url}`}
-                            target="_blank"
-                          >
-                            <button type="button">
-                              {list.projName}
-                              <SvgLink />
-                            </button>
-                          </a>
-                        );
-                      })}
+                      <div class="link-wrap">
+                        <h3 class="tit">{currentData.others[3].projName}</h3>
+
+                        <a
+                          href="https://rosaceaee.github.io/log-sapjil/"
+                          target="_blank"
+                        >
+                          <SvgLink />
+                        </a>
+                      </div>
+
+                      <div class="desc">{currentData.others[3].desc}</div>
                     </li>
+
                     {/* <li>
                       <div class="link-wrap">
                         <h3 class="tit">{currentData.others[1].projName}</h3>

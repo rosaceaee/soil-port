@@ -7,6 +7,11 @@ ul li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 button[type="button"] {
   background: tomato;
   padding: 10px;
@@ -36,25 +41,20 @@ section {
     margin-top: 5rem;
     width: 100%;
     .wrap {
-      margin: 1rem 4rem;
+      margin: 1rem auto;
+      max-width: 1200px;
       .txt {
         word-break: break-all;
         position: relative;
-        &:before {
-          content: "·";
-          position: absolute;
-          left: 1rem;
-          top: 7px;
-        }
       }
       &.info {
-        margin: 3rem 4rem 1rem;
+        margin: 8rem auto 1rem;
         display: flex;
         justify-content: stretch;
         height: auto;
         max-height: 100%;
         padding: 1rem;
-        border: 5px solid tomato;
+        border: 5px solid rgb(27, 105, 157);
         border-radius: 10px;
         .box {
           display: flex;
@@ -99,10 +99,16 @@ section {
 
       &.scnd {
         .career-div {
-          margin: 1rem auto;
+          margin: 7rem auto;
           display: grid;
           grid-template-columns: 15% 85%;
           flex-wrap: wrap;
+        }
+
+        .proj-name-wrap {
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .tit {
@@ -110,7 +116,9 @@ section {
           flex-grow: 1;
           font-weight: 700;
           padding: 10px;
-          background-color: #fab7b7;
+          // background-color: #fab7b7;
+          background-color: rgba(27, 105, 157, 0.8);
+          color: #fff;
 
           .title {
             text-align: center;
@@ -124,6 +132,15 @@ section {
           margin-top: 10px;
         }
 
+        .txt {
+          &:before {
+            content: "·";
+            position: absolute;
+            left: 1rem;
+            top: 7px;
+          }
+        }
+
         ul {
           /*
             flex-shrink: 3;
@@ -131,7 +148,7 @@ section {
           margin: 0 0.5rem;
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 1.6rem;
+          gap: 1rem;
         }
 
         .btn-wrap {
@@ -154,7 +171,9 @@ section {
           width: 100%;
           background: #fff;
           border-radius: 10px;
-
+          box-shadow: 2px 7px 2px 0px rgba(27, 105, 157, 0.62);
+          -webkit-box-shadow: 2px 7px 2px 0px rgba(27, 105, 157, 0.62);
+          -moz-box-shadow: 2px 7px 2px 0px rgba(27, 105, 157, 0.62);
           ul {
             &.list-desc {
               display: flex;
@@ -171,7 +190,6 @@ section {
               word-break: break-all;
 
               p {
-                width: 100%;
                 font-size: 1rem;
                 padding: 0.5rem 2rem;
               }
@@ -200,27 +218,41 @@ section {
                       margin: 10px 0;
                       padding: 25px 20px;
                       border-radius: 12px;
-
+                      display: grid;
+                      grid-template-columns: auto 1fr;
+                      gap: 1rem;
                       .skill-wrap {
                         margin: 1rem auto 1rem 0rem;
                       }
+                      .desc {
+                        line-height: 1.6;
+                      }
                       .btn-wrap {
-                        margin-top: 14px;
                         gap: 1rem;
                         display: flex;
                         align-items: center;
                         flex-wrap: wrap;
                         button[type="button"] {
-                          background: tomato;
+                          background-color: rgb(234, 234, 234);
                           padding: 10px;
                           border-radius: 6px;
                           outline: none;
                           border: none;
-                          color: #fff;
+                          color: #777;
                           display: flex;
                           align-items: center;
                           gap: 10px;
                           font-size: 1rem;
+                          cursor: pointer;
+                          &:hover {
+                            background: #777;
+                            color: rgb(234, 234, 234);
+                            svg {
+                              * {
+                                stroke: rgb(234, 234, 234);
+                              }
+                            }
+                          }
                         }
                       }
                     }
@@ -228,6 +260,7 @@ section {
                   .tit {
                     font-size: 1.3rem;
                     margin-bottom: 0.5rem;
+                    flex-shrink: 0;
                   }
                   li {
                     padding: 10px;
@@ -372,9 +405,16 @@ section {
           grid-template-columns: auto;
           .career-div {
             display: block;
+            margin: 1rem auto;
+          }
+          .tit {
+            .title {
+              margin: 10px 0;
+            }
           }
           ul {
             &.list-wrap {
+              margin: 0;
               display: flex;
               flex-direction: column;
               border: 1px solid orange;
@@ -414,6 +454,14 @@ section {
                   display: flex;
                   flex-direction: column;
                   background-color: #fff;
+                  .card {
+                    .list-desc {
+                      grid-template-columns: auto;
+                      li {
+                        display: block;
+                      }
+                    }
+                  }
                 }
               }
             }
