@@ -12,6 +12,13 @@ a {
   cursor: pointer;
 }
 
+h1,
+h2,
+h3,
+p {
+  word-break: break-all;
+}
+
 button[type="button"] {
   background: tomato;
   padding: 10px;
@@ -29,7 +36,7 @@ nav {
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  padding: 10px 0;
+  padding: 3rem 0;
   ul {
     display: inline-flex;
     gap: 1rem;
@@ -60,7 +67,7 @@ section {
           display: flex;
           &.left {
             flex-grow: 4;
-            padding: 2rem;
+            padding: 2rem 5rem;
             width: auto;
             border: 1px solid;
             flex-direction: column;
@@ -364,6 +371,18 @@ section {
   }
 }
 
+@media screen and (max-width: 1280px) {
+  section {
+    &.container {
+      .wrap {
+        &.info {
+          margin: 10rem 3rem 1rem;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 1024px) {
   section {
     &.container {
@@ -387,16 +406,21 @@ section {
 }
 
 @media screen and (max-width: 500px) {
+  nav {
+    padding: 2rem 0;
+  }
+
   section {
     &.container {
       .wrap {
         margin: 1rem 2rem;
         &.info {
           flex-direction: column;
-          margin: 3rem 2rem 1rem;
+          margin: 4rem 1.2rem 1rem;
           .box {
             &.left {
               width: auto;
+              padding: 2rem;
             }
           }
         }
@@ -405,7 +429,7 @@ section {
           grid-template-columns: auto;
           .career-div {
             display: block;
-            margin: 1rem auto;
+            margin: 1rem auto 4rem;
           }
           .tit {
             .title {
@@ -417,7 +441,6 @@ section {
               margin: 0;
               display: flex;
               flex-direction: column;
-              border: 1px solid orange;
             }
             &.list-desc {
               li {
@@ -429,6 +452,14 @@ section {
                   &:before {
                     top: 10px;
                   }
+                }
+
+                a {
+                  position: relative;
+                  right: 1rem;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
                 }
               }
             }
@@ -457,6 +488,9 @@ section {
                   .card {
                     .list-desc {
                       grid-template-columns: auto;
+                      .tit {
+                        flex-shrink: inherit;
+                      }
                       li {
                         display: block;
                       }

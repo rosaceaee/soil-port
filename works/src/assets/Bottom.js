@@ -202,6 +202,7 @@ export const Bottom = () => {
                         <h3 style={{ textAlign: "right" }}>
                           {currentData.header[0]}
                         </h3>
+                        <p>저는...</p>
                         <p>{currentData.header[1]}</p>
                         <p>{currentData.header[2]}</p>
                       </span>
