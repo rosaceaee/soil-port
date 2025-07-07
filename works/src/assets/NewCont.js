@@ -175,9 +175,18 @@ const NewCont = () => {
           <div class="box left">
             <h3>{currentData.header[0]}</h3>
             <span>
-              <p class="txt">{currentData.header[1]}</p>
-              <p class="txt">{currentData.header[2]}</p>{" "}
-              <p class="txt">{currentData.header[3]}</p>
+              {/* <p class="txt">{currentData.header[1]}</p> <br /> */}
+              <ul>
+                {currentData.header.map((item, index) => (
+                  <li key={index}>
+                    {index >= 2 ? (
+                      <span style={{ marginTop: 0 }}>{item}</span>
+                    ) : (
+                      ""
+                    )}
+                  </li>
+                ))}
+              </ul>
             </span>
           </div>
 

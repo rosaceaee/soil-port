@@ -5,6 +5,7 @@
 
 ul li {
   list-style: none;
+  font-family: "SUIT-Regular";
 }
 
 a {
@@ -16,6 +17,7 @@ h1,
 h2,
 h3,
 p {
+  font-family: "LINESeedKR-Bd";
   word-break: break-all;
 }
 
@@ -37,6 +39,17 @@ nav {
   display: flex;
   justify-content: center;
   padding: 3rem 0;
+
+  .nav-wrap {
+    padding: 2rem;
+    // background: #dba968;
+    // background: rgba(219, 169, 104, 0.7);
+    background: $timidBl;
+    margin: 0 auto;
+    width: calc(50% - 1rem);
+    display: flex;
+    border-radius: 20px;
+  }
   ul {
     display: inline-flex;
     gap: 1rem;
@@ -75,14 +88,36 @@ section {
 
             h3 {
               width: 100%;
+              text-align: center;
               font-weight: 600;
               font-size: 1.5rem;
+              margin-bottom: 0.5rem;
+            }
+
+            ul {
+              li {
+                position: relative;
+                &:before {
+                  content: "";
+                  width: 4px;
+                  height: 4px;
+                  background: orange;
+                  position: absolute;
+                  left: 10px;
+                  top: 15px;
+                }
+                span {
+                  line-height: 1.8;
+                  font-size: 1.15rem;
+                  margin-top: 0;
+                  padding-left: 2rem;
+                }
+              }
             }
             span {
               display: flex;
               flex-direction: column;
               margin-top: 1rem;
-              line-height: 1.5;
             }
           }
           &.right {
@@ -199,6 +234,7 @@ section {
               p {
                 font-size: 1rem;
                 padding: 0.5rem 2rem;
+                font-family: "SUIT-Regular";
               }
             }
           }
@@ -408,6 +444,10 @@ section {
 @media screen and (max-width: 500px) {
   nav {
     padding: 2rem 0;
+    .nav-wrap {
+      padding: 1rem 0.5rem;
+      width: calc(100% - 2rem);
+    }
   }
 
   section {
@@ -420,7 +460,19 @@ section {
           .box {
             &.left {
               width: auto;
-              padding: 2rem;
+              padding: 1.3rem;
+              ul {
+                li {
+                  margin: 0.5rem 0;
+                  &:before {
+                    top: 13px;
+                  }
+                  span {
+                    font-size: 1rem;
+                    padding-left: 1.5rem;
+                  }
+                }
+              }
             }
           }
         }

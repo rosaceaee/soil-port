@@ -205,6 +205,7 @@ export const Bottom = () => {
                         <p>저는...</p>
                         <p>{currentData.header[1]}</p>
                         <p>{currentData.header[2]}</p>
+                        <p>{currentData.header[4]}</p>
                       </span>
                     </div>
                   </div>
