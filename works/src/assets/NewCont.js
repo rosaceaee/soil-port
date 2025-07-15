@@ -276,7 +276,7 @@ const NewCont = () => {
               <div class="card-wrap">
                 <div class="card">
                   <ul class="list-desc">
-                    <li>
+                    {/* <li>
                       <div class="link-wrap">
                         <h3 class="tit">{currentData.others[0].projName}</h3>
 
@@ -295,7 +295,7 @@ const NewCont = () => {
                           <span class="chip scss">scss</span>
                         </div>
                       </div>
-                    </li>
+                    </li> */}
                     <li>
                       <h3 class="tit">MDN 영한번역 기여</h3>
                       <div class="btn-wrap">
