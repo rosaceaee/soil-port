@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/soil-port/static/css/main.e1fa0655.css",
-    "main.js": "/soil-port/static/js/main.7ac278d9.js",
+    "main.js": "/soil-port/static/js/main.ee8b188f.js",
     "static/js/453.55145213.chunk.js": "/soil-port/static/js/453.55145213.chunk.js",
     "index.html": "/soil-port/index.html",
     "main.e1fa0655.css.map": "/soil-port/static/css/main.e1fa0655.css.map",
-    "main.7ac278d9.js.map": "/soil-port/static/js/main.7ac278d9.js.map",
+    "main.ee8b188f.js.map": "/soil-port/static/js/main.ee8b188f.js.map",
     "453.55145213.chunk.js.map": "/soil-port/static/js/453.55145213.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e1fa0655.css",
-    "static/js/main.7ac278d9.js"
+    "static/js/main.ee8b188f.js"
   ]
 }
