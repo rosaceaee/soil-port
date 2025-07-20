@@ -453,6 +453,8 @@ section {
 @media screen and (max-width: 500px) {
   nav {
     padding: 2rem 0;
+    min-width: 350px;
+    width: 100%;
     .nav-wrap {
       padding: 1rem 0.5rem;
       width: calc(100% - 2rem);
@@ -461,12 +463,13 @@ section {
 
   section {
     &.container {
+      min-width: 350px;
       .wrap {
         margin: 1rem 2rem;
         &.info {
           flex-direction: column;
           margin: 4rem 1.2rem 1rem;
-          max-width: 330px;
+          min-width: 330px;
           .box {
             &.left {
               width: auto;
