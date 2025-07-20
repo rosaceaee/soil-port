@@ -286,7 +286,7 @@ export const data = {
           },
           {
             listIdx: 2,
-            projName: "MiraeAssetヘルスケアアプUI/UX立ち上げ",
+            projName: "MiraeAssetヘルスケアアプリケーションUI/UX立ち上げ",
             imgUrl: "/img/lge1.png",
             url: "https://play.google.com/store/apps/details?id=com.mMiraeAssetLife&hl=ko",
             desc: [
@@ -330,7 +330,7 @@ export const data = {
           {
             listIdx: 1,
             imgUrl: "/img/lge1.png",
-            projName: "英語学習アプリUIメンテナンス",
+            projName: "英語学習アプリケーションUIメンテナンス",
             url: "https://play.google.com/store/apps/details?id=com.culpmobile.creo&pcampaignid=web_share",
             desc: [
               "UI/UXの保守およびQAテスト対応を通じて、学習体験の一貫性と品質向上に貢献",
@@ -355,7 +355,7 @@ export const data = {
           {
             listIdx: 3,
             imgUrl: "/img/lge1.png",
-            projName: "英語スピーキングアプリのUIメンテナンス",
+            projName: "英語スピーキングアプリケーションのUIメンテナンス",
             url: "https://play.google.com/store/apps/details?id=com.epublic.phonicsmonster",
             desc: [
               "英語フォニックス教材WebサービスにおけるUI/UXの保守およびQAテスト対応を通じ、学習体験の一貫性とサービス品質の向上に寄与",
