@@ -466,6 +466,7 @@ section {
         &.info {
           flex-direction: column;
           margin: 4rem 1.2rem 1rem;
+          max-width: 330px;
           .box {
             &.left {
               width: auto;
