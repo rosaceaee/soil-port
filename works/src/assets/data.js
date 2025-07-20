@@ -274,7 +274,7 @@ export const data = {
         projList: [
           {
             listIdx: 1,
-            projName: "G電子カスタマーサポートサービスサイト運用",
+            projName: "LG電子カスタマーサポートサービスサイト運用",
             imgUrl: "/img/lge0.png",
             url: "https://www.lge.co.kr/support",
             desc: [
